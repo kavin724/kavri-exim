@@ -100,7 +100,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq, onOpenTds }) {
             <div className="lg:col-span-5">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-white">
                 <img 
-                  src="/assets/images/hero-spices.jpg" 
+                  src="./assets/images/hero-spices.jpg" 
                   alt="Kavri Exim Premium Spices" 
                   className="w-full h-80 object-cover object-center"
                 />

@@ -44,7 +44,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
               <img 
-                src="/assets/images/kavri_logo_transparent.png" 
+                src="./assets/images/kavri_logo_transparent.png" 
                 alt="Kavri Exim" 
                 className="h-10 w-auto object-contain"
               />

@@ -62,7 +62,7 @@ export default function AboutPage({ onOpenRfq }) {
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-white aspect-square">
               <img 
-                src="/assets/images/hero-spices.jpg" 
+                src="./assets/images/hero-spices.jpg" 
                 alt="South Indian Export Heritage"
                 className="w-full h-full object-cover"
               />

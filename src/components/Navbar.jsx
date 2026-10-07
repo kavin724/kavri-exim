@@ -59,7 +59,7 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
             aria-label="Kavri Exim Home"
           >
             <img 
-              src="/assets/images/kavri_logo_transparent.png" 
+              src="./assets/images/kavri_logo_transparent.png" 
               alt="Kavri Exim — International Merchant Exporters" 
               className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-95 transition-opacity"
             />

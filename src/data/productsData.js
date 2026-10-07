@@ -24,7 +24,7 @@ export const PRODUCTS_DATA = [
     division: 'Spices & Seasonings',
     tag: 'Export Ready | Origin Certified',
     origin: 'Idukki & Western Ghats, South India',
-    image: '/assets/images/cardamom.jpg',
+    image: './assets/images/cardamom.jpg',
     shortDesc: 'Known worldwide as the "Queen of Spices", hand-picked from mist-covered Western Ghats plantations with controlled electric heat-pump curing to retain deep green chlorophyll and high volatile essential oils.',
     hsnCode: '0908 31 00',
     grades: [
@@ -65,7 +65,7 @@ export const PRODUCTS_DATA = [
     division: 'Spices & Seasonings',
     tag: 'Export Ready | Origin Certified',
     origin: 'Malabar Coast & Western Ghats Foothills',
-    image: '/assets/images/pepper.jpg',
+    image: './assets/images/pepper.jpg',
     shortDesc: 'The gold standard of world peppercorns. Fully vine-ripened, sun-cured, and machine-garbled into Tellicherry Garbled Extra Bold (TGEB) berries renowned for high natural piperine and woody citrus aromatics.',
     hsnCode: '0904 11 10',
     grades: [
@@ -105,7 +105,7 @@ export const PRODUCTS_DATA = [
     division: 'Spices & Seasonings',
     tag: 'Origin Certified | High Piperine',
     origin: 'Kolli Hills (Kolli Malai), Eastern Ghats, Tamil Nadu',
-    image: '/assets/images/kolli-pepper.jpg',
+    image: './assets/images/kolli-pepper.jpg',
     shortDesc: 'Organically cultivated in the untouched mountain valleys of Kolli Hills, Tamil Nadu, at altitudes of 1,000–1,300 meters. Celebrated by international spice blenders for exceptional piperine pungency (up to 6.5%) and rich earthy heat.',
     hsnCode: '0904 11 10',
     grades: [
@@ -143,7 +143,7 @@ export const PRODUCTS_DATA = [
     division: 'Spices & Seasonings',
     tag: 'Export Ready | Origin Certified',
     origin: 'Salem District, Kaveri Basin, Tamil Nadu',
-    image: '/assets/images/salem-turmeric.jpg',
+    image: './assets/images/salem-turmeric.jpg',
     shortDesc: 'The benchmark culinary turmeric of South India. Long, stout fingers polished to a golden amber sheen, renowned globally for brilliant natural yellow color, high essential aroma, and clean taste.',
     hsnCode: '0910 30 20',
     grades: [
@@ -181,7 +181,7 @@ export const PRODUCTS_DATA = [
     division: 'Spices & Seasonings',
     tag: 'GI Tagged | Geographical Indication',
     origin: 'Erode District (Turmeric City), Tamil Nadu, India',
-    image: '/assets/images/erode-turmeric.jpg',
+    image: './assets/images/erode-turmeric.jpg',
     shortDesc: 'Officially granted Geographical Indication (GI) status by the Government of India. Cultivated along the Kaveri river basin, Erode turmeric is globally prized for its deep golden-yellow color, high resistance to insect pests, and distinct therapeutic phytochemical profile.',
     hsnCode: '0910 30 20',
     grades: [
@@ -219,7 +219,7 @@ export const PRODUCTS_DATA = [
     division: 'Spices & Seasonings',
     tag: 'Export Ready | Ultra-Fine Mesh',
     origin: 'Tamil Nadu Turmeric Belts (Erode & Salem)',
-    image: '/assets/images/turmeric-powder.jpg',
+    image: './assets/images/turmeric-powder.jpg',
     shortDesc: 'Cryogenically pulverized from cleaned, steam-sterilized Salem and Erode finger rhizomes. Retains maximum volatile oils, natural curcumin, and intense golden color without overheating or starch fillers.',
     hsnCode: '0910 30 30',
     grades: [
@@ -268,7 +268,7 @@ export const PRODUCTS_DATA = [
     division: 'Textiles & Garments',
     tag: 'Customizable | OEM Export',
     origin: 'Tirupur (Knitwear Capital of India), Tamil Nadu',
-    image: '/assets/images/tshirts.jpg',
+    image: './assets/images/tshirts.jpg',
     shortDesc: 'Manufactured in the world-renowned textile cluster of Tirupur, Tamil Nadu. 100% combed cotton, bio-washed, single jersey t-shirts with OEKO-TEX certified reactive dyeing. Completely customizable in GSM, silhouette, printing, and private label branding.',
     hsnCode: '6109 10 00',
     grades: [
@@ -308,7 +308,7 @@ export const PRODUCTS_DATA = [
     division: 'Textiles & Garments',
     tag: 'Customizable | High Absorbency',
     origin: 'Tamil Nadu Textile Corridors (Coimbatore & Karur)',
-    image: '/assets/images/terry-towels-clean.jpg',
+    image: './assets/images/terry-towels-clean.jpg',
     shortDesc: 'Plush, ultra-absorbent terry bath linens crafted from long-staple Indian cotton. Ideal for luxury hotel chains, resorts, spas, and department stores worldwide. Fully customizable with jacquard weaves, dobby borders, and custom client embroidery.',
     hsnCode: '6302 60 00',
     grades: [
@@ -346,7 +346,7 @@ export const PRODUCTS_DATA = [
     division: 'Textiles & Garments',
     tag: 'Customizable | High Thread Count',
     origin: 'Coimbatore & Karur Textile Belts, Tamil Nadu',
-    image: '/assets/images/bedsheets.jpg',
+    image: './assets/images/bedsheets.jpg',
     shortDesc: 'Hotel-grade bed linen sets woven from long-staple cotton yarns. Available in crisp percale and lustrous sateen weaves from 200 to 600 Thread Count (TC). Tailored to exact international mattress sizes (Twin, Queen, King, Super King) with custom piping and embroidery.',
     hsnCode: '6302 21 00',
     grades: [
@@ -384,7 +384,7 @@ export const PRODUCTS_DATA = [
     division: 'Textiles & Garments',
     tag: 'Customizable | Natural Flax & Cotton',
     origin: 'Karur Handloom & Powerloom Hub, Tamil Nadu',
-    image: '/assets/images/linens.jpg',
+    image: './assets/images/linens.jpg',
     shortDesc: 'Artisanal table runners, placemats, dining napkins, apron sets, and kitchen tea towels woven in Karur, Tamil Nadu. Known for rustic textures, vintage stonewash finishes, and supreme durability for fine dining and home décor importers.',
     hsnCode: '6302 51 00',
     grades: [
@@ -420,7 +420,7 @@ export const PRODUCTS_DATA = [
     division: 'Textiles & Garments',
     tag: 'Customizable | Mill-Made Rolls',
     origin: 'Tamil Nadu Woven Textile Hubs (Coimbatore & Erode)',
-    image: '/assets/images/shirting-fabrics.jpg',
+    image: './assets/images/shirting-fabrics.jpg',
     shortDesc: 'Precision-woven mill fabrics for global apparel manufacturers and tailor houses. Featuring fine yarn counts from 40s to 80s in Oxford weaves, pinpoint poplins, herringbone twills, and custom tartan checks, alongside premium bottom-weight pant fabrics with silky durable hand-feel.',
     hsnCode: '5208 42 00 / 5209 42 00',
     grades: [
@@ -465,7 +465,7 @@ export const PRODUCTS_DATA = [
     division: 'Indian Heritage Handicrafts',
     tag: 'Custom Sourcing Available',
     origin: 'Thanjavur, Swamimalai & Madurai (Tamil Nadu)',
-    image: '/assets/images/handicrafts.jpg',
+    image: './assets/images/handicrafts.jpg',
     shortDesc: 'Handcrafted solid brass oil lamps (Kuthuvilakku), ornamental Urlis, temple bells, and bronze statues cast using the lost-wax (Cire Perdue) method perfected over centuries by master craftsmen in Tamil Nadu.',
     hsnCode: '7419 80 30',
     grades: [
@@ -500,7 +500,7 @@ export const PRODUCTS_DATA = [
     division: 'Indian Heritage Handicrafts',
     tag: 'Artisanal & Modern Living',
     origin: 'Tamil Nadu, Rajasthan & Pan-India Craft Guilds',
-    image: '/assets/images/modern-home-decor.jpg',
+    image: './assets/images/modern-home-decor.jpg',
     shortDesc: 'Curated artisanal home accents blending traditional Indian craftsmanship with contemporary living aesthetics. Featuring handcrafted wooden jewellery boxes, artisanal wall hanging decors, elegant floral accents, bespoke custom-made wooden artefacts on demand, and heritage terracotta creations.',
     hsnCode: '4420 90 90 / 6913 90 00',
     grades: [
@@ -510,7 +510,7 @@ export const PRODUCTS_DATA = [
         density: 'Seasoned Sheesham & Teak hardwood', 
         color: 'Natural walnut polish / brass inlay', 
         usage: 'Luxury giftware, boutique home decor, residential bedside and tabletop accent pieces',
-        image: '/assets/images/modern-home-decor.jpg'
+        image: './assets/images/modern-home-decor.jpg'
       },
       { 
         name: 'Artisanal Wall Hanging Decors', 
@@ -518,7 +518,7 @@ export const PRODUCTS_DATA = [
         density: 'Framed hand-painted canvas & wooden relief', 
         color: 'Contemporary earth tones & gold leaf accents', 
         usage: 'Feature walls, boutique hotels, modern apartment living',
-        image: '/assets/images/wall-hanging-decor.jpg'
+        image: './assets/images/wall-hanging-decor.jpg'
       },
       { 
         name: 'Custom-Made Wooden Artefacts On Demand', 
@@ -526,7 +526,7 @@ export const PRODUCTS_DATA = [
         density: 'Seasoned Teakwood & FSC kiln-dried hardwoods', 
         color: 'Natural hand-carved wood grain / custom organic wax finish', 
         usage: 'Artisanal wooden tea sets, cups & saucers, boutique tableware, and full turnkey capability to engineer any bespoke wooden artefacts to international buyer specifications',
-        image: '/assets/images/wooden-artefacts.jpg'
+        image: './assets/images/wooden-artefacts.jpg'
       }
     ],
     technicalSpecs: {
@@ -557,7 +557,7 @@ export const PRODUCTS_DATA = [
     division: 'Indian Heritage Handicrafts',
     tag: 'Turnkey Contract Sourcing',
     origin: 'All over India / Pan-India Sourcing Hubs',
-    image: '/assets/images/private-label.jpg',
+    image: './assets/images/private-label.jpg',
     shortDesc: 'Turnkey contract sourcing for boutique retail brands, lifestyle chains, and specialty distributors across North America, Europe, and the Middle East. Sourcing sustainable eco-goods (bamboo toothbrushes, glassware, custom spice jars, textile amenities) across verified manufacturing clusters all over India / Pan-India with custom barcoding and private label retail packaging.',
     hsnCode: 'Custom Multi-HSN',
     grades: [

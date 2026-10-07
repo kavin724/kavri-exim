@@ -55,7 +55,7 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
           <div className="border-b-2 border-slate-900 pb-5 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
             <div>
               <img 
-                src="/assets/images/kavri_logo_transparent.png" 
+                src="./assets/images/kavri_logo_transparent.png" 
                 alt="Kavri Exim" 
                 className="h-10 w-auto mb-2"
               />
