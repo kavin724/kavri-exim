@@ -430,50 +430,84 @@ export const PRODUCTS_DATA = [
   {
     id: 'turmeric-powder',
     slug: 'turmeric-powder',
-    name: 'Pure Ground Turmeric Powder',
-    botanicalName: 'Curcuma longa Pulvis',
+    name: 'Pure Ground Turmeric Powder (Haldi Powder)',
+    botanicalName: 'Curcuma longa L.',
     category: 'spices',
     division: 'Spices & Seasonings',
-    tag: 'Export Ready | Ultra-Fine Mesh',
-    compliance: 'Spices Board of India | AGMARK Certified | FSSAI Approved',
-    origin: 'Tamil Nadu Turmeric Belts (Erode & Salem)',
+    tag: '100% Pure Single-Origin | Micro-Clean',
+    compliance: 'Spices Board of India | FSSAI Central Export Licensed',
+    origin: 'Erode & Salem Agricultural Belts, Tamil Nadu, India',
     image: './assets/images/turmeric-powder.jpg',
-    shortDesc: 'Cryogenically pulverized from cleaned, steam-sterilized Salem and Erode finger rhizomes. Retains maximum volatile oils, natural curcumin, and intense golden color without overheating or starch fillers.',
-    hsnCode: '0910 30 30',
+    shortDesc: 'Manufactured from select, cleaned, and destoned Salem and Erode whole turmeric fingers and bulbs. Pulverized utilizing temperature-regulated multi-stage pin and hammer mills with cyclone sifting to preserve natural volatile essential oils, bright golden hue, and characteristic warm aroma without thermal degradation or starch fillers. 100% pure single-origin ground powder, free from chemical dyes, lead chromate, and foreign starches.',
+    hsnCode: '0910 30 30 (Turmeric Powder - Pure Ground)',
     grades: [
-      { name: 'Premium High-Curcumin Powder (Curcumin 4.5%+)', size: '80 - 100 Mesh micro-fine', density: 'Aerated fine powder', color: 'Luminous Deep Orange-Gold', usage: 'Nutraceuticals, golden milk wellness blends, premium retail jars' },
-      { name: 'Standard Culinary Grade (Curcumin 3.0% - 3.5%)', size: '60 - 80 Mesh fine grind', density: 'Uniform texture', color: 'Bright Sunny Yellow', usage: 'Industrial food seasoning, curry powder blends, food processing' },
-      { name: 'Steam-Sterilized Export Powder', size: '80 Mesh ultra-clean', density: 'Low bio-burden', color: 'Golden Yellow', usage: 'US FDA / EU compliant ready-to-eat food manufacturing' }
+      { 
+        name: 'Salem/Erode Origin Pure Ground', 
+        size: '60 - 80 Mesh (180 - 250 µm); Min 98% pass-through', 
+        density: 'Free-flowing uniform powder (Curcumin 2.5% - 3.5%)', 
+        color: 'Luminous Golden Amber / Warm Yellow', 
+        usage: 'Retail spice packaging, culinary brands, hotel & catering chains, ethnic grocery' 
+      },
+      { 
+        name: 'High-Curcumin Standardized Grade', 
+        size: '80 - 100 Mesh (150 - 180 µm); Min 99% pass-through', 
+        density: 'Micro-fine aerated powder (Curcumin 4.5% - 5.5%+)', 
+        color: 'Deep Orange-Gold', 
+        usage: 'Nutraceutical premixes, functional beverages, wellness formulations, health supplements' 
+      },
+      { 
+        name: 'Ultra-Fine Industrial Grinding', 
+        size: '100 - 120 Mesh (125 - 150 µm)', 
+        density: 'Ultra-fine soft powder (Curcumin 2.5% - 3.5%)', 
+        color: 'Bright Uniform Yellow', 
+        usage: 'Curry powder blending, snack food seasonings, sauce/soup dry premixes' 
+      },
+      { 
+        name: 'Steam-Sterilized Micro-Clean Grade', 
+        size: '60 - 80 Mesh (HTST Steam Treated)', 
+        density: 'Low bio-burden micro-clean powder (Curcumin 2.5% - 5.0%)', 
+        color: 'Natural Gold', 
+        usage: 'Ready-to-eat foods, infant nutrition blenders, high-compliance EU/US food plants' 
+      }
     ],
     technicalSpecs: {
-      curcuminContent: '3.0% to 5.0%+ (HPLC standardized by batch)',
-      finenessMesh: 'Min 98% passing through 80 - 100 mesh sieve',
-      moisture: 'Max 8.5% - 9.0%',
-      totalAsh: 'Max 7.0%',
-      acidInsolubleAsh: 'Max 1.0%',
-      foreignStarchesAddedColor: 'Strictly Absent (Nil Sudan dye, Nil lead chromate, Nil metanil yellow)',
-      salmonella: 'Absent in 25g',
-      yeastAndMould: '< 100 cfu/g (Steam sterilized)'
+      curcuminContent: '2.5% to 3.5% (Single Origin) | 4.5%+ (Standardized High-Curcumin) [ASTA 18.0 / ISO 5566]',
+      moisture: 'Max 8.5% - 9.0% (Export spec; statutory max 10.0% per FSSAI/ISO 939)',
+      finenessMesh: 'Min 98% passing through 60 to 80 mesh (customizable up to 100 mesh)',
+      totalAsh: 'Max 7.0% (Dry Basis; strict export limit)',
+      acidInsolubleAsh: 'Max 1.0% (Statutory FSSAI allows up to 1.5%)',
+      volatileOil: 'Min 2.5% to 4.0% v/w (Steam Distillation - ISO 6571)',
+      totalStarch: 'Max 60.0% (Natural rhizome starch; zero added filler starches)',
+      colorPurityAdulteration: 'Lead Chromate: 100% Negative | Synthetic Dyes (Metanil Yellow, Sudan I-IV): Absent | Foreign Starches: Absent',
+      heavyMetals: 'Lead (Pb) < 2.0 ppm | Cadmium (Cd) < 1.0 ppm | Arsenic (As) < 1.0 ppm | Mercury (Hg) < 0.1 ppm (Codex / EU compliant)',
+      aflatoxins: 'B1 < 5 ppb | Total Aflatoxins (B1+B2+G1+G2) < 10 ppb (EU Reg (EC) 2023/915 compliant)',
+      etoIrradiation: 'ETO & 2-Chloroethanol < 0.05 mg/kg (EU RASFF compliant); Non-irradiated',
+      microbialStandards: 'TPC < 50,000 CFU/g | Yeast & Mold < 100 CFU/g | Salmonella: Absent in 25g x 5 | E. coli: < 10 CFU/g'
     },
     packagingOptions: [
-      '20 kg / 25 kg Multi-layer Kraft Paper Bags with Food-Grade Inner Poly Barrier',
-      '25 kg Food-Grade Polypropylene Woven Bags with Sealed Inner Liner',
-      'Custom Retail Pouches (100g, 250g, 500g, 1kg) with OEM Branding & Barcodes'
+      'Multi-Wall Paper Barrier Sacks: 20 kg / 25 kg food-grade multi-ply kraft paper bags with inner heat-sealed polyethylene/aluminum moisture-barrier liner.',
+      'Polypropylene Export Sacks: 25 kg heavy-duty PP woven sacks with food-grade inner LDPE liner.',
+      'Bulk Big Bags: 500 kg / 1,000 kg food-grade FIBC Big Bags with inner dust-proof liner and discharge spouts.',
+      'Private Label & Retail Packaging (OEM): 100g, 200g, 500g, 1 kg stand-up aluminum foil zip barrier pouches, printed pillow bags, or composite tins with custom brand labelling and barcode integration.'
     ],
     shippingInfo: {
-      minimumOrder: '2 MT (LCL) / 16 MT (20ft FCL)',
-      containerCapacity: '20ft FCL: approx 16 MT | 40ft FCL: approx 24 - 25 MT',
+      minimumOrder: 'Air Freight: 500 kg - 1,000 kg | Ocean LCL: 2,000 kg - 5,000 kg | Ocean FCL: 18,000 kg (18 MT)',
+      containerCapacity: '20ft FCL: ~18.0 - 19.0 MT | 40ft FCL: ~26.0 - 27.0 MT',
       containerStuffingBreakdown: {
         fcl20: [
-          'Floor-Loaded (20 kg / 25 kg Kraft/PP Bags): ~16.0 MT',
-          'Palletized: ~12.5 - 13.5 MT'
+          'Floor-Loaded / Loose 25 kg Bags: ~18.0 - 19.0 MT (720 - 760 Bags)',
+          'Palletized & Shrink-Wrapped: ~14.0 - 15.0 MT'
         ],
         fcl40: [
-          'Floor-Loaded: ~24.0 - 25.0 MT'
+          'Floor-Loaded Bags: ~26.0 - 27.0 MT (subject to gross container road weight limits)'
+        ],
+        airCargo: [
+          'Air Freight: 500 kg - 1,000 kg'
         ]
       },
-      gatewayPorts: 'Tuticorin VOC Port (TUT), Chennai Port (MAA)',
-      airTerminals: 'Coimbatore (CJB) / Chennai (MAA) / Tiruchirappalli (TRZ)',
+      gatewayPorts: 'Tuticorin VOC Port (TUT) / Chennai Port (MAA) / Cochin Port (COK)',
+      inlandDepots: 'ICD Irugur (Coimbatore) / ICD Tirupur',
+      airTerminals: 'Coimbatore (CJB) / Tiruchirappalli (TRZ) / Chennai (MAA)',
       hsCode: '0910 30 30'
     }
   },

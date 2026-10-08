@@ -35,7 +35,9 @@ export const SPEC_LABEL_MAP = {
   curcuminContent: 'Curcumin Content',
   defectiveRhizomes: 'Defective / Damaged Rhizomes',
   chemicalPolishAdulteration: 'Chemical Polish & Color Adulteration',
+  colorPurityAdulteration: 'Adulteration & Color Purity Guarantee',
   heavyMetals: 'Heavy Metals Limits',
+  totalStarch: 'Total Starch',
   leadChromateTest: 'Lead Chromate Test',
   leadChromateAdulteration: 'Lead Chromate Test',
   foreignOrganicMatter: 'Foreign Organic Matter',
@@ -133,14 +135,14 @@ export function getTestProtocolForSpec(key, value, isTextile = false) {
   if (key === 'aflatoxins' || key === 'aflatoxinB1' || key === 'totalAflatoxins') return 'HPLC-FLD / EU 2023/915';
   if (key === 'ochratoxinA') return 'HPLC / IAC Cleanup (EU)';
   if (key === 'microbialStandards' || key === 'salmonella' || key === 'eColi' || key === 'yeastAndMould') return 'ISO 6579 / FDA BAM';
-  if (key === 'artificialColor' || key === 'leadChromateTest' || key === 'leadChromateAdulteration' || key === 'chemicalPolishAdulteration') return 'LC-MS/MS / Chemical Test';
+  if (key === 'artificialColor' || key === 'leadChromateTest' || key === 'leadChromateAdulteration' || key === 'chemicalPolishAdulteration' || key === 'colorPurityAdulteration') return 'LC-MS/MS / Chemical Test';
   if (key === 'heavyMetals') return 'ICP-MS / Codex CXS 193-1995';
   if (key === 'etoIrradiation') return 'GC-MS/MS Residue Screen';
   if (key === 'sterilizationTreatment') return 'Continuous HTST Steam';
   if (key === 'pesticideResidue') return 'GC-MS/MS Multi-Residue';
   if (key === 'bulkDensity' || key === 'bulkDensityGL') return 'ISO 948 / Graduated Cylinder';
   if (key === 'finenessMesh') return 'Standard Test Sieve Analysis';
-  if (key === 'foreignStarchesAddedColor' || key === 'foreignOrganicMatter' || key === 'starchPurity') return 'Microscopic & Chemical ASTA';
+  if (key === 'totalStarch' || key === 'foreignStarchesAddedColor' || key === 'foreignOrganicMatter' || key === 'starchPurity') return 'Microscopic & Chemical ASTA';
   if (key === 'immaturePods' || key === 'emptyPods' || key === 'lightBerries' || key === 'pinheads') return 'Agmark / ASTA Manual Count';
   if (key === 'giCertification') return 'Govt. of India GI Registry';
 

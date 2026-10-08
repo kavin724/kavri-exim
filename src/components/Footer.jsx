@@ -109,7 +109,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               </li>
               <li>
                 <button type="button" onClick={(e) => navigateTo('product-turmeric-powder', e)} className="hover:text-[#0D522F] transition-colors text-left">
-                  6. Pure Ground Turmeric Powder
+                  6. Pure Ground Turmeric Powder (Haldi Powder)
                 </button>
               </li>
             </ul>
