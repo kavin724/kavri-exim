@@ -21,7 +21,7 @@ const CATEGORY_META = {
     desc: 'Custom OEM apparel, luxury terry towels, hotel-grade bedsheets, and industrial woven fabrics manufactured to rigorous international colorfastness and AATCC/ISO standards.'
   },
   handicrafts: {
-    badge: 'Division 03 • Certified GI Heritage Artisan Clusters',
+    badge: 'Division 03 • Heritage Artisan Clusters',
     title: 'Indian Heritage Handicrafts Catalog',
     desc: 'Authentic South Indian lost-wax cast bronze & brass idols, hand-carved teakwood decorative artefacts, and traditional architectural terracotta pottery.'
   }

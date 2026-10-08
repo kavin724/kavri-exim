@@ -369,7 +369,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
 
                   <div className="absolute bottom-4 left-4 right-4">
                     <span className="text-amber-300 text-xs font-bold uppercase tracking-wider block font-mono">
-                      GI-Certified Artisan Clusters
+                      Heritage Artisan Clusters
                     </span>
                     <h3 className="text-2xl font-black text-white font-['Plus_Jakarta_Sans']">
                       Heritage Handicrafts
