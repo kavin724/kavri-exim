@@ -352,49 +352,78 @@ export const PRODUCTS_DATA = [
   {
     id: 'erode-turmeric',
     slug: 'erode-turmeric',
-    name: 'Erode Turmeric Fingers (GI-Tagged)',
-    botanicalName: 'Curcuma longa (Erode Variety)',
+    name: 'Erode Turmeric Fingers & Bulbs (GI-Certified)',
+    botanicalName: 'Curcuma longa L. (Cultivars: Chinna Nadan & Perum Nadan)',
+    geographicalIndication: 'GI Application No. 231 (Certificate No. 340, Class 30, Govt. of India)',
     category: 'spices',
     division: 'Spices & Seasonings',
-    tag: 'GI Tagged | Geographical Indication',
-    compliance: 'Spices Board of India | GI Registry Certified (GI Tagged) | FSSAI Approved',
-    origin: 'Erode District (Turmeric City), Tamil Nadu, India',
+    tag: 'GI-Certified | FSSAI Central Licensed',
+    compliance: 'Spices Board of India | FSSAI Central Export Licensed',
+    origin: 'Erode Agricultural Belt ("Turmeric City"), Tamil Nadu, India',
     image: './assets/images/erode-turmeric.jpg',
-    shortDesc: 'Officially granted Geographical Indication (GI) status by the Government of India. Cultivated along the Kaveri river basin, Erode turmeric is globally prized for its deep golden-yellow color, high resistance to insect pests, and distinct therapeutic phytochemical profile.',
-    hsnCode: '0910 30 20',
+    shortDesc: 'Cultivated in the fertile alluvial basins of the Kaveri, Bhavani, and Kalingarayan river canals in Erode district, Tamil Nadu. Granted official Geographical Indication (GI) status by the Government of India for its exceptional natural yellow pigment, high finger density, and superior resistance to storage pests. Double-polished and graded using modern mechanical rotary polishers without chemical gloss agents, sulfur dioxide fumigation, or synthetic dyes.',
+    hsnCode: '0910 30 20 (Dried Whole Rhizomes - Fingers / Bulbs)',
     grades: [
-      { name: 'Erode GI Finger Grade Special', size: '5cm - 8cm smooth slender fingers', density: 'Extremely hard fracture', color: 'Deep Golden Chrome Yellow', usage: 'High-end culinary export, traditional Ayurvedic formulations' },
-      { name: 'Erode Finger Commercial Bold', size: '4cm - 7cm', density: 'Dense rhizome', color: 'Rich Golden Yellow', usage: 'Global food processors, extraction, institutional spice buyers' },
-      { name: 'Erode Bulb (Gatha) Export Grade', size: 'Round/oval rhizomes', density: 'Very high density', color: 'Deep Amber Orange', usage: 'Curcumin extractors, oleoresin manufacturers' }
+      { 
+        name: 'Erode GI Finger Special (Double Polished)', 
+        size: '5.5 cm to 8.5 cm stout, cylindrical fingers', 
+        density: 'Solid crystalline fracture', 
+        color: 'Smooth deep amber exterior, solid crystalline bright orange fracture', 
+        usage: 'Supermarket whole repacking, luxury culinary retail, export spice jars (EU, GCC, North America)' 
+      },
+      { 
+        name: 'Erode GI Finger Standard (Single Polished)', 
+        size: '4.0 cm to 6.5 cm well-dried fingers', 
+        density: 'Extremely hard core', 
+        color: 'Natural golden yellow skin, extremely hard core', 
+        usage: 'Commercial spice grinding mills, curry powder blends, industrial food seasoning' 
+      },
+      { 
+        name: 'Erode Round Bulbs (Gatha / Mother Rhizome)', 
+        size: 'Dense spherical / ovate rhizomes (2.5 cm - 4.5 cm)', 
+        density: 'Deep dense core', 
+        color: 'Deep golden-orange core', 
+        usage: 'High-yield industrial extraction, oleoresin manufacturing, pharmaceutical processing' 
+      }
     ],
     technicalSpecs: {
-      curcuminContent: '3.0% to 4.0%+ (Certified Erode GI specification)',
-      moisture: 'Max 9.5% - 10.0%',
-      totalAsh: 'Max 6.0%',
-      acidInsolubleAsh: 'Max 0.7%',
-      giCertification: 'Registered under Geographical Indications Registry (India)',
-      leadChromateAdulteration: 'Negative (100% Guaranteed pure)',
-      pesticideResidue: 'Conforms to strict EU MRL and US FDA guidelines'
+      curcuminContent: '2.5% to 3.5%+ (HPLC Method - ASTA 18.0 / ISO 5566; compliant with official GI filing)',
+      moisture: 'Max 10.0% (Toluene Distillation Method - ASTA 2.0 / ISO 939)',
+      extraneousMatter: 'Max 0.5% by weight (Nil hair, soil, stones, or ferrous debris)',
+      defectiveRhizomes: 'Max 1.5% by weight (Internal Mold / Insect Damage)',
+      totalAsh: 'Max 6.5%',
+      acidInsolubleAsh: 'Max 0.8%',
+      chemicalPolishAdulteration: 'Lead Chromate: 100% Negative (ICP-MS) | Metanil Yellow & Sudan Dyes: Completely Absent (LC-MS/MS tested)',
+      heavyMetals: 'Lead (Pb) < 2.0 ppm | Cadmium (Cd) < 1.0 ppm | Arsenic (As) < 1.0 ppm (Codex CXS 193-1995 compliant)',
+      aflatoxins: 'B1 < 5 ppb | Total Aflatoxins (B1+B2+G1+G2) < 10 ppb (EU Regulation (EC) 2023/915 compliant)',
+      etoIrradiation: '100% Free of ETO and 2-Chloroethanol (< 0.05 mg/kg limit); Non-irradiated',
+      microbialStandards: 'Salmonella: Absent in 25g x 5 samples | E. coli: < 10 CFU/g',
+      giCertification: 'GI Application No. 231 (Certificate No. 340, Class 30, Govt. of India)'
     },
     packagingOptions: [
-      '25 kg / 50 kg PP Bags with Official GI Batch Hologram Tag',
-      '50 kg Natural Jute Gunny Bags',
-      'Custom vacuum-packed cartons for premium importers'
+      'Commercial Export Bags: 25 kg / 50 kg heavy-duty virgin PP woven bags with heat-sealed food-grade LDPE moisture liner.',
+      'Traditional Jute Packs: 50 kg export-grade natural jute gunny bags with food-grade inner poly liner and official export stencil markings.',
+      'Bulk Industrial Containers: 500 kg / 1,000 kg UV-treated FIBC Jumbo Bags with bottom discharge spouts.',
+      'Custom Retail Packaging (OEM): 100g, 250g, 500g nitrogen-flushed stand-up barrier pouches or tamper-evident canisters.'
     ],
     shippingInfo: {
-      minimumOrder: '5 MT (LCL) / 18 MT (20ft FCL)',
-      containerCapacity: '20ft FCL: approx 18 MT | 40ft FCL: approx 26 MT',
+      minimumOrder: 'Air Freight: 500 kg - 1,000 kg | Ocean LCL: 2,000 kg - 5,000 kg | Ocean FCL: 17,000 kg - 18,000 kg (17 - 18 MT)',
+      containerCapacity: '20ft FCL: ~17.5 - 18.5 MT | 40ft FCL: ~26.0 - 27.0 MT',
       containerStuffingBreakdown: {
         fcl20: [
-          'Floor-Loaded (50 kg Jute / PP Bags): ~18.0 MT (360 Bags)',
-          'Palletized & Shrink-Wrapped: ~14.0 MT'
+          'Floor-Loaded / Loose Bags: ~17.5 - 18.5 MT (350 - 370 Bags of 50 kg)',
+          'Palletized & Shrink-Wrapped: ~13.0 - 14.0 MT'
         ],
         fcl40: [
-          'Floor-Loaded: ~26.0 MT'
+          'Floor-Loaded Bags: ~26.0 - 27.0 MT (subject to road weight regulations)'
+        ],
+        airCargo: [
+          'Air Freight: 500 kg - 1,000 kg'
         ]
       },
-      gatewayPorts: 'Tuticorin VOC Port (TUT) / Cochin (COK) / Chennai (MAA)',
-      airTerminals: 'Coimbatore (CJB) / Tiruchirappalli (TRZ) / Chennai (MAA)',
+      gatewayPorts: 'Cochin Port (COK) / Tuticorin VOC Port (TUT) / Chennai Port (MAA)',
+      inlandDepots: 'ICD Irugur (Coimbatore) / ICD Tirupur',
+      airTerminals: 'Coimbatore International (CJB) / Tiruchirappalli (TRZ) / Chennai (MAA)',
       hsCode: '0910 30 20'
     }
   },

@@ -104,6 +104,14 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
                 </span>
               </div>
             )}
+            {product.geographicalIndication && (
+              <div className="sm:col-span-2">
+                <span className="text-xs text-slate-500 uppercase tracking-wider block font-bold">Official Geographical Indication (GI):</span>
+                <span className="text-xs font-semibold text-amber-900 bg-amber-50 px-2.5 py-1 rounded border border-amber-300 inline-block mt-0.5">
+                  {product.geographicalIndication}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Commercial Export Grades & Sieve Calibration */}

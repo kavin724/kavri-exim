@@ -104,7 +104,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               </li>
               <li>
                 <button type="button" onClick={(e) => navigateTo('product-erode-turmeric', e)} className="hover:text-[#0D522F] transition-colors text-left">
-                  5. Erode Turmeric Fingers (GI Tagged)
+                  5. Erode Turmeric Fingers & Bulbs (GI-Certified)
                 </button>
               </li>
               <li>

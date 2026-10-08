@@ -142,6 +142,7 @@ export function getTestProtocolForSpec(key, value, isTextile = false) {
   if (key === 'finenessMesh') return 'Standard Test Sieve Analysis';
   if (key === 'foreignStarchesAddedColor' || key === 'foreignOrganicMatter' || key === 'starchPurity') return 'Microscopic & Chemical ASTA';
   if (key === 'immaturePods' || key === 'emptyPods' || key === 'lightBerries' || key === 'pinheads') return 'Agmark / ASTA Manual Count';
+  if (key === 'giCertification') return 'Govt. of India GI Registry';
 
   return 'ASTA / ISO / FSSAI Validated';
 }
@@ -249,6 +250,12 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
               <p className="text-sm text-slate-500 italic mt-1 font-medium">
                 Botanical Name: {product.botanicalName}
               </p>
+              {product.geographicalIndication && (
+                <div className="mt-2 inline-flex items-center gap-1.5 text-xs text-amber-900 bg-amber-50/90 border border-amber-300 px-2.5 py-1 rounded-lg font-medium">
+                  <span className="font-bold text-amber-800">Geographical Indication:</span>
+                  <span>{product.geographicalIndication}</span>
+                </div>
+              )}
             </div>
 
             <p className="text-sm text-slate-600 leading-relaxed">
