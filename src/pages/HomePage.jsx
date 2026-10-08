@@ -120,7 +120,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq, onOpenTds }) {
                     </div>
                     <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-100">
                       <span className="text-slate-500 block text-[11px]">Tellicherry Pepper:</span>
-                      <strong className="text-slate-900 font-bold">570 GL Density (TGEB)</strong>
+                      <strong className="text-slate-900 font-bold">TGSEB / TGEB Bold (530 GL)</strong>
                     </div>
                     <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-100">
                       <span className="text-slate-500 block text-[11px]">Turmeric:</span>

@@ -25,6 +25,8 @@ export const SPEC_LABEL_MAP = {
   piperineContent: 'Piperine Content',
   lightBerries: 'Light Berries',
   pinheads: 'Pinheads',
+  nvee: 'Non-Volatile Ether Extract (NVEE)',
+  sterilizationTreatment: 'Sterilization Treatment',
   salmonella: 'Salmonella',
   eColi: 'E. Coli',
   cultivation: 'Cultivation & Growing Method',

@@ -109,41 +109,93 @@ export const PRODUCTS_DATA = [
   {
     id: 'black-pepper',
     slug: 'black-pepper',
-    name: 'Tellicherry Black Pepper',
+    name: 'Tellicherry & Malabar Black Pepper',
     botanicalName: 'Piper nigrum',
     category: 'spices',
     division: 'Spices & Seasonings',
-    tag: 'Export Ready | Origin Certified',
-    origin: 'Malabar Coast & Western Ghats Foothills',
+    tag: 'AGMARK Certified | FSSAI Central Export Licensed',
+    compliance: 'Spices Board of India | AGMARK Certified | FSSAI Central Export Licensed',
+    origin: 'Malabar Coast, Idukki & Wayanad, Kerala / Tamil Nadu, India',
     image: './assets/images/pepper.jpg',
-    shortDesc: 'The gold standard of world peppercorns. Fully vine-ripened, sun-cured, and machine-garbled into Tellicherry Garbled Extra Bold (TGEB) berries renowned for high natural piperine and woody citrus aromatics.',
-    hsnCode: '0904 11 10',
+    shortDesc: "Sourced directly from the biodiverse foothills of the Western Ghats along India's historic Malabar Coast. Hand-harvested when berries reach optimal maturity, sun-cured, and mechanically garbled through multiple screening sieves and destoners. Available in Tellicherry Garbled Special Extra Bold (TGSEB), Extra Bold (TGEB), and Malabar Garbled (MG-1) grades, delivering high piperine pungency, low light-berry counts, and rich pinene-caryophyllene aromatic notes.",
+    hsnCode: '0904 11 10 (Garbled) | 0904 11 20 (Ungarbled)',
     grades: [
-      { name: 'TGSEB (Tellicherry Garbled Special Extra Bold)', size: '4.75mm+ (88%+ mesh)', density: '580+ g/L (GL)', color: 'Uniform Dark Black', usage: 'Gourmet mills, high-end retail, US/EU hospitality' },
-      { name: 'TGEB (Tellicherry Garbled Extra Bold)', size: '4.25 mm - 4.75 mm', density: '550 - 580 g/L (GL)', color: 'Deep Brownish Black', usage: 'Food seasoning blends, industrial grinding' },
-      { name: 'MG-1 (Malabar Garbled Grade 1)', size: '3.75mm - 4.25mm', density: '500 - 520 g/L (GL)', color: 'Natural Black', usage: 'Meat processing, oleoresin extraction, institutional bulk' },
-      { name: 'Pinheads & Light Berries', size: '< 2.5mm', density: '300 - 350 g/L (GL)', color: 'Blackish-grey', usage: 'Essential oil distillation, pharmaceutical applications' }
+      { 
+        name: 'Tellicherry Garbled Special Extra Bold', 
+        code: 'TGSEB', 
+        size: 'Retained on 4.75 mm (90%+ retention)', 
+        density: '530 g/L (Special) / 500 g/L (Standard)', 
+        color: 'Deep wrinkled black, uniform jumbo diameter', 
+        usage: 'Premium tabletop pepper mills, luxury gourmet retail, EU/US specialty spice brands' 
+      },
+      { 
+        name: 'Tellicherry Garbled Extra Bold', 
+        code: 'TGEB', 
+        size: 'Retained on 4.25 mm (90%+ retention)', 
+        density: '530 g/L (Special) / 500 g/L (Standard)', 
+        color: 'Deep brownish-black, robust bold peppercorns', 
+        usage: 'High-end retail packers, boutique culinary brands, premium restaurant seasoning' 
+      },
+      { 
+        name: 'Tellicherry Garbled', 
+        code: 'TG', 
+        size: 'Retained on 4.00 mm (85%+ retention)', 
+        density: 'Min. 530 - 550 g/L', 
+        color: 'Natural black, uniform medium-bold berries', 
+        usage: 'Commercial retail packaging, butcher spice blends, culinary grinders' 
+      },
+      { 
+        name: 'Malabar Garbled 1', 
+        code: 'MG-1 (500 / 550 GL)', 
+        size: 'Machine garbled (approx. 3.25 mm - 3.75 mm)', 
+        density: 'Min. 500 g/L or 550 g/L', 
+        color: 'Natural black to brownish-black', 
+        usage: 'Industrial grinding, meat curing/processing, food manufacturing, oleoresin extraction' 
+      },
+      { 
+        name: 'Light Berries / Pinheads', 
+        code: 'LB / Pinheads', 
+        size: 'Under 2.5 mm screen', 
+        density: '300 - 400 g/L', 
+        color: 'Dark grey to black small seeds', 
+        usage: 'Essential oil distillation, solvent oleoresin extraction, seasoning base powders' 
+      }
     ],
     technicalSpecs: {
-      moisture: 'Max 11.0% (Dean-Stark method)',
-      piperineContent: 'Min 4.8% to 6.2% (HPLC)',
-      bulkDensityGL: '550 - 580+ g/L guaranteed',
-      lightBerries: 'Max 1.0% in TGEB grade',
-      pinheads: 'Max 0.5% in garbled grade',
-      extraneousMatter: 'Max 0.2% (Triple magnetic filtered)',
-      salmonella: 'Absent in 25g (Steam-sterilized upon request)',
-      eColi: '< 10 cfu/g'
+      moisture: 'Max 11.5% (Toluene Distillation Method - ASTA 2.0 / ISO 939)',
+      piperineContent: 'Min 4.5% to 5.5%+ (HPLC / Spectrophotometric - ASTA 7.0 / ISO 5564)',
+      volatileOil: 'Min 2.0% to 3.5% v/w (Steam Distillation - ISO 6571)',
+      extraneousMatter: 'Standard: Max 0.5% w/w | Spiral/Steam-Cleaned (ASTA): Max 0.2% w/w (Nil glass/stones)',
+      lightBerries: 'Max 1.0% (TGSEB/TGEB) | Max 2.0% (MG-1)',
+      pinheads: 'Max 0.5% (Garbled grades)',
+      nvee: 'Min 6.0% (Non-Volatile Ether Extract)',
+      totalAsh: 'Max 7.0%',
+      acidInsolubleAsh: 'Max 1.0%',
+      sterilizationTreatment: 'Continuous HTST Steam Treatment (Optional on demand; ETO-free, irradiation-free)',
+      microbialStandards: 'Salmonella: Absent in 25g x 5 | E. coli: < 10 CFU/g | Yeast & Mold: < 100 CFU/g',
+      aflatoxins: 'B1 < 5 ppb | Total (B1+B2+G1+G2) < 10 ppb (EU / GCC compliant)'
     },
     packagingOptions: [
-      '25 kg / 50 kg Heavy-Duty PP Woven Bags with Inner Polyliner',
-      '25 kg / 50 kg Natural Jute Gunny Bags with Food-Grade Marking',
-      '1 Ton Jumbo FIBC Bulk Bags for industrial processors'
+      'Multi-Wall Woven Packs: 25 kg / 50 kg heavy-duty virgin PP woven bags with inner heat-sealed food-grade LDPE liner.',
+      'Traditional Jute Bags: 25 kg / 50 kg natural export-grade jute gunny bags with food-grade inner poly liner and clear indelible shipping stencils.',
+      'Bulk Industrial Containers: 500 kg / 1,000 kg UV-stabilized FIBC Jumbo Bags with bottom discharge spouts.',
+      'Private Label & Retail Packaging: 100g, 200g, 500g nitrogen-flushed stand-up barrier pouches or custom glass/PET grinder jars with tamper-evident seals.'
     ],
     shippingInfo: {
-      minimumOrder: '5 MT (LCL) / 15 MT (20ft FCL)',
-      containerCapacity: '20ft FCL: approx 15 MT | 40ft FCL: approx 26 - 27 MT',
-      gatewayPorts: 'Tuticorin VOC Port (TUT), Cochin (COK), Chennai (MAA)',
-      hsCode: '0904.11.10'
+      minimumOrder: '500 kg - 1,000 kg (Air) | 2,000 kg - 5,000 kg (LCL) | 15 MT (Ocean FCL)',
+      containerCapacity: '20ft FCL: ~15.0 - 16.5 MT (Loose) / ~12.5 - 13.5 MT (Palletized) | 40ft FCL: ~26.0 - 27.0 MT',
+      containerStuffingBreakdown: {
+        fcl20: [
+          'Loose Floor-Loaded Bags: ~15.0 - 16.5 MT',
+          'Palletized & Shrink-Wrapped: ~12.5 - 13.5 MT'
+        ],
+        fcl40: [
+          'Loose Floor-Loaded: ~26.0 - 27.0 MT (subject to road weight limits)'
+        ]
+      },
+      gatewayPorts: 'Cochin Port (COK) / Tuticorin (VOC) / Chennai (MAA)',
+      airTerminals: 'Cochin (COK) / Coimbatore (CJB) / Chennai (MAA)',
+      hsCode: '0904 11 10 (Garbled) | 0904 11 20 (Ungarbled)'
     }
   },
   {

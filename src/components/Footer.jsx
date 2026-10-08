@@ -89,7 +89,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               </li>
               <li>
                 <button type="button" onClick={(e) => navigateTo('product-black-pepper', e)} className="hover:text-[#0D522F] transition-colors text-left">
-                  2. Tellicherry Black Pepper (570 GL)
+                  2. Tellicherry & Malabar Black Pepper
                 </button>
               </li>
               <li>
