@@ -99,7 +99,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               </li>
               <li>
                 <button type="button" onClick={(e) => navigateTo('product-salem-turmeric', e)} className="hover:text-[#0D522F] transition-colors text-left">
-                  4. Salem Turmeric Fingers
+                  4. Salem Turmeric Fingers & Bulbs
                 </button>
               </li>
               <li>

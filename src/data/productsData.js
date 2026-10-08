@@ -276,48 +276,75 @@ export const PRODUCTS_DATA = [
   {
     id: 'salem-turmeric',
     slug: 'salem-turmeric',
-    name: 'Salem Turmeric Fingers',
-    botanicalName: 'Curcuma longa (Salem Finger Variety)',
+    name: 'Salem Turmeric Fingers & Bulbs',
+    botanicalName: 'Curcuma longa L. (Salem Commercial Ecotype)',
     category: 'spices',
     division: 'Spices & Seasonings',
-    tag: 'Export Ready | Origin Certified',
-    compliance: 'Spices Board of India | AGMARK Certified | FSSAI Approved',
-    origin: 'Salem District, Kaveri Basin, Tamil Nadu',
+    tag: 'Culinary Gold Standard | FSSAI Central Licensed',
+    compliance: 'Spices Board of India | FSSAI Central Export Licensed',
+    origin: 'Salem & Kaveri Basin Agricultural Belt, Tamil Nadu, India',
     image: './assets/images/salem-turmeric.jpg',
-    shortDesc: 'The benchmark culinary turmeric of South India. Long, stout fingers polished to a golden amber sheen, renowned globally for brilliant natural yellow color, high essential aroma, and clean taste.',
-    hsnCode: '0910 30 20',
+    shortDesc: 'Sourced directly from the fertile Kaveri river basin in Tamil Nadu, Salem Turmeric is internationally recognized as the gold standard for whole culinary turmeric. Characterized by long, stout, cylindrical fingers with a distinctive deep golden-yellow interior, hard core fracture, and refined aroma. Mechanically cured and machine-polished without synthetic gloss enhancers, sulfur treatment, or chemical colorants, ensuring compliance with strict European and North American heavy metal standards.',
+    hsnCode: '0910 30 20 (Dried Whole Rhizomes - Fingers / Bulbs)',
     grades: [
-      { name: 'Salem Double Polished Finger (Grade 1)', size: '6cm - 10cm long stout fingers', density: 'Solid brittle fracture', color: 'Luminous Golden Amber', usage: 'Supermarket whole repack, culinary trade, gourmet retail' },
-      { name: 'Salem Single Polished Finger', size: '5cm - 8cm fingers', density: 'Hard core', color: 'Natural Amber Yellow', usage: 'Wholesale grinding mills, spice blending plants' },
-      { name: 'Salem Turmeric Bulbs (Gatha)', size: 'Solid round rhizome bulbs', density: 'Heavy dense core', color: 'Golden Yellow', usage: 'Industrial oleoresin and curcumin extraction' }
+      { 
+        name: 'Super Salem Double Polished Finger (Grade 1)', 
+        size: '6.0 cm to 10.0 cm+ long, cylindrical, smooth polished skin', 
+        density: 'Solid brittle fracture', 
+        color: 'Deep golden yellow exterior, brilliant orange-yellow fracture', 
+        usage: 'Supermarket whole repacking, premium gourmet retail, whole spice retail jars (EU/GCC/US)' 
+      },
+      { 
+        name: 'Salem Single Polished Finger', 
+        size: '4.0 cm to 7.0 cm fingers, partially polished surface', 
+        density: 'Hard brittle core', 
+        color: 'Natural brownish-yellow skin, golden amber core', 
+        usage: 'Commercial spice grinding mills, curry powder manufacturing, butcher seasoning blenders' 
+      },
+      { 
+        name: 'Salem Turmeric Bulbs (Gatha / Round)', 
+        size: '2.5 cm to 5.0 cm dense ovate/round rhizomes', 
+        density: 'Heavy dense core', 
+        color: 'Deep amber to golden yellow', 
+        usage: 'High-yield industrial grinding, oleoresin extraction, herbal tinctures' 
+      }
     ],
     technicalSpecs: {
-      curcuminContent: '3.2% to 4.2% (HPLC tested)',
-      moisture: 'Max 10.0% (Whole fingers)',
-      totalAsh: 'Max 6.5%',
-      acidInsolubleAsh: 'Max 0.8%',
-      leadChromateTest: 'Strictly Negative (100% natural, zero chemical polish)',
-      foreignOrganicMatter: 'Max 0.3%',
-      starchPurity: 'Pure genuine Curcuma longa'
+      curcuminContent: '2.5% to 3.5%+ (HPLC Method - ASTA 18.0 / ISO 5566; culinary grade color intensity)',
+      moisture: 'Max 10.0% - 10.5% (Toluene Distillation - ASTA 2.0 / ISO 939)',
+      extraneousMatter: 'Max 0.5% by weight (Nil stones, dirt, or hair; Sortex/gravity table cleaned)',
+      defectiveRhizomes: 'Max 2.0% by weight (Nil moldy or insect-damaged rhizomes)',
+      totalAsh: 'Max 7.0%',
+      acidInsolubleAsh: 'Max 1.0%',
+      chemicalPolishAdulteration: 'Lead Chromate: 100% Negative (Guaranteed absent) | Metanil Yellow & Sudan Dyes: Undetected (LC-MS/MS tested)',
+      heavyMetals: 'Lead (Pb) < 2.0 mg/kg | Cadmium (Cd) < 1.0 mg/kg | Arsenic (As) < 1.0 mg/kg (Codex CXS 193-1995 & EU compliant)',
+      aflatoxins: 'B1 < 5 ppb | Total (B1+B2+G1+G2) < 10 ppb (EU Regulation (EC) 2023/915 compliant)',
+      etoIrradiation: 'ETO & 2-Chloroethanol < 0.05 mg/kg (EU RASFF compliant); Non-irradiated',
+      microbialStandards: 'Salmonella: Absent in 25g x 5 samples | E. coli: < 10 CFU/g'
     },
     packagingOptions: [
-      '25 kg / 50 kg Heavy-Duty PP Woven Bags with Inner Liner',
-      '50 kg Natural Export Jute Bags with food-grade stencil print',
-      'Custom palletized wooden crates for specialized buyers'
+      'Heavy-Duty PP Woven Bags: 25 kg / 50 kg virgin PP woven bags with inner sealed food-grade polyethylene moisture liner.',
+      'Export Jute Bags: 25 kg / 50 kg traditional natural jute gunny bags with food-grade protective inner liners and customized export stencil markings.',
+      'Bulk Industrial Sacks: 500 kg / 1,000 kg UV-stabilized FIBC Big Bags with discharge chutes for industrial extraction plants.',
+      'Corrugated Master Cartons: 10 kg / 20 kg (5-ply / 7-ply) export cartons with inner moisture-barrier liners for premium retail repacking.'
     ],
     shippingInfo: {
-      minimumOrder: '5 MT (LCL) / 18 MT (20ft FCL)',
-      containerCapacity: '20ft FCL: approx 18 MT | 40ft FCL: approx 26 MT',
+      minimumOrder: 'Air Freight: 500 kg - 1,000 kg | Ocean LCL: 2,000 kg - 5,000 kg | Ocean FCL: 17,000 kg - 18,000 kg (17 - 18 MT)',
+      containerCapacity: '20ft FCL: ~17.0 - 18.5 MT | 40ft FCL: ~26.0 - 27.0 MT',
       containerStuffingBreakdown: {
         fcl20: [
-          'Floor-Loaded (50 kg Jute / PP Bags): ~18.0 MT (360 Bags)',
-          'Palletized & Shrink-Wrapped: ~14.0 MT'
+          'Loose Floor-Loaded Bags: ~17.0 - 18.5 MT',
+          'Palletized & Shrink-Wrapped: ~13.0 - 14.0 MT'
         ],
         fcl40: [
-          'Floor-Loaded: ~26.0 MT'
+          'Floor-Loaded Bags: ~26.0 - 27.0 MT (subject to gross container road weight limits)'
+        ],
+        airCargo: [
+          'Air Freight: 500 kg - 1,000 kg'
         ]
       },
       gatewayPorts: 'Tuticorin VOC Port (TUT) / Chennai Port (MAA) / Cochin Port (COK)',
+      inlandDepots: 'ICD Irugur (Coimbatore) / ICD Tirupur',
       airTerminals: 'Tiruchirappalli (TRZ) / Coimbatore (CJB) / Chennai (MAA)',
       hsCode: '0910 30 20'
     }

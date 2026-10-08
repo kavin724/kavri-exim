@@ -206,6 +206,9 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
               {product.shippingInfo?.airTerminals && (
                 <li><strong>Air Freight Terminals:</strong> {product.shippingInfo.airTerminals}</li>
               )}
+              {product.shippingInfo?.inlandDepots && (
+                <li><strong>Inland Dry Terminals (ICD):</strong> {product.shippingInfo.inlandDepots}</li>
+              )}
               <li>Container loading executed under direct merchant supervision at {product.shippingInfo?.gatewayPorts || 'Chennai / Tuticorin / Cochin Port'}.</li>
               <li>Fumigation with Methyl Bromide or Phosphine gas certified by authorized plant quarantine agencies.</li>
             </ul>

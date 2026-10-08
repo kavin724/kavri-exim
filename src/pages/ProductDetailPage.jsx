@@ -33,6 +33,9 @@ export const SPEC_LABEL_MAP = {
   eColi: 'E. Coli',
   cultivation: 'Cultivation & Growing Method',
   curcuminContent: 'Curcumin Content',
+  defectiveRhizomes: 'Defective / Damaged Rhizomes',
+  chemicalPolishAdulteration: 'Chemical Polish & Color Adulteration',
+  heavyMetals: 'Heavy Metals Limits',
   leadChromateTest: 'Lead Chromate Test',
   leadChromateAdulteration: 'Lead Chromate Test',
   foreignOrganicMatter: 'Foreign Organic Matter',
@@ -121,15 +124,17 @@ export function getTestProtocolForSpec(key, value, isTextile = false) {
   if (key === 'moisture') return 'ASTA 2.0 / ISO 939 (Toluene)';
   if (key === 'volatileOil') return 'ISO 6571 (Steam Distillation)';
   if (key === 'piperineContent') return 'HPLC / ASTA 7.0 / ISO 5564';
-  if (key === 'curcuminContent') return 'HPLC / ASTA Method 18.0';
+  if (key === 'curcuminContent') return 'HPLC / ASTA 18.0 / ISO 5566';
   if (key === 'extraneousMatter' || key === 'foreignMatter') return 'ASTA 3.0 / ISO 927';
+  if (key === 'defectiveRhizomes') return 'Manual & Sortex Inspection';
   if (key === 'totalAsh') return 'ASTA 3.1 / ISO 928';
   if (key === 'acidInsolubleAsh') return 'ASTA 4.0 / ISO 930';
   if (key === 'nvee') return 'ISO 1108 / ASTA Method';
   if (key === 'aflatoxins' || key === 'aflatoxinB1' || key === 'totalAflatoxins') return 'HPLC-FLD / EU 2023/915';
   if (key === 'ochratoxinA') return 'HPLC / IAC Cleanup (EU)';
   if (key === 'microbialStandards' || key === 'salmonella' || key === 'eColi' || key === 'yeastAndMould') return 'ISO 6579 / FDA BAM';
-  if (key === 'artificialColor' || key === 'leadChromateTest' || key === 'leadChromateAdulteration') return 'LC-MS/MS / Chemical Test';
+  if (key === 'artificialColor' || key === 'leadChromateTest' || key === 'leadChromateAdulteration' || key === 'chemicalPolishAdulteration') return 'LC-MS/MS / Chemical Test';
+  if (key === 'heavyMetals') return 'ICP-MS / Codex CXS 193-1995';
   if (key === 'etoIrradiation') return 'GC-MS/MS Residue Screen';
   if (key === 'sterilizationTreatment') return 'Continuous HTST Steam';
   if (key === 'pesticideResidue') return 'GC-MS/MS Multi-Residue';
@@ -509,6 +514,12 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
                         <div className="pt-2 border-t border-slate-200/60 text-[11px]">
                           <span className="font-semibold text-slate-700">Air Freight Terminals: </span>
                           <span className="text-[#0D522F] font-medium">{product.shippingInfo.airTerminals}</span>
+                        </div>
+                      )}
+                      {product.shippingInfo.inlandDepots && (
+                        <div className="pt-2 border-t border-slate-200/60 text-[11px]">
+                          <span className="font-semibold text-slate-700">Inland Dry Terminals (ICD): </span>
+                          <span className="text-[#0D522F] font-medium">{product.shippingInfo.inlandDepots}</span>
                         </div>
                       )}
                     </div>
