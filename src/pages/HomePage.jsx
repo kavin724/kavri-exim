@@ -1,31 +1,21 @@
 import React from 'react';
 import { 
-  ArrowRight, ShieldCheck, Compass, Anchor, 
-  Package, FileText, CheckCircle2, Award, 
-  Sparkles, Download, Scissors, Shirt, Home as HomeIcon
+  ArrowRight, ShieldCheck, Compass, Target, 
+  FileText, CheckCircle2, Award, Sparkles
 } from 'lucide-react';
-import { PRODUCTS_DATA } from '../data/productsData';
-import TrustRibbon from '../components/TrustRibbon';
 
-export default function HomePage({ setCurrentRoute, onOpenRfq, onOpenTds }) {
+export default function HomePage({ setCurrentRoute, onOpenRfq }) {
   const navigateTo = (route, e) => {
     if (e) e.preventDefault();
     setCurrentRoute(route);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Strictly ordered Spices (6 products)
-  const spiceProducts = PRODUCTS_DATA.filter(p => p.category === 'spices');
-  // Textiles & Garments
-  const textileProducts = PRODUCTS_DATA.filter(p => p.category === 'textiles');
-  // Handicrafts
-  const handicraftProducts = PRODUCTS_DATA.filter(p => p.category === 'handicrafts');
-
   return (
     <div className="bg-white text-slate-800">
       
-      {/* 1. HERO SECTION (Bright, Prestigious Merchant Aesthetic) */}
-      <section className="relative min-h-[80vh] flex items-center bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-200 overflow-hidden py-14 lg:py-20">
+      {/* 1. HERO SECTION & SHORT INTRO ABOUT THE COMPANY */}
+      <section className="relative min-h-[75vh] flex items-center bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-200 overflow-hidden py-14 lg:py-20">
         
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#0D522F_1px,transparent_1px)] [background-size:16px_16px]"></div>
@@ -33,39 +23,41 @@ export default function HomePage({ setCurrentRoute, onOpenRfq, onOpenTds }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
-            {/* Left Column */}
+            {/* Left Column: Company Intro & Positioning */}
             <div className="lg:col-span-7 space-y-6">
               
               {/* Origin Chip */}
               <div className="inline-flex items-center space-x-2 bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0D522F] shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#0D522F] animate-pulse"></span>
-                <span>Direct Origin Sourcing • Tamil Nadu & South India</span>
+                <span>South Indian Merchant Exporters • Tamil Nadu & Kerala</span>
               </div>
 
               {/* Main Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] text-slate-900 font-['Plus_Jakarta_Sans']">
-                Premium Indian Spices & <br />
+                Global Quality Sourcing, <br />
                 <span className="text-[#0D522F]">
-                  Global Merchant Export
+                  Rooted in South India
                 </span>
               </h1>
 
-              {/* Subheadline */}
+              {/* Company Introduction Paragraph */}
               <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed font-normal">
-                Direct origin-grade farm sourcing from South India with standardized lab-tested grading, certified textiles manufacturing, and worldwide delivery under statutory Spices Board and DGFT accreditation.
+                <strong>Kavri Exim</strong> is an international merchant export enterprise headquartered in Tamil Nadu. We bridge South India’s most prized agrarian harvest and manufacturing hubs with global importers across three core divisions: origin-grade <strong>Spices & Seasonings</strong>, precision-crafted <strong>Textiles & Garments</strong>, and authentic <strong>Indian Heritage Handicrafts</strong>.
               </p>
 
               {/* Dual Action CTAs */}
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                <button
-                  type="button"
-                  id="hero-explore-catalog-btn"
-                  onClick={(e) => navigateTo('products?cat=spices', e)}
+                <a
+                  href="#core-competencies"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('core-competencies')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                   className="bg-[#0D522F] hover:bg-[#083820] text-white font-bold px-7 py-3.5 rounded-xl text-sm sm:text-base flex items-center justify-center space-x-2 shadow-lg shadow-[#0D522F]/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
                 >
-                  <span>Explore Spice Catalog</span>
+                  <span>Explore Core Competencies</span>
                   <ArrowRight className="w-4 h-4 stroke-[2.5] text-amber-300" />
-                </button>
+                </a>
 
                 <button
                   type="button"
@@ -74,7 +66,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq, onOpenTds }) {
                   className="bg-white hover:bg-slate-50 text-slate-800 font-bold px-7 py-3.5 rounded-xl text-sm sm:text-base border border-slate-300 hover:border-[#0D522F] flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-sm"
                 >
                   <FileText className="w-4 h-4 text-[#0D522F]" />
-                  <span>Request Instant Quote</span>
+                  <span>Request Instant Proforma Quote</span>
                 </button>
               </div>
 
@@ -90,45 +82,41 @@ export default function HomePage({ setCurrentRoute, onOpenRfq, onOpenTds }) {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0D522F]" />
-                  <span className="font-semibold text-slate-800">Direct Port Loading (Tuticorin / Chennai / Cochin)</span>
+                  <span className="font-semibold text-slate-800">FSSAI Central Export Licensed</span>
                 </div>
               </div>
 
             </div>
 
-            {/* Right Column: Hero Visual Feature */}
+            {/* Right Column: Visual Feature Banner */}
             <div className="lg:col-span-5">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-white">
                 <img 
                   src="./assets/images/hero-spices.jpg" 
-                  alt="Kavri Exim Premium Spices" 
+                  alt="Kavri Exim Multi-Commodity Export Line" 
                   className="w-full h-80 object-cover object-center"
                 />
                 <div className="p-5 bg-white border-t border-slate-100 space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-[#0D522F] uppercase tracking-wider">
-                      Export Ready Commodities
+                      Export Divisions
                     </span>
                     <span className="text-[10px] bg-emerald-50 text-[#0D522F] border border-emerald-200 font-bold px-2 py-0.5 rounded-full">
-                      Origin Certified
+                      Direct Farm & Mill Origin
                     </span>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-100">
-                      <span className="text-slate-500 block text-[11px]">Cardamom:</span>
-                      <strong className="text-slate-900 font-bold">8mm+ AGEB Extra Bold</strong>
+                  <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                    <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                      <span className="text-slate-500 block text-[11px] font-medium">Division 01</span>
+                      <strong className="text-slate-900 font-bold text-xs">Spices</strong>
                     </div>
-                    <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-100">
-                      <span className="text-slate-500 block text-[11px]">Tellicherry Pepper:</span>
-                      <strong className="text-slate-900 font-bold">TGSEB / TGEB Bold (530 GL)</strong>
+                    <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                      <span className="text-slate-500 block text-[11px] font-medium">Division 02</span>
+                      <strong className="text-slate-900 font-bold text-xs">Textiles</strong>
                     </div>
-                    <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-100">
-                      <span className="text-slate-500 block text-[11px]">Turmeric:</span>
-                      <strong className="text-slate-900 font-bold">GI Erode & Salem Fingers</strong>
-                    </div>
-                    <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-100">
-                      <span className="text-slate-500 block text-[11px]">Textiles:</span>
-                      <strong className="text-slate-900 font-bold">Custom OEM Apparel</strong>
+                    <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                      <span className="text-slate-500 block text-[11px] font-medium">Division 03</span>
+                      <strong className="text-slate-900 font-bold text-xs">Handicrafts</strong>
                     </div>
                   </div>
                 </div>
@@ -140,536 +128,397 @@ export default function HomePage({ setCurrentRoute, onOpenRfq, onOpenTds }) {
 
       </section>
 
-      {/* 2. STATUTORY TRUST RIBBON */}
-      <TrustRibbon />
-
-      {/* 3. CORE COMMODITY CARDS (3 DIVISIONS) */}
-      <section className="py-20 bg-white text-slate-800">
+      {/* 2. OUR VISION & OUR MISSION SECTION */}
+      <section className="py-16 sm:py-20 bg-slate-50/70 border-b border-slate-200 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0D522F] block mb-2 font-mono">
-              Export Trading Divisions
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0D522F] font-mono block mb-2">
+              Corporate Direction & Values
             </span>
             <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight font-['Plus_Jakarta_Sans']">
-              Standardized Merchant Export Lines
+              Our Vision & Our Mission
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
-              Export-ready grading, strict phytosanitary quarantine compliance, textile laboratory testing, and complete containerization for commercial buyers worldwide.
+            <p className="text-sm sm:text-base text-slate-600 mt-2.5">
+              The foundational principles driving our merchant trade operations, global customer relationships, and quality commitments.
             </p>
           </div>
 
-          {/* DIVISION 1: SPICES & SEASONINGS (Strict order: Cardamom, Tellicherry Pepper, Kolli Pepper, Salem Turmeric, Erode Turmeric, Turmeric Powder) */}
-          <div className="mb-20">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 mb-8 border-b border-slate-200 gap-2">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-lg bg-emerald-100 text-[#0D522F] flex items-center justify-center font-bold text-sm">
-                  01
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            
+            {/* OUR VISION CARD */}
+            <div className="bg-white border-2 border-emerald-200/80 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between group">
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-[#0D522F] mb-6 group-hover:scale-110 transition-transform">
+                  <Compass className="w-7 h-7 stroke-[2]" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 font-['Plus_Jakarta_Sans']">
-                    Spices & Seasonings
-                  </h3>
-                  <p className="text-xs text-slate-500">
-                    Primary Active Line • 6 Standardized Origin Grades with Dedicated TDS
-                  </p>
+                <div className="inline-block text-xs font-mono font-bold uppercase tracking-widest text-[#0D522F] bg-emerald-50 px-3 py-1 rounded-full mb-3">
+                  Long-Term Outlook
                 </div>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <span className="inline-block bg-emerald-50 text-[#0D522F] text-xs px-3 py-1 rounded-full border border-emerald-200 font-semibold">
-                  Export Ready | Origin Certified
-                </span>
-                <button
-                  type="button"
-                  onClick={(e) => navigateTo('products?cat=spices', e)}
-                  className="text-xs text-[#0D522F] hover:text-[#083820] font-bold flex items-center gap-1 cursor-pointer"
-                >
-                  View All Spices <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {spiceProducts.map((prod, idx) => (
-                <div 
-                  key={prod.id} 
-                  className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-[#0D522F] hover:shadow-xl transition-all duration-300 group flex flex-col justify-between shadow-sm"
-                >
-                  <div>
-                    <button
-                      type="button"
-                      onClick={(e) => navigateTo(`product-${prod.slug}`, e)}
-                      className="relative w-full h-56 overflow-hidden bg-slate-100 cursor-pointer block text-left group/img focus:outline-none"
-                      title={`View Full Technical Specification Page for ${prod.name}`}
-                    >
-                      <img 
-                        src={prod.image} 
-                        alt={prod.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors" />
-                      <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-800 border border-slate-200 font-bold shadow-sm">
-                        #{idx + 1} • {prod.hsnCode}
-                      </div>
-                      <div className="absolute bottom-3 right-3 bg-emerald-50/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-bold text-[#0D522F] border border-emerald-200 shadow-sm">
-                        {prod.tag}
-                      </div>
-                    </button>
-
-                    <div className="p-5 space-y-3">
-                      <div>
-                        <span className="text-[11px] text-[#0D522F] uppercase tracking-wider font-bold block font-mono">
-                          {prod.origin}
-                        </span>
-                        <h4 className="text-lg font-bold text-slate-900 group-hover:text-[#0D522F] transition-colors">
-                          {prod.name}
-                        </h4>
-                      </div>
-
-                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                        {prod.shortDesc}
-                      </p>
-
-                      {/* Grades Quick Chips */}
-                      <div className="pt-2 border-t border-slate-100">
-                        <span className="text-[10px] text-slate-400 uppercase tracking-wider block mb-1.5 font-bold">
-                          Commercial Grades:
-                        </span>
-                        <div className="flex flex-wrap gap-1">
-                          {prod.grades?.slice(0, 3).map(g => (
-                            <span key={g.name} className="text-[10px] bg-slate-50 border border-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">
-                              {g.name.split('(')[0]}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bottom Actions */}
-                  <div className="p-5 pt-0 space-y-2 mt-2">
-                    <div className="grid grid-cols-2 gap-2">
-                      <button
-                        type="button"
-                        onClick={() => onOpenTds(prod)}
-                        className="bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs py-2 px-3 rounded-lg border border-slate-200 flex items-center justify-center space-x-1 font-semibold transition-colors cursor-pointer"
-                      >
-                        <Download className="w-3.5 h-3.5 text-[#0D522F]" />
-                        <span>View TDS</span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => onOpenRfq(prod)}
-                        className="bg-[#0D522F] hover:bg-[#083820] text-white font-bold text-xs py-2 px-3 rounded-lg flex items-center justify-center space-x-1 transition-all cursor-pointer shadow-sm"
-                      >
-                        <FileText className="w-3.5 h-3.5 text-amber-300" />
-                        <span>Inquire Quote</span>
-                      </button>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={(e) => navigateTo(`product-${prod.slug}`, e)}
-                      className="w-full text-center text-[11px] text-slate-500 hover:text-[#0D522F] py-0.5 flex items-center justify-center gap-1 cursor-pointer font-medium"
-                    >
-                      <span>Full Technical Specification</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </button>
-                  </div>
-
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* DIVISION 2: TEXTILES & GARMENTS (Requirement #7) */}
-          <div className="mb-20">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 mb-8 border-b border-slate-200 gap-2">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-lg bg-emerald-100 text-[#0D522F] flex items-center justify-center font-bold text-sm">
-                  02
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 font-['Plus_Jakarta_Sans']">
-                    Textiles & Garments
-                  </h3>
-                  <p className="text-xs text-slate-500">
-                    New Product Range • 100% Customizable Cotton Apparel & Linens with Dedicated TDS
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <span className="inline-block bg-sky-50 text-sky-800 text-xs px-3 py-1 rounded-full border border-sky-200 font-semibold">
-                  Customizable | OEM Export
-                </span>
-                <button
-                  type="button"
-                  onClick={(e) => navigateTo('products?cat=textiles', e)}
-                  className="text-xs text-[#0D522F] hover:text-[#083820] font-bold flex items-center gap-1 cursor-pointer"
-                >
-                  View All Textiles <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {textileProducts.map((prod) => (
-                <div 
-                  key={prod.id}
-                  className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-[#0D522F] hover:shadow-xl transition-all duration-300 group flex flex-col justify-between shadow-sm"
-                >
-                  <div>
-                    <button
-                      type="button"
-                      onClick={(e) => navigateTo(`product-${prod.slug}`, e)}
-                      className="relative w-full h-56 overflow-hidden bg-slate-100 cursor-pointer block text-left group/img focus:outline-none"
-                      title={`View Full Technical Specification Page for ${prod.name}`}
-                    >
-                      <img 
-                        src={prod.image} 
-                        alt={prod.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors" />
-                      <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-mono text-slate-800 border border-slate-200 font-bold shadow-sm">
-                        {prod.hsnCode}
-                      </div>
-                      <div className="absolute bottom-3 right-3 bg-sky-50/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-bold text-sky-800 border border-sky-200 shadow-sm">
-                        Custom Client Specs
-                      </div>
-                    </button>
-
-                    <div className="p-5 space-y-3">
-                      <div>
-                        <span className="text-[11px] text-[#0D522F] uppercase tracking-wider font-bold block font-mono">
-                          {prod.origin}
-                        </span>
-                        <h4 className="text-lg font-bold text-slate-900 group-hover:text-[#0D522F] transition-colors">
-                          {prod.name}
-                        </h4>
-                      </div>
-
-                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                        {prod.shortDesc}
-                      </p>
-
-                      <div className="pt-2 border-t border-slate-100">
-                        <span className="text-[10px] text-slate-400 uppercase tracking-wider block mb-1.5 font-bold">
-                          Manufacturing Options:
-                        </span>
-                        <div className="flex flex-wrap gap-1">
-                          {prod.grades?.slice(0, 3).map(g => (
-                            <span key={g.name} className="text-[10px] bg-slate-50 border border-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">
-                              {g.name.split('(')[0]}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-5 pt-0 space-y-2 mt-2">
-                    <div className="grid grid-cols-2 gap-2">
-                      <button
-                        type="button"
-                        onClick={() => onOpenTds(prod)}
-                        className="bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs py-2 px-3 rounded-lg border border-slate-200 flex items-center justify-center space-x-1 font-semibold transition-colors cursor-pointer"
-                      >
-                        <Download className="w-3.5 h-3.5 text-[#0D522F]" />
-                        <span>View TDS</span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => onOpenRfq(prod)}
-                        className="bg-[#0D522F] hover:bg-[#083820] text-white font-bold text-xs py-2 px-3 rounded-lg flex items-center justify-center space-x-1 transition-all cursor-pointer shadow-sm"
-                      >
-                        <FileText className="w-3.5 h-3.5 text-amber-300" />
-                        <span>Inquire OEM</span>
-                      </button>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={(e) => navigateTo(`product-${prod.slug}`, e)}
-                      className="w-full text-center text-[11px] text-slate-500 hover:text-[#0D522F] py-0.5 flex items-center justify-center gap-1 cursor-pointer font-medium"
-                    >
-                      <span>Full Technical Specification</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </button>
-                  </div>
-
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* DIVISION 3: INDIAN HANDICRAFTS & ARTEFACTS */}
-          <div>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 mb-8 border-b border-slate-200 gap-2">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-lg bg-emerald-100 text-[#0D522F] flex items-center justify-center font-bold text-sm">
-                  03
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 font-['Plus_Jakarta_Sans']">
-                    Indian Heritage Handicrafts
-                  </h3>
-                  <p className="text-xs text-slate-500">
-                    Artisanal Trade • Brassware, modern home decors, wooden artefacts & terracotta crafts
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-3">
-                <span className="inline-block bg-purple-50 text-purple-800 text-xs px-3 py-1 rounded-full border border-purple-200 font-semibold">
-                  Custom Sourcing Available
-                </span>
-                <button
-                  type="button"
-                  onClick={(e) => navigateTo('products?cat=handicrafts', e)}
-                  className="text-xs text-[#0D522F] hover:text-[#083820] font-bold flex items-center gap-1 cursor-pointer"
-                >
-                  View Crafts Line <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {handicraftProducts.map((prod) => (
-                <div 
-                  key={prod.id}
-                  className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-[#0D522F] hover:shadow-xl transition-all duration-300 group flex flex-col justify-between shadow-sm"
-                >
-                  <div>
-                    <button
-                      type="button"
-                      onClick={(e) => navigateTo(`product-${prod.slug}`, e)}
-                      className="relative w-full h-56 overflow-hidden bg-slate-100 cursor-pointer block text-left group/img focus:outline-none"
-                      title={`View Full Technical Specification Page for ${prod.name}`}
-                    >
-                      <img 
-                        src={prod.image} 
-                        alt={prod.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors" />
-                      <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded text-[11px] font-mono text-slate-800 border border-slate-200 font-bold shadow-sm">
-                        {prod.tag}
-                      </div>
-                    </button>
-
-                    <div className="p-5 space-y-3">
-                      <div>
-                        <span className="text-[11px] text-[#0D522F] uppercase tracking-wider font-bold block font-mono">
-                          {prod.origin}
-                        </span>
-                        <h4 className="text-lg font-bold text-slate-900 group-hover:text-[#0D522F] transition-colors">
-                          {prod.name}
-                        </h4>
-                      </div>
-
-                      <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                        {prod.shortDesc}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-5 pt-0 space-y-2 mt-2">
-                    <div className="grid grid-cols-2 gap-2">
-                      <button
-                        type="button"
-                        onClick={() => onOpenTds(prod)}
-                        className="bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs py-2 px-3 rounded-lg border border-slate-200 flex items-center justify-center space-x-1 font-semibold transition-colors cursor-pointer"
-                      >
-                        <Download className="w-3.5 h-3.5 text-[#0D522F]" />
-                        <span>Specs / TDS</span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => onOpenRfq(prod)}
-                        className="bg-[#0D522F] hover:bg-[#083820] text-white font-bold text-xs py-2 px-3 rounded-lg flex items-center justify-center space-x-1 transition-all cursor-pointer shadow-sm"
-                      >
-                        <FileText className="w-3.5 h-3.5 text-amber-300" />
-                        <span>Inquire Sourcing</span>
-                      </button>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={(e) => navigateTo(`product-${prod.slug}`, e)}
-                      className="w-full text-center text-[11px] text-slate-500 hover:text-[#0D522F] py-0.5 flex items-center justify-center gap-1 cursor-pointer font-medium"
-                    >
-                      <span>Full Technical Specification</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </button>
-                  </div>
-
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. VISUAL 5-STEP QUALITY WORKFLOW TEASER */}
-      <section className="py-16 bg-slate-50 border-t border-slate-200 text-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mb-12 gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#0D522F] font-mono block mb-1">
-                Standardized Processing
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 font-['Plus_Jakarta_Sans']">
-                5-Step Farm-to-Port Quality Lifecycle
-              </h2>
-            </div>
-            <button
-              type="button"
-              onClick={(e) => navigateTo('quality-compliance', e)}
-              className="text-xs text-[#0D522F] hover:text-[#083820] font-bold flex items-center gap-1.5 cursor-pointer"
-            >
-              <span>Explore Full Quality Lab Protocols</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {[
-              { step: '01', title: 'Farm-Gate Sourcing', desc: 'Direct procurement from verified South Indian cultivator cooperatives.' },
-              { step: '02', title: 'Destoning & Cleaning', desc: 'Triple vibrating screen gravity separation removing physical admixtures.' },
-              { step: '03', title: 'Optical Color Sorting', desc: 'Sortex high-resolution cameras removing discolored grains and pods.' },
-              { step: '04', title: 'Metal Detection', desc: 'Ferrous, non-ferrous and stainless steel inline magnetic detection.' },
-              { step: '05', title: 'Vacuum Packaging', desc: 'Food-grade barrier pouches and nitrogen-flushed export carton packing.' }
-            ].map((st) => (
-              <div key={st.step} className="bg-white border border-slate-200 p-5 rounded-xl hover:border-[#0D522F]/40 transition-colors shadow-sm">
-                <span className="text-2xl font-black text-[#0D522F] font-['Plus_Jakarta_Sans'] block mb-2">
-                  {st.step}
-                </span>
-                <h3 className="text-sm font-bold text-slate-900 mb-1.5">{st.title}</h3>
-                <p className="text-xs text-slate-500 leading-normal">{st.desc}</p>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 5. HOMEPAGE RFQ CONVERSION SECTION */}
-      <section className="py-20 bg-white border-t border-slate-200 text-slate-800 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="bg-slate-50 border border-emerald-200 rounded-3xl p-8 sm:p-12 shadow-md relative overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-              
-              <div className="lg:col-span-7 space-y-4">
-                <div className="inline-flex items-center space-x-2 bg-emerald-100 border border-emerald-300 px-3 py-1 rounded-full text-xs text-[#0D522F] font-bold">
-                  <FileText className="w-3.5 h-3.5" />
-                  <span>Immediate Proforma Quotation</span>
-                </div>
-
-                <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight font-['Plus_Jakarta_Sans']">
-                  Ready to Source Direct from South India?
-                </h2>
-
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Submit your required commodity specifications, volume, and discharge port. Our Tamil Nadu trade desk prepares formal Proforma Invoices within 12 business hours with full laboratory analysis breakdown.
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 font-['Plus_Jakarta_Sans'] mb-4">
+                  Our Vision
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                  To be globally recognized as South India’s premier and most transparent merchant export partner—connecting international markets with pristine, origin-certified spices, export-grade custom textiles, and authentic heritage handicrafts while championing grower welfare, environmental integrity, and uncompromising international regulatory benchmarks.
                 </p>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-slate-700 pt-2">
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#0D522F] flex-shrink-0" />
-                    <span>FOB / CIF / CFR Rates</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#0D522F] flex-shrink-0" />
-                    <span>SGS / COA Supported</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#0D522F] flex-shrink-0" />
-                    <span>Air & Sea Freight Ready</span>
-                  </div>
-                </div>
               </div>
 
-              <div className="lg:col-span-5 flex flex-col gap-3">
-                <button
-                  type="button"
-                  onClick={() => onOpenRfq()}
-                  className="w-full bg-[#0D522F] hover:bg-[#083820] text-white font-black py-4 px-6 rounded-xl text-base shadow-lg shadow-[#0D522F]/20 flex items-center justify-center space-x-2 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
-                >
-                  <FileText className="w-5 h-5 stroke-[2.2] text-amber-300" />
-                  <span>Launch Official RFQ Form</span>
-                </button>
-
-                <div className="text-center">
-                  <span className="text-xs text-slate-500">or inquire directly via</span>
-                  <a
-                    href="https://wa.me/919842317000?text=Hello%20Kavri%20Exim,%20I%20have%20an%20instant%20trade%20inquiry."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-[#0D522F] hover:underline text-xs font-bold mt-1"
-                  >
-                    WhatsApp Live Merchant Desk (+91 98423 17000)
-                  </a>
-                </div>
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center space-x-2 text-xs font-bold text-[#0D522F]">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Global Quality Leadership • Sustainable Trade • Traceable Provenance</span>
               </div>
-
             </div>
+
+            {/* OUR MISSION CARD */}
+            <div className="bg-white border-2 border-emerald-200/80 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between group">
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 mb-6 group-hover:scale-110 transition-transform">
+                  <Target className="w-7 h-7 stroke-[2]" />
+                </div>
+                <div className="inline-block text-xs font-mono font-bold uppercase tracking-widest text-amber-800 bg-amber-50 px-3 py-1 rounded-full mb-3">
+                  Operational Commitment
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 font-['Plus_Jakarta_Sans'] mb-4">
+                  Our Mission
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                  To empower global importers, institutional repackers, and corporate brands with direct farm-gate and mill-floor traceability, standardized laboratory-tested grading, zero-chemical processing, and seamless containerized port logistics, ensuring unwavering consistency, honest pricing, and contractual dependability in every export consignment.
+                </p>
+              </div>
+
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center space-x-2 text-xs font-bold text-[#0D522F]">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>Standardized Lab Testing • 100% Contract Integrity • Direct Port Delivery</span>
+              </div>
+            </div>
+
           </div>
 
         </div>
       </section>
 
-      {/* 6. STATUTORY COMPLIANCE & LEGAL LINKS (ONE BELOW THE OTHER) */}
-      <section className="py-10 bg-slate-50 border-t border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
-            <div>
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#0D522F] font-bold block mb-1">
-                Statutory Governance & Compliance
-              </span>
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 font-['Plus_Jakarta_Sans']">
-                Export Transparency & Commercial Governance
-              </h3>
-              <p className="text-xs text-slate-500 mt-1 max-w-md">
-                Review our international trade secret safeguards, data handling guidelines, export contract terms, and regulatory disclaimers.
+      {/* 3. OUR CORE COMPETENCIES SECTION (Interactive 3 Product Lines with Popping Hover Animation) */}
+      <section id="core-competencies" className="py-20 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center space-x-2 bg-emerald-100 border border-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0D522F] mb-3">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Multi-Commodity Portfolio</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-['Plus_Jakarta_Sans']">
+              Our Core Competencies
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
+              Explore our three dedicated export product lines. Click any division below to view its complete commercial grade catalog, laboratory benchmarks, and technical data sheets.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10">
+            
+            {/* COMPETENCY CARD 1: SPICES & SEASONINGS */}
+            <div 
+              onClick={(e) => navigateTo('products?cat=spices', e)}
+              className="group relative bg-white border-2 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#0D522F] transform hover:-translate-y-3 hover:scale-[1.025] transition-all duration-300 ease-out cursor-pointer flex flex-col justify-between"
+            >
+              <div>
+                {/* Image Banner */}
+                <div className="relative h-64 overflow-hidden bg-slate-100">
+                  <img 
+                    src="./assets/images/hero-spices.jpg" 
+                    alt="Spices and Seasonings" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+                  
+                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#0D522F] border border-emerald-200 shadow-sm">
+                    Division 01
+                  </div>
+
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="text-amber-300 text-xs font-bold uppercase tracking-wider block font-mono">
+                      Spices Board of India CRES
+                    </span>
+                    <h3 className="text-2xl font-black text-white font-['Plus_Jakarta_Sans']">
+                      Spices & Seasonings
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 sm:p-7 space-y-4">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Direct origin sourcing from Western Ghats and Kaveri basin plantations. Fully cleaned, destoned, Sortex-graded, and free from synthetic dyes or chemical adulteration.
+                  </p>
+
+                  <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
+                      Key Standardized Products:
+                    </span>
+                    <ul className="text-xs text-slate-700 space-y-1.5 font-medium">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
+                        <span>Alleppey Green Cardamom (8mm+ Extra Bold AGEB)</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
+                        <span>Tellicherry & Kolli High-Piperine Black Pepper</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
+                        <span>GI Erode & Salem Turmeric Fingers & Ground Powder</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Footer */}
+              <div className="p-6 sm:p-7 pt-0">
+                <div className="w-full bg-[#0D522F] group-hover:bg-[#083820] text-white font-bold py-3.5 px-5 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition-all">
+                  <span>Enter Spices Dedicated Catalog</span>
+                  <ArrowRight className="w-4 h-4 text-amber-300 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+
+            {/* COMPETENCY CARD 2: TEXTILES & GARMENTS */}
+            <div 
+              onClick={(e) => navigateTo('products?cat=textiles', e)}
+              className="group relative bg-white border-2 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#0D522F] transform hover:-translate-y-3 hover:scale-[1.025] transition-all duration-300 ease-out cursor-pointer flex flex-col justify-between"
+            >
+              <div>
+                {/* Image Banner */}
+                <div className="relative h-64 overflow-hidden bg-slate-100">
+                  <img 
+                    src="./assets/images/tshirts.jpg" 
+                    alt="Textiles & Garments" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+                  
+                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#0D522F] border border-emerald-200 shadow-sm">
+                    Division 02
+                  </div>
+
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="text-amber-300 text-xs font-bold uppercase tracking-wider block font-mono">
+                      Tirupur & Karur Manufacturing Hubs
+                    </span>
+                    <h3 className="text-2xl font-black text-white font-['Plus_Jakarta_Sans']">
+                      Textiles & Garments
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 sm:p-7 space-y-4">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Custom OEM manufacturing in India's textile heartlands. High color fastness, Oeko-Tex compliant dyes, premium ring-spun cotton, and global retail packaging.
+                  </p>
+
+                  <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
+                      Key Standardized Products:
+                    </span>
+                    <ul className="text-xs text-slate-700 space-y-1.5 font-medium">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
+                        <span>Export-Grade Combed Cotton T-Shirts (OEM / Custom GSM)</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
+                        <span>400 - 650 GSM Premium Terry Bath & Hand Towels</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
+                        <span>300 - 600 TC Luxury Cotton Bedsheets & Home Linens</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Footer */}
+              <div className="p-6 sm:p-7 pt-0">
+                <div className="w-full bg-[#0D522F] group-hover:bg-[#083820] text-white font-bold py-3.5 px-5 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition-all">
+                  <span>Enter Textiles Dedicated Catalog</span>
+                  <ArrowRight className="w-4 h-4 text-amber-300 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+
+            {/* COMPETENCY CARD 3: INDIAN HERITAGE HANDICRAFTS */}
+            <div 
+              onClick={(e) => navigateTo('products?cat=handicrafts', e)}
+              className="group relative bg-white border-2 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#0D522F] transform hover:-translate-y-3 hover:scale-[1.025] transition-all duration-300 ease-out cursor-pointer flex flex-col justify-between"
+            >
+              <div>
+                {/* Image Banner */}
+                <div className="relative h-64 overflow-hidden bg-slate-100">
+                  <img 
+                    src="./assets/images/handicrafts.jpg" 
+                    alt="Indian Heritage Handicrafts" 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+                  
+                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#0D522F] border border-emerald-200 shadow-sm">
+                    Division 03
+                  </div>
+
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="text-amber-300 text-xs font-bold uppercase tracking-wider block font-mono">
+                      GI-Certified Artisan Clusters
+                    </span>
+                    <h3 className="text-2xl font-black text-white font-['Plus_Jakarta_Sans']">
+                      Heritage Handicrafts
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 sm:p-7 space-y-4">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Preserving South India's millennia-old artisan traditions. Authentic lost-wax brass castings, hand-carved natural woods, and kiln-fired architectural terracotta artefacts.
+                  </p>
+
+                  <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
+                      Key Standardized Products:
+                    </span>
+                    <ul className="text-xs text-slate-700 space-y-1.5 font-medium">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
+                        <span>Traditional Brass Idols, Urli Bowls & Temple Diya Lamps</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
+                        <span>Hand-Carved Teakwood Decorative Panels & Relief Crafts</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
+                        <span>Architectural Terracotta Pottery & Indoor/Outdoor Planters</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Footer */}
+              <div className="p-6 sm:p-7 pt-0">
+                <div className="w-full bg-[#0D522F] group-hover:bg-[#083820] text-white font-bold py-3.5 px-5 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition-all">
+                  <span>Enter Handicrafts Dedicated Catalog</span>
+                  <ArrowRight className="w-4 h-4 text-amber-300 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. STATUTORY EXPORT ACCREDITATIONS & TRANSPARENCY SECTION */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0D522F] font-mono block mb-2">
+              Government Accreditation & Compliance
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight font-['Plus_Jakarta_Sans']">
+              Statutory Export Accreditations & Transparency
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 mt-2.5">
+              Operating under strict regulatory supervision and verified international trade protocols established by the Government of India.
+            </p>
+          </div>
+
+          {/* Accreditations Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            
+            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-2.5">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0D522F] flex items-center justify-center font-bold">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900">Spices Board of India</h3>
+              <p className="text-xs text-[#0D522F] font-mono font-bold">CRES Registered Exporter</p>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Mandatory statutory registration for authentic, laboratory-verified spice exports from India.
               </p>
             </div>
 
-            {/* Links stacked strictly ONE BELOW THE OTHER */}
-            <div className="flex flex-col gap-3 w-full sm:w-auto min-w-[280px]">
+            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-2.5">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0D522F] flex items-center justify-center font-bold">
+                <Award className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900">DGFT (Govt. of India)</h3>
+              <p className="text-xs text-[#0D522F] font-mono font-bold">IEC Certified: ANNPR0870K</p>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Authorized Importer-Exporter Code under the Directorate General of Foreign Trade, Ministry of Commerce.
+              </p>
+            </div>
+
+            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-2.5">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0D522F] flex items-center justify-center font-bold">
+                <CheckCircle2 className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900">FSSAI Central License</h3>
+              <p className="text-xs text-[#0D522F] font-mono font-bold">Central Export Licensed</p>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Certified by the Food Safety and Standards Authority of India for hygienic processing and export.
+              </p>
+            </div>
+
+            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-2.5">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0D522F] flex items-center justify-center font-bold">
+                <FileText className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-slate-900">GST Zero-Rated LUT</h3>
+              <p className="text-xs text-[#0D522F] font-mono font-bold">GSTIN: 33ANNPR0870K1ZM</p>
+              <p className="text-xs text-slate-500 leading-relaxed">
+                Fully compliant cross-border commercial invoicing under official Letter of Undertaking for zero-rated export duties.
+              </p>
+            </div>
+
+          </div>
+
+          {/* Legal Governance & Policy Access Banner */}
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
+            <div>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#0D522F] font-bold block mb-1">
+                Commercial Transparency & Trade Terms
+              </span>
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 font-['Plus_Jakarta_Sans']">
+                Export Governance, Terms of Trade & Privacy Protections
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl">
+                Review our comprehensive international trade terms, Incoterms rules, payment terms (L/C & Escrow), client confidentiality, and data handling policies.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <button
                 type="button"
                 onClick={(e) => navigateTo('privacy-policy', e)}
-                className="w-full inline-flex items-center justify-between gap-3 text-xs font-bold text-[#0D522F] hover:text-[#083820] bg-slate-50 hover:bg-emerald-50/60 border border-emerald-200/90 px-4 py-3 rounded-xl shadow-xs transition-all cursor-pointer group"
+                className="inline-flex items-center justify-center gap-2 text-xs font-bold text-[#0D522F] hover:text-[#083820] bg-slate-50 hover:bg-emerald-50 border border-emerald-200 px-5 py-3 rounded-xl transition-all cursor-pointer shadow-xs"
               >
-                <span className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-[#0D522F]" />
-                  <span>Privacy Policy</span>
-                </span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#0D522F] group-hover:translate-x-0.5 transition-transform" />
+                <ShieldCheck className="w-4 h-4 text-[#0D522F]" />
+                <span>Privacy Policy</span>
               </button>
 
               <button
                 type="button"
                 onClick={(e) => navigateTo('terms-conditions', e)}
-                className="w-full inline-flex items-center justify-between gap-3 text-xs font-bold text-[#0D522F] hover:text-[#083820] bg-slate-50 hover:bg-emerald-50/60 border border-emerald-200/90 px-4 py-3 rounded-xl shadow-xs transition-all cursor-pointer group"
+                className="inline-flex items-center justify-center gap-2 text-xs font-bold text-white bg-[#0D522F] hover:bg-[#083820] px-5 py-3 rounded-xl transition-all cursor-pointer shadow-sm shadow-[#0D522F]/20"
               >
-                <span className="flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-[#0D522F]" />
-                  <span>Terms & Conditions / Disclaimers</span>
-                </span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#0D522F] group-hover:translate-x-0.5 transition-transform" />
+                <FileText className="w-4 h-4 text-amber-300" />
+                <span>Terms of Trade & Disclaimers</span>
               </button>
             </div>
           </div>
+
         </div>
       </section>
 

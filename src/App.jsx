@@ -47,7 +47,12 @@ export default function App() {
     }
 
     if (currentRoute.startsWith('products')) {
-      const categoryMatch = currentRoute.includes('?cat=') ? currentRoute.split('?cat=')[1] : 'all';
+      let categoryMatch = 'all';
+      if (currentRoute.includes('?cat=')) {
+        categoryMatch = currentRoute.split('?cat=')[1];
+      } else if (currentRoute.startsWith('products-')) {
+        categoryMatch = currentRoute.replace('products-', '');
+      }
       return (
         <ProductsPage 
           key={currentRoute}

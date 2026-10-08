@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Building2, Compass, ShieldCheck, HeartHandshake, 
-  Globe, ArrowRight 
+  Globe, ArrowRight, Target, CheckCircle2 
 } from 'lucide-react';
 
 export default function AboutPage({ onOpenRfq }) {
@@ -74,6 +74,64 @@ export default function AboutPage({ onOpenRfq }) {
             </div>
           </div>
 
+        </div>
+
+        {/* Our Vision & Our Mission */}
+        <div className="mb-20">
+          <div className="border-b border-slate-200 pb-4 mb-8">
+            <div className="inline-block text-xs font-mono font-bold uppercase tracking-widest text-[#0D522F] bg-emerald-100 px-3 py-1 rounded-full mb-2">
+              Corporate Direction
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 font-['Plus_Jakarta_Sans']">
+              Our Vision & Our Mission
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Vision */}
+            <div className="bg-white border-2 border-emerald-200/80 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between group">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-[#0D522F] border border-emerald-200 flex items-center justify-center mb-6">
+                  <Compass className="w-6 h-6 stroke-[2]" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0D522F] block mb-2">
+                  Long-Term Horizon
+                </span>
+                <h3 className="text-2xl font-bold text-slate-900 font-['Plus_Jakarta_Sans'] mb-4">
+                  Our Vision
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                  To be globally recognized as South India’s premier and most transparent merchant export partner—connecting international markets with pristine, origin-certified spices, export-grade custom textiles, and authentic heritage handicrafts while championing grower welfare, environmental integrity, and uncompromising international regulatory benchmarks.
+                </p>
+              </div>
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center space-x-2 text-xs font-bold text-[#0D522F]">
+                <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                <span>Global Quality Leadership • Sustainable Trade • Traceable Provenance</span>
+              </div>
+            </div>
+
+            {/* Mission */}
+            <div className="bg-white border-2 border-emerald-200/80 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between group">
+              <div>
+                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 border border-amber-200 flex items-center justify-center mb-6">
+                  <Target className="w-6 h-6 stroke-[2]" />
+                </div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-amber-800 block mb-2">
+                  Operational Core
+                </span>
+                <h3 className="text-2xl font-bold text-slate-900 font-['Plus_Jakarta_Sans'] mb-4">
+                  Our Mission
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                  To empower global importers, institutional repackers, and corporate brands with direct farm-gate and mill-floor traceability, standardized laboratory-tested grading, zero-chemical processing, and seamless containerized port logistics, ensuring unwavering consistency, honest pricing, and contractual dependability in every export consignment.
+                </p>
+              </div>
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center space-x-2 text-xs font-bold text-[#0D522F]">
+                <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                <span>Standardized Lab Testing • 100% Contract Integrity • Direct Port Delivery</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 4 Core Pillars */}
