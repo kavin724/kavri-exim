@@ -131,7 +131,7 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
                           <div>{g.name}</div>
                           {g.code && (
                             <span className="inline-block mt-0.5 text-[10px] bg-emerald-50 text-[#0D522F] border border-emerald-200 px-1.5 py-0.5 rounded font-mono font-bold">
-                              Code: {g.code}
+                              {product.compliance?.includes('AGMARK') ? `AGMARK: ${g.code}` : `Code: ${g.code}`}
                             </span>
                           )}
                         </td>

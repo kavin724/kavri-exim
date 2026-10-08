@@ -213,25 +213,22 @@ export const PRODUCTS_DATA = [
     hsnCode: '0904 11 10 (Garbled) | 0904 11 20 (Ungarbled)',
     grades: [
       { 
-        name: 'Kolli Mountain Bold (Grade A)', 
-        code: 'Grade A', 
-        size: 'Retained on 4.50 mm - 4.75 mm screen', 
+        name: 'Kolli Mountain Bold', 
+        size: 'Retained on 4.50mm', 
         density: 'Min. 550 - 580 g/L', 
         color: 'Deep wrinkled charcoal-black, bold uniform berries', 
         usage: 'Premium gourmet spice mills, boutique single-origin retail, high-potency culinary extracts' 
       },
       { 
         name: 'Kolli Garbled Standard', 
-        code: 'Standard', 
-        size: 'Retained on 4.00 mm screen', 
+        size: 'Retained on 4.00mm', 
         density: 'Min. 525 - 550 g/L', 
         color: 'Rich black to dark brown, well-dried berries', 
         usage: 'Artisan seasoning blends, commercial spice repackers, butcher & meat curing formulations' 
       },
       { 
         name: 'Kolli Whole Extraction Grade', 
-        code: 'Extraction', 
-        size: 'Retained on 3.25 mm - 3.75 mm screen', 
+        size: 'Retained on 3.25mm', 
         density: 'Min. 500 g/L', 
         color: 'Natural black, uniform machine-cleaned peppercorns', 
         usage: 'High-yield piperine solvent extraction, pharmaceutical raw material, industrial grinding' 

@@ -416,7 +416,7 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
                     <tr key={g.name} className="hover:bg-slate-50/80">
                       <td className="py-3 px-4 font-bold text-slate-900">
                         <div>{g.name}</div>
-                        {g.code && (
+                        {product.compliance?.includes('AGMARK') && g.code && (
                           <span className="inline-block mt-1 text-[10px] bg-emerald-50 text-[#0D522F] border border-emerald-200 px-1.5 py-0.5 rounded font-mono font-bold">
                             AGMARK: {g.code}
                           </span>
