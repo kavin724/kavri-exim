@@ -29,13 +29,12 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
     { label: 'Home', route: 'home' },
     { 
       label: 'Products', 
-      route: 'products',
+      route: 'products?cat=spices',
       hasDropdown: true,
       subItems: [
-        { label: 'All Export Divisions', route: 'products', desc: 'Full multi-commodity B2B catalog' },
         { label: 'Spices & Seasonings', route: 'products?cat=spices', desc: 'Cardamom, Tellicherry & Kolli Pepper, Erode & Salem Turmeric' },
         { label: 'Textiles & Garments', route: 'products?cat=textiles', desc: 'Custom T-Shirts, Terry Towels, Bedsheets, Linens & Shirting' },
-        { label: 'Indian Heritage Handicrafts', route: 'products?cat=handicrafts', desc: 'Brassware, Modern Home Decors & Terracotta Artefacts' },
+        { label: 'Handicrafts & Artefacts', route: 'products?cat=handicrafts', desc: 'Brassware, Modern Home Decors & Terracotta Artefacts' },
       ]
     },
     { label: 'Quality & Compliance', route: 'quality-compliance', icon: ShieldCheck },

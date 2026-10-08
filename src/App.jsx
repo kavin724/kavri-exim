@@ -47,12 +47,13 @@ export default function App() {
     }
 
     if (currentRoute.startsWith('products')) {
-      let categoryMatch = 'all';
+      let categoryMatch = 'spices';
       if (currentRoute.includes('?cat=')) {
         categoryMatch = currentRoute.split('?cat=')[1];
       } else if (currentRoute.startsWith('products-')) {
         categoryMatch = currentRoute.replace('products-', '');
       }
+      if (categoryMatch === 'all') categoryMatch = 'spices';
       return (
         <ProductsPage 
           key={currentRoute}

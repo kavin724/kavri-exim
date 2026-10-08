@@ -1,5 +1,4 @@
 export const COMMODITY_CATEGORIES = [
-  { id: 'all', name: 'All Divisions' },
   { id: 'spices', name: 'Spices & Seasonings' },
   { id: 'textiles', name: 'Textiles & Garments' },
   { id: 'handicrafts', name: 'Handicrafts & Artefacts' }

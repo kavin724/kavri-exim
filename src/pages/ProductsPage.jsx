@@ -5,11 +5,6 @@ import {
 import { PRODUCTS_DATA, COMMODITY_CATEGORIES } from '../data/productsData';
 
 const CATEGORY_META = {
-  all: {
-    badge: 'Standardized International Trade Catalog',
-    title: 'Export Commodities & Product Lines',
-    desc: 'Browse our complete catalog across all three specialized export divisions. Complete technical data sheets (TDS) and instant proforma quotations available.'
-  },
   spices: {
     badge: 'Division 01 • Spices Board of India Registered',
     title: 'Spices & Seasonings Export Catalog',
@@ -22,17 +17,19 @@ const CATEGORY_META = {
   },
   handicrafts: {
     badge: 'Division 03 • Heritage Artisan Clusters',
-    title: 'Indian Heritage Handicrafts Catalog',
+    title: 'Handicrafts & Artefacts Export Catalog',
     desc: 'Authentic South Indian lost-wax cast bronze & brass idols, hand-carved teakwood decorative artefacts, and traditional architectural terracotta pottery.'
   }
 };
 
-export default function ProductsPage({ initialCategory = 'all', setCurrentRoute, onOpenRfq, onOpenTds }) {
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+export default function ProductsPage({ initialCategory = 'spices', setCurrentRoute, onOpenRfq, onOpenTds }) {
+  const normalizedCategory = (initialCategory && initialCategory !== 'all') ? initialCategory : 'spices';
+  const [selectedCategory, setSelectedCategory] = useState(normalizedCategory);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    setSelectedCategory(initialCategory);
+    const validCat = (initialCategory && initialCategory !== 'all') ? initialCategory : 'spices';
+    setSelectedCategory(validCat);
   }, [initialCategory]);
 
   const navigateTo = (route, e) => {
@@ -44,23 +41,19 @@ export default function ProductsPage({ initialCategory = 'all', setCurrentRoute,
   const handleSelectCategory = (catId) => {
     setSelectedCategory(catId);
     if (setCurrentRoute) {
-      if (catId === 'all') {
-        setCurrentRoute('products');
-      } else {
-        setCurrentRoute(`products?cat=${catId}`);
-      }
+      setCurrentRoute(`products?cat=${catId}`);
     }
   };
 
   const filteredProducts = PRODUCTS_DATA.filter(prod => {
-    const matchesCat = selectedCategory === 'all' || prod.category === selectedCategory;
+    const matchesCat = prod.category === selectedCategory;
     const matchesSearch = prod.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           prod.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           prod.grades?.some(g => g.name.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCat && matchesSearch;
   });
 
-  const currentMeta = CATEGORY_META[selectedCategory] || CATEGORY_META.all;
+  const currentMeta = CATEGORY_META[selectedCategory] || CATEGORY_META.spices;
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen py-12">
