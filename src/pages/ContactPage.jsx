@@ -12,7 +12,7 @@ export default function ContactPage() {
     email: '',
     phone: '',
     country: '',
-    product: 'Alleppey Green Cardamom',
+    product: PRODUCTS_DATA[0]?.name || 'Alleppey Green Cardamom (Small Cardamom)',
     incoterm: 'CIF',
     volume: '',
     specs: '',

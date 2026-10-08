@@ -10,13 +10,17 @@ export const SPEC_LABEL_MAP = {
   volatileOil: 'Volatile Essential Oil',
   bulkDensity: 'Bulk Density',
   bulkDensityGL: 'Bulk Density (GL)',
-  immaturePods: 'Immature Pods',
-  emptyPods: 'Empty Pods',
+  immaturePods: 'Immature / Malformed Capsules',
+  emptyPods: 'Empty / Light Capsules',
   foreignMatter: 'Foreign Matter',
-  extraneousMatter: 'Extraneous Matter',
+  extraneousMatter: 'Extraneous / Foreign Matter',
   aflatoxinB1: 'Aflatoxin B1',
   totalAflatoxins: 'Total Aflatoxins',
   aflatoxins: 'Aflatoxins (B1 & Total)',
+  totalAsh: 'Total Ash',
+  acidInsolubleAsh: 'Acid-Insoluble Ash',
+  artificialColor: 'Artificial Color (Malachite Green / Tartrazine)',
+  microbialStandards: 'Microbial Standards',
   dryingMethod: 'Curing & Drying Method',
   piperineContent: 'Piperine Content',
   lightBerries: 'Light Berries',
@@ -25,8 +29,6 @@ export const SPEC_LABEL_MAP = {
   eColi: 'E. Coli',
   cultivation: 'Cultivation & Growing Method',
   curcuminContent: 'Curcumin Content',
-  totalAsh: 'Total Ash',
-  acidInsolubleAsh: 'Acid Insoluble Ash',
   leadChromateTest: 'Lead Chromate Test',
   leadChromateAdulteration: 'Lead Chromate Test',
   foreignOrganicMatter: 'Foreign Organic Matter',
@@ -172,14 +174,21 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
           {/* Product Summary & Direct Lead Capture */}
           <div className="lg:col-span-6 space-y-6">
             <div>
-              <span className="text-xs uppercase tracking-widest text-[#0D522F] font-bold font-mono block mb-1">
-                {product.division}
-              </span>
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                <span className="text-xs uppercase tracking-widest text-[#0D522F] font-bold font-mono">
+                  {product.division}
+                </span>
+                {product.compliance && (
+                  <span className="text-[11px] font-semibold bg-emerald-50 text-[#0D522F] px-2.5 py-0.5 rounded-full border border-emerald-200 shadow-xs">
+                    {product.compliance}
+                  </span>
+                )}
+              </div>
               <h1 className="text-3xl sm:text-4xl font-black text-slate-900 font-['Plus_Jakarta_Sans'] tracking-tight">
                 {product.name}
               </h1>
               <p className="text-sm text-slate-500 italic mt-1 font-medium">
-                {product.botanicalName}
+                Botanical Name: {product.botanicalName}
               </p>
             </div>
 
@@ -191,15 +200,23 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-white p-4 rounded-2xl border border-slate-200 text-xs shadow-sm">
               <div>
                 <span className="text-slate-400 block font-medium">Min. Order:</span>
-                <span className="font-bold text-slate-900">{product.shippingInfo?.minimumOrder?.split('/')[0] || '1 FCL'}</span>
+                <span className="font-bold text-slate-900" title={product.shippingInfo?.minimumOrder}>
+                  {product.shippingInfo?.minimumOrder?.includes('|')
+                    ? product.shippingInfo.minimumOrder.split('|')[0].trim()
+                    : (product.shippingInfo?.minimumOrder?.split('/')[0] || '1 FCL')}
+                </span>
               </div>
               <div>
                 <span className="text-slate-400 block font-medium">Container Load:</span>
-                <span className="font-bold text-slate-900">{product.shippingInfo?.containerCapacity?.split('|')[0] || '20ft FCL'}</span>
+                <span className="font-bold text-slate-900" title={product.shippingInfo?.containerCapacity}>
+                  {product.shippingInfo?.containerCapacity?.split('|')[0]?.trim() || '20ft FCL'}
+                </span>
               </div>
               <div>
                 <span className="text-slate-400 block font-medium">Gateways:</span>
-                <span className="font-bold text-[#0D522F]">Chennai / Tuticorin / Cochin</span>
+                <span className="font-bold text-[#0D522F]" title={product.shippingInfo?.gatewayPorts}>
+                  {product.shippingInfo?.gatewayPorts || 'Chennai / Tuticorin / Cochin'}
+                </span>
               </div>
             </div>
 
@@ -333,7 +350,7 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
               <table className="w-full text-xs sm:text-sm text-left">
                 <thead className="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
                   <tr>
-                    <th className="py-3 px-4">Grade / Style</th>
+                    <th className="py-3 px-4">Grade / Code</th>
                     <th className="py-3 px-4">Dimension / Sieve / Spec</th>
                     <th className="py-3 px-4">Density / GSM / Weight</th>
                     <th className="py-3 px-4">Color & Appearance</th>
@@ -344,7 +361,12 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
                   {product.grades?.map((g) => (
                     <tr key={g.name} className="hover:bg-slate-50/80">
                       <td className="py-3 px-4 font-bold text-slate-900">
-                        {g.name}
+                        <div>{g.name}</div>
+                        {g.code && (
+                          <span className="inline-block mt-1 text-[10px] bg-emerald-50 text-[#0D522F] border border-emerald-200 px-1.5 py-0.5 rounded font-mono font-bold">
+                            AGMARK: {g.code}
+                          </span>
+                        )}
                       </td>
                       <td className="py-3 px-4 font-mono font-bold text-[#0D522F]">
                         {g.size}
@@ -401,6 +423,43 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
                     </li>
                   ))}
                 </ul>
+
+                {/* Logistics & Container Stuffing Breakdown if present */}
+                {product.shippingInfo?.containerStuffingBreakdown && (
+                  <div className="mt-6 pt-5 border-t border-slate-100">
+                    <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2.5">
+                      Container Stuffing Capacity & Loading
+                    </h4>
+                    <div className="space-y-3 text-xs text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                      {product.shippingInfo.containerStuffingBreakdown.fcl20 && (
+                        <div>
+                          <strong className="text-slate-900 block font-semibold mb-1">20ft FCL Container:</strong>
+                          <ul className="list-disc pl-4 space-y-0.5 text-slate-600">
+                            {product.shippingInfo.containerStuffingBreakdown.fcl20.map((item, i) => (
+                              <li key={i}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      {product.shippingInfo.containerStuffingBreakdown.fcl40 && (
+                        <div>
+                          <strong className="text-slate-900 block font-semibold mb-1">40ft FCL / High Cube Container:</strong>
+                          <ul className="list-disc pl-4 space-y-0.5 text-slate-600">
+                            {product.shippingInfo.containerStuffingBreakdown.fcl40.map((item, i) => (
+                              <li key={i}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      {product.shippingInfo.airTerminals && (
+                        <div className="pt-2 border-t border-slate-200/60 text-[11px]">
+                          <span className="font-semibold text-slate-700">Air Freight Terminals: </span>
+                          <span className="text-[#0D522F] font-medium">{product.shippingInfo.airTerminals}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="mt-6 pt-6 border-t border-slate-100">

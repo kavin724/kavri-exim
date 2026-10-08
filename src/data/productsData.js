@@ -18,42 +18,92 @@ export const PRODUCTS_DATA = [
   {
     id: 'green-cardamom',
     slug: 'green-cardamom',
-    name: 'Alleppey Green Cardamom',
+    name: 'Alleppey Green Cardamom (Small Cardamom)',
     botanicalName: 'Elettaria cardamomum',
     category: 'spices',
     division: 'Spices & Seasonings',
-    tag: 'Export Ready | Origin Certified',
-    origin: 'Idukki & Western Ghats, South India',
+    tag: 'GI Tagged | AGMARK Certified | FSSAI Approved',
+    compliance: 'Spices Board of India | AGMARK Certified | FSSAI Approved',
+    origin: 'Idukki & Western Ghats, Kerala / Tamil Nadu, India',
     image: './assets/images/cardamom.jpg',
-    shortDesc: 'Known worldwide as the "Queen of Spices", hand-picked from mist-covered Western Ghats plantations with controlled electric heat-pump curing to retain deep green chlorophyll and high volatile essential oils.',
-    hsnCode: '0908 31 00',
+    shortDesc: 'Sourced directly from the high-elevation plantations of the Western Ghats, Alleppey Green Cardamom (AGC), with its GI tag, is globally renowned for its high volatile oil content, uniform three-cornered ribbed capsules, and distinct sweet-eucalyptus aroma. Processed through indirect closed-pipe flue kilns without artificial dyes, sulfur bleaching, or polishing agents to ensure compliance with strict international MRL and food safety standards.',
+    hsnCode: '0908 31 20',
     grades: [
-      { name: 'AGEB (Alleppey Green Extra Bold)', size: '8.0mm - 8.5mm+', density: '435 - 450 g/L', color: 'Deep Vibrant Green', usage: 'Luxury gourmet packaging, Middle East & GCC premium retail' },
-      { name: 'AGB (Alleppey Green Bold)', size: '7.5mm - 7.9mm', density: '415 - 435 g/L', color: 'Rich Olive Green', usage: 'Wholesale repackers, European specialty spice distributors' },
-      { name: 'AGS (Alleppey Green Superior)', size: '7.0mm - 7.4mm', density: '385 - 415 g/L', color: 'Natural Green', usage: 'Commercial food processors, extraction, institutional supply' },
-      { name: 'Split / Seed Cardamom', size: 'Open pods / whole seeds', density: '350 - 380 g/L', color: 'Greenish-brown', usage: 'Oleoresin extraction, masala blends, industrial baking' }
+      { 
+        name: 'Alleppey Green Extra Bold', 
+        code: 'AGEB', 
+        size: '8.0 mm and above', 
+        density: 'Min. 435 g/L', 
+        color: 'Deep Vibrant Green', 
+        usage: 'GCC / Middle East luxury retail, gift packaging, premium spice merchants' 
+      },
+      { 
+        name: 'Alleppey Green Bold', 
+        code: 'AGB', 
+        size: '7.0 mm to 7.9 mm', 
+        density: 'Min. 415 g/L', 
+        color: 'Bright Green', 
+        usage: 'European specialty packaging, global retail packers, institutional culinary' 
+      },
+      { 
+        name: 'Alleppey Green Superior', 
+        code: 'AGS', 
+        size: '6.0 mm to 6.9 mm', 
+        density: 'Min. 385 g/L', 
+        color: 'Natural Olive Green', 
+        usage: 'Horeca, bulk repackers, food processing, culinary blends' 
+      },
+      { 
+        name: 'Alleppey Green Shipment', 
+        code: 'AGL / AGS-1', 
+        size: '5.0 mm to 5.9 mm', 
+        density: 'Min. 350 g/L', 
+        color: 'Light / Pale Green', 
+        usage: 'Industrial spice blending, bakery premixes, commercial extraction' 
+      },
+      { 
+        name: 'Decorticated Cardamom Seeds', 
+        code: 'CS (Seeds)', 
+        size: 'Clean whole seeds', 
+        density: 'Min. 600 g/L', 
+        color: 'Dark Brown to Black', 
+        usage: 'Oleoresin distillation, essential oil extraction, chai/masala formulation' 
+      }
     ],
     technicalSpecs: {
-      moisture: 'Max 10.0% - 11.0% (Karl Fischer / Dean-Stark)',
-      volatileOil: 'Min 6.5% to 8.5% v/w (Steam Distillation)',
-      bulkDensity: '385 g/L to 450 g/L (Grade dependent)',
+      moisture: 'Max 10.5% (Toluene Distillation Method - ASTA 2.0 / ISO 939)',
+      volatileOil: 'Min 4.0% to 7.5% v/w (Steam Distillation - ISO 6571 / whole pod basis)',
+      extraneousMatter: 'Max 0.5% by weight (Nil hair, metal, stones, or live insects)',
       immaturePods: 'Max 2.0% by weight',
       emptyPods: 'Max 1.0% by count',
-      foreignMatter: 'Max 0.5% (Nil metal / stones)',
-      aflatoxinB1: '< 2 ppb (Compliant with EU / US FDA MRL)',
-      totalAflatoxins: '< 4 ppb',
-      dryingMethod: 'Controlled Electric Heat-Pump Curing Chamber (No artificial coloring/polishing)'
+      totalAsh: 'Max 8.0%',
+      acidInsolubleAsh: 'Max 2.0%',
+      artificialColor: 'Completely Absent / Undetected (LC-MS/MS tested)',
+      aflatoxins: 'B1 < 5 ppb | Total Aflatoxins (B1+B2+G1+G2) < 10 ppb (EU / GCC compliant)',
+      microbialStandards: 'Salmonella: Absent in 25g | E. coli: < 10 CFU/g'
     },
     packagingOptions: [
-      '5 kg / 10 kg Food-Grade Vacuum Sealed Pouches with Master Outer Corrugated Carton (5-ply)',
-      '25 kg Multi-layer Kraft Paper Bags with Inner Polyliner',
-      'Custom OEM / Private Label nitrogen-flushed tins for retail export'
+      'Carton Pack (Standard Export): 5 kg or 10 kg food-grade poly-foil / vacuum liners sealed inside 5-ply export master corrugated cartons (20 kg / 25 kg gross weight).',
+      'Bulk Woven Pack: 25 kg / 50 kg multi-wall HDPE bags with inner sealed virgin polyethylene liner.',
+      'Retail & Private Label (OEM): 50g, 100g, 250g, 500g nitrogen-flushed stand-up barrier pouches, composite tins, or rigid PET containers with customized brand labelling and barcodes.'
     ],
     shippingInfo: {
-      minimumOrder: '500 kg (Air Cargo) / 1 MT (LCL/FCL)',
-      containerCapacity: '20ft FCL: approx 10 - 11 MT | 40ft FCL: approx 22 - 24 MT',
-      gatewayPorts: 'Cochin Port (COK), Tuticorin VOC Port (TUT), Chennai Port (MAA)',
-      hsCode: '0908.31.00'
+      minimumOrder: '500 kg (Air Freight) | 2,000 kg (LCL Ocean Freight)',
+      containerCapacity: '20ft FCL: ~9.0 - 10.0 MT (Loose) / ~6.0 - 7.0 MT (Palletized) | 40ft FCL: ~18.0 - 20.0 MT',
+      containerStuffingBreakdown: {
+        fcl20: [
+          'Loose Floor-Loaded (10 kg Master Cartons): ~9.0 - 10.0 MT (900 - 1,000 Cartons)',
+          'Palletized & Shrink-Wrapped (Standard Export Pallets): ~6.0 - 7.0 MT (600 - 700 Cartons)',
+          'Bulk Poly/HDPE Bags (Loose Loaded): ~10.0 - 11.0 MT'
+        ],
+        fcl40: [
+          'Loose Floor-Loaded: ~18.0 - 20.0 MT',
+          'Palletized: ~14.0 - 15.0 MT'
+        ]
+      },
+      gatewayPorts: 'Cochin Port (COK) / Tuticorin (VOC) / Chennai (MAA)',
+      airTerminals: 'Cochin (COK) / Coimbatore (CJB) / Chennai (MAA)',
+      hsCode: '0908 31 20'
     }
   },
   {

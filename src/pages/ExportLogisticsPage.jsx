@@ -8,7 +8,7 @@ export default function ExportLogisticsPage({ onOpenRfq }) {
   const [calcCommodity, setCalcCommodity] = useState('cardamom');
 
   const containerEst = {
-    cardamom: { name: 'Green Cardamom (Vacuum Master Cartons)', per20ft: 10, per40ft: 22, unit: 'Metric Tons' },
+    cardamom: { name: 'Green Cardamom (Vacuum Master Cartons)', per20ft: 10, per40ft: 20, unit: 'Metric Tons' },
     pepper: { name: 'Tellicherry & Kolli Pepper (25kg PP Bags)', per20ft: 15, per40ft: 27, unit: 'Metric Tons' },
     turmeric: { name: 'Erode / Salem Turmeric Fingers (50kg Bags)', per20ft: 18, per40ft: 26, unit: 'Metric Tons' },
     tshirts: { name: 'Custom Cotton T-Shirts (Master Cartons)', per20ft: 28000, per40ft: 60000, unit: 'Pieces' },

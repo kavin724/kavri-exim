@@ -94,9 +94,51 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
             </div>
             <div>
               <span className="text-xs text-slate-500 uppercase tracking-wider block font-bold">Standard Export Incoterms:</span>
-              <span className="text-sm font-semibold text-slate-800">FOB (Chennai / Tuticorin / Cochin) / CIF / CFR</span>
+              <span className="text-sm font-semibold text-slate-800">FOB ({product.shippingInfo?.gatewayPorts || 'Chennai / Tuticorin / Cochin'}) / CIF / CFR</span>
             </div>
+            {product.compliance && (
+              <div className="sm:col-span-2">
+                <span className="text-xs text-slate-500 uppercase tracking-wider block font-bold">Regulatory Compliance & Certifications:</span>
+                <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mt-0.5">
+                  {product.compliance}
+                </span>
+              </div>
+            )}
           </div>
+
+          {/* Commercial Export Grades & Sieve Calibration */}
+          {product.grades && product.grades.length > 0 && (
+            <div>
+              <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                <FileCheck className="w-4 h-4 text-[#0D522F]" />
+                Commercial Export Grades & Sieve Calibration
+              </h4>
+              <div className="border border-slate-200 rounded-lg overflow-hidden">
+                <table className="w-full text-xs text-left">
+                  <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                    <tr>
+                      <th className="py-2.5 px-3">Grade</th>
+                      <th className="py-2.5 px-3">AGMARK Code</th>
+                      <th className="py-2.5 px-3">Screen Size / Sieve Diameter</th>
+                      <th className="py-2.5 px-3">Bulk Density</th>
+                      <th className="py-2.5 px-3">Color</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200 text-slate-800">
+                    {product.grades.map((g, idx) => (
+                      <tr key={idx} className="hover:bg-slate-50">
+                        <td className="py-2 px-3 font-semibold text-slate-900">{g.name}</td>
+                        <td className="py-2 px-3 font-mono font-bold text-[#0D522F]">{g.code || '-'}</td>
+                        <td className="py-2 px-3 font-mono">{g.size}</td>
+                        <td className="py-2 px-3 font-mono">{g.density}</td>
+                        <td className="py-2 px-3 text-slate-600">{g.color}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
 
           {/* Technical Specifications Table */}
           <div>
@@ -141,7 +183,16 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
               {product.packagingOptions?.map((pkg, idx) => (
                 <li key={idx}>{pkg}</li>
               ))}
-              <li>Container loading executed under direct merchant supervision at Chennai Sea Hub / Tuticorin VOC / Cochin Port.</li>
+              {product.shippingInfo?.containerStuffingBreakdown?.fcl20 && (
+                <li><strong>20ft FCL Payload:</strong> {product.shippingInfo.containerStuffingBreakdown.fcl20.join(' | ')}</li>
+              )}
+              {product.shippingInfo?.containerStuffingBreakdown?.fcl40 && (
+                <li><strong>40ft FCL / High Cube Payload:</strong> {product.shippingInfo.containerStuffingBreakdown.fcl40.join(' | ')}</li>
+              )}
+              {product.shippingInfo?.airTerminals && (
+                <li><strong>Air Freight Terminals:</strong> {product.shippingInfo.airTerminals}</li>
+              )}
+              <li>Container loading executed under direct merchant supervision at {product.shippingInfo?.gatewayPorts || 'Chennai / Tuticorin / Cochin Port'}.</li>
               <li>Fumigation with Methyl Bromide or Phosphine gas certified by authorized plant quarantine agencies.</li>
             </ul>
           </div>
