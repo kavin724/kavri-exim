@@ -284,6 +284,7 @@ export const PRODUCTS_DATA = [
     category: 'spices',
     division: 'Spices & Seasonings',
     tag: 'Export Ready | Origin Certified',
+    compliance: 'Spices Board of India | AGMARK Certified | FSSAI Approved',
     origin: 'Salem District, Kaveri Basin, Tamil Nadu',
     image: './assets/images/salem-turmeric.jpg',
     shortDesc: 'The benchmark culinary turmeric of South India. Long, stout fingers polished to a golden amber sheen, renowned globally for brilliant natural yellow color, high essential aroma, and clean taste.',
@@ -310,8 +311,18 @@ export const PRODUCTS_DATA = [
     shippingInfo: {
       minimumOrder: '5 MT (LCL) / 18 MT (20ft FCL)',
       containerCapacity: '20ft FCL: approx 18 MT | 40ft FCL: approx 26 MT',
-      gatewayPorts: 'Tuticorin VOC Port (TUT), Chennai Port (MAA)',
-      hsCode: '0910.30.20'
+      containerStuffingBreakdown: {
+        fcl20: [
+          'Floor-Loaded (50 kg Jute / PP Bags): ~18.0 MT (360 Bags)',
+          'Palletized & Shrink-Wrapped: ~14.0 MT'
+        ],
+        fcl40: [
+          'Floor-Loaded: ~26.0 MT'
+        ]
+      },
+      gatewayPorts: 'Tuticorin VOC Port (TUT) / Chennai Port (MAA) / Cochin Port (COK)',
+      airTerminals: 'Tiruchirappalli (TRZ) / Coimbatore (CJB) / Chennai (MAA)',
+      hsCode: '0910 30 20'
     }
   },
   {
@@ -322,6 +333,7 @@ export const PRODUCTS_DATA = [
     category: 'spices',
     division: 'Spices & Seasonings',
     tag: 'GI Tagged | Geographical Indication',
+    compliance: 'Spices Board of India | GI Registry Certified (GI Tagged) | FSSAI Approved',
     origin: 'Erode District (Turmeric City), Tamil Nadu, India',
     image: './assets/images/erode-turmeric.jpg',
     shortDesc: 'Officially granted Geographical Indication (GI) status by the Government of India. Cultivated along the Kaveri river basin, Erode turmeric is globally prized for its deep golden-yellow color, high resistance to insect pests, and distinct therapeutic phytochemical profile.',
@@ -348,8 +360,18 @@ export const PRODUCTS_DATA = [
     shippingInfo: {
       minimumOrder: '5 MT (LCL) / 18 MT (20ft FCL)',
       containerCapacity: '20ft FCL: approx 18 MT | 40ft FCL: approx 26 MT',
-      gatewayPorts: 'Tuticorin VOC Port (TUT), Cochin (COK), Chennai (MAA)',
-      hsCode: '0910.30.20'
+      containerStuffingBreakdown: {
+        fcl20: [
+          'Floor-Loaded (50 kg Jute / PP Bags): ~18.0 MT (360 Bags)',
+          'Palletized & Shrink-Wrapped: ~14.0 MT'
+        ],
+        fcl40: [
+          'Floor-Loaded: ~26.0 MT'
+        ]
+      },
+      gatewayPorts: 'Tuticorin VOC Port (TUT) / Cochin (COK) / Chennai (MAA)',
+      airTerminals: 'Coimbatore (CJB) / Tiruchirappalli (TRZ) / Chennai (MAA)',
+      hsCode: '0910 30 20'
     }
   },
   {
@@ -360,6 +382,7 @@ export const PRODUCTS_DATA = [
     category: 'spices',
     division: 'Spices & Seasonings',
     tag: 'Export Ready | Ultra-Fine Mesh',
+    compliance: 'Spices Board of India | AGMARK Certified | FSSAI Approved',
     origin: 'Tamil Nadu Turmeric Belts (Erode & Salem)',
     image: './assets/images/turmeric-powder.jpg',
     shortDesc: 'Cryogenically pulverized from cleaned, steam-sterilized Salem and Erode finger rhizomes. Retains maximum volatile oils, natural curcumin, and intense golden color without overheating or starch fillers.',
@@ -387,8 +410,18 @@ export const PRODUCTS_DATA = [
     shippingInfo: {
       minimumOrder: '2 MT (LCL) / 16 MT (20ft FCL)',
       containerCapacity: '20ft FCL: approx 16 MT | 40ft FCL: approx 24 - 25 MT',
+      containerStuffingBreakdown: {
+        fcl20: [
+          'Floor-Loaded (20 kg / 25 kg Kraft/PP Bags): ~16.0 MT',
+          'Palletized: ~12.5 - 13.5 MT'
+        ],
+        fcl40: [
+          'Floor-Loaded: ~24.0 - 25.0 MT'
+        ]
+      },
       gatewayPorts: 'Tuticorin VOC Port (TUT), Chennai Port (MAA)',
-      hsCode: '0910.30.30'
+      airTerminals: 'Coimbatore (CJB) / Chennai (MAA) / Tiruchirappalli (TRZ)',
+      hsCode: '0910 30 30'
     }
   },
 

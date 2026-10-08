@@ -91,6 +91,56 @@ export function formatSpecKey(key) {
   return key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
 }
 
+export function getDensityColumnLabel(productId, isTextile = false) {
+  if (['green-cardamom', 'black-pepper', 'kolli-pepper'].includes(productId)) {
+    return 'Bulk Density';
+  }
+  if (['salem-turmeric', 'erode-turmeric'].includes(productId)) {
+    return 'Hardness';
+  }
+  if (productId === 'turmeric-powder') {
+    return 'Texture';
+  }
+  if (isTextile) {
+    return 'Fabric Weight / GSM';
+  }
+  return 'Density / GSM / Weight';
+}
+
+export function getTestProtocolForSpec(key, value, isTextile = false) {
+  if (isTextile) {
+    if (key.includes('colorFastness')) return 'AATCC 61 / ISO 105-C06';
+    if (key.includes('tensile') || key.includes('strength')) return 'ASTM D5034 / ISO 13934';
+    if (key.includes('shrinkage') || key.includes('dimensional')) return 'AATCC 135 / ISO 6330';
+    if (key.includes('weight') || key.includes('GSM') || key === 'fabricWeightGSM') return 'ASTM D3776 / ISO 3801';
+    if (key.includes('dyes')) return 'OEKO-TEX Standard 100';
+    if (key === 'absorbencyRate') return 'AATCC 79';
+    return 'AATCC / ISO / ASTM Validated';
+  }
+  
+  if (key === 'moisture') return 'ASTA 2.0 / ISO 939 (Toluene)';
+  if (key === 'volatileOil') return 'ISO 6571 (Steam Distillation)';
+  if (key === 'piperineContent') return 'HPLC / ASTA 7.0 / ISO 5564';
+  if (key === 'curcuminContent') return 'HPLC / ASTA Method 18.0';
+  if (key === 'extraneousMatter' || key === 'foreignMatter') return 'ASTA 3.0 / ISO 927';
+  if (key === 'totalAsh') return 'ASTA 3.1 / ISO 928';
+  if (key === 'acidInsolubleAsh') return 'ASTA 4.0 / ISO 930';
+  if (key === 'nvee') return 'ISO 1108 / ASTA Method';
+  if (key === 'aflatoxins' || key === 'aflatoxinB1' || key === 'totalAflatoxins') return 'HPLC-FLD / EU 2023/915';
+  if (key === 'ochratoxinA') return 'HPLC / IAC Cleanup (EU)';
+  if (key === 'microbialStandards' || key === 'salmonella' || key === 'eColi' || key === 'yeastAndMould') return 'ISO 6579 / FDA BAM';
+  if (key === 'artificialColor' || key === 'leadChromateTest' || key === 'leadChromateAdulteration') return 'LC-MS/MS / Chemical Test';
+  if (key === 'etoIrradiation') return 'GC-MS/MS Residue Screen';
+  if (key === 'sterilizationTreatment') return 'Continuous HTST Steam';
+  if (key === 'pesticideResidue') return 'GC-MS/MS Multi-Residue';
+  if (key === 'bulkDensity' || key === 'bulkDensityGL') return 'ISO 948 / Graduated Cylinder';
+  if (key === 'finenessMesh') return 'Standard Test Sieve Analysis';
+  if (key === 'foreignStarchesAddedColor' || key === 'foreignOrganicMatter' || key === 'starchPurity') return 'Microscopic & Chemical ASTA';
+  if (key === 'immaturePods' || key === 'emptyPods' || key === 'lightBerries' || key === 'pinheads') return 'Agmark / ASTA Manual Count';
+
+  return 'ASTA / ISO / FSSAI Validated';
+}
+
 export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpenRfq, onOpenTds }) {
   const product = PRODUCTS_DATA.find(p => p.slug === productSlug) || PRODUCTS_DATA[0];
 
@@ -356,7 +406,7 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
                   <tr>
                     <th className="py-3 px-4">Grade / Code</th>
                     <th className="py-3 px-4">Dimension / Sieve / Spec</th>
-                    <th className="py-3 px-4">Density / GSM / Weight</th>
+                    <th className="py-3 px-4">{getDensityColumnLabel(product.id, isTextile)}</th>
                     <th className="py-3 px-4">Color & Appearance</th>
                     <th className="py-3 px-4">Commercial Applications</th>
                   </tr>

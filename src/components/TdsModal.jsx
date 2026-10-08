@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, Printer, ShieldCheck, FileCheck, CheckCircle2, ArrowRight } from 'lucide-react';
-import { formatSpecKey } from '../pages/ProductDetailPage';
+import { formatSpecKey, getDensityColumnLabel, getTestProtocolForSpec } from '../pages/ProductDetailPage';
 
 export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
   if (!isOpen || !product) return null;
@@ -111,27 +111,34 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
             <div>
               <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-1.5">
                 <FileCheck className="w-4 h-4 text-[#0D522F]" />
-                Commercial Export Grades & Sieve Calibration
+                {isTextile ? 'Commercial Product Specifications & Dimensions' : 'Commercial Export Grades & Specifications'}
               </h4>
               <div className="border border-slate-200 rounded-lg overflow-hidden">
                 <table className="w-full text-xs text-left">
                   <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
                     <tr>
-                      <th className="py-2.5 px-3">Grade</th>
-                      <th className="py-2.5 px-3">AGMARK Code</th>
-                      <th className="py-2.5 px-3">Screen Size / Sieve Diameter</th>
-                      <th className="py-2.5 px-3">Bulk Density</th>
-                      <th className="py-2.5 px-3">Color</th>
+                      <th className="py-2.5 px-3">Grade / Designation</th>
+                      <th className="py-2.5 px-3">{isTextile ? 'Dimensions / Construction' : 'Screen Size / Sieve Diameter'}</th>
+                      <th className="py-2.5 px-3">{getDensityColumnLabel(product.id, isTextile)}</th>
+                      <th className="py-2.5 px-3">Color & Appearance</th>
+                      <th className="py-2.5 px-3">Commercial Applications</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 text-slate-800">
                     {product.grades.map((g, idx) => (
                       <tr key={idx} className="hover:bg-slate-50">
-                        <td className="py-2 px-3 font-semibold text-slate-900">{g.name}</td>
-                        <td className="py-2 px-3 font-mono font-bold text-[#0D522F]">{g.code || '-'}</td>
+                        <td className="py-2 px-3 font-semibold text-slate-900">
+                          <div>{g.name}</div>
+                          {g.code && (
+                            <span className="inline-block mt-0.5 text-[10px] bg-emerald-50 text-[#0D522F] border border-emerald-200 px-1.5 py-0.5 rounded font-mono font-bold">
+                              Code: {g.code}
+                            </span>
+                          )}
+                        </td>
                         <td className="py-2 px-3 font-mono">{g.size}</td>
-                        <td className="py-2 px-3 font-mono">{g.density}</td>
+                        <td className="py-2 px-3 font-mono font-bold text-[#0D522F]">{g.density}</td>
                         <td className="py-2 px-3 text-slate-600">{g.color}</td>
+                        <td className="py-2 px-3 text-slate-500">{g.usage}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -164,8 +171,8 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
                       <td className="py-2 px-3 font-mono font-semibold text-slate-900 align-top w-2/5">
                         {value}
                       </td>
-                      <td className="py-2 px-3 text-slate-500 align-top w-1/5">
-                        {isTextile ? 'AATCC / ISO / ASTM Tested' : 'ASTA / ISO / FSSAI Validated'}
+                      <td className="py-2 px-3 text-slate-600 font-mono text-[11px] align-top w-1/5">
+                        {getTestProtocolForSpec(key, value, isTextile)}
                       </td>
                     </tr>
                   ))}
@@ -183,11 +190,18 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
               {product.packagingOptions?.map((pkg, idx) => (
                 <li key={idx}>{pkg}</li>
               ))}
-              {product.shippingInfo?.containerStuffingBreakdown?.fcl20 && (
+              {product.shippingInfo?.containerStuffingBreakdown?.fcl20 ? (
                 <li><strong>20ft FCL Payload:</strong> {product.shippingInfo.containerStuffingBreakdown.fcl20.join(' | ')}</li>
+              ) : (
+                product.shippingInfo?.containerCapacity && (
+                  <li><strong>20ft / 40ft Container Load:</strong> {product.shippingInfo.containerCapacity}</li>
+                )
               )}
               {product.shippingInfo?.containerStuffingBreakdown?.fcl40 && (
                 <li><strong>40ft FCL / High Cube Payload:</strong> {product.shippingInfo.containerStuffingBreakdown.fcl40.join(' | ')}</li>
+              )}
+              {product.shippingInfo?.minimumOrder && (
+                <li><strong>Minimum Order Quantity (MOQ):</strong> {product.shippingInfo.minimumOrder}</li>
               )}
               {product.shippingInfo?.airTerminals && (
                 <li><strong>Air Freight Terminals:</strong> {product.shippingInfo.airTerminals}</li>
@@ -201,7 +215,7 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
           <div className="bg-emerald-50 border border-emerald-200 p-3.5 rounded-lg text-xs text-emerald-950 flex items-start space-x-2">
             <CheckCircle2 className="w-4 h-4 text-[#0D522F] mt-0.5 flex-shrink-0" />
             <p>
-              <strong>Quality & Regulatory Declaration:</strong> Each export batch is certified for compliance with international buyer tolerances, destination customs norms, and statutory statutory bodies before shipping manifest release.
+              <strong>Quality & Regulatory Declaration:</strong> Each export batch is certified for compliance with international buyer tolerances, destination customs norms, and statutory bodies before shipping manifest release.
             </p>
           </div>
 
