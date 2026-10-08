@@ -94,7 +94,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               </li>
               <li>
                 <button type="button" onClick={(e) => navigateTo('product-kolli-pepper', e)} className="hover:text-[#0D522F] transition-colors text-left">
-                  3. Kolli Black Pepper (High Piperine)
+                  3. Kolli Hills Black Pepper (High Piperine)
                 </button>
               </li>
               <li>

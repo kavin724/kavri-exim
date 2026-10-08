@@ -26,6 +26,8 @@ export const SPEC_LABEL_MAP = {
   lightBerries: 'Light Berries',
   pinheads: 'Pinheads',
   nvee: 'Non-Volatile Ether Extract (NVEE)',
+  ochratoxinA: 'Ochratoxin A (OTA)',
+  etoIrradiation: 'Ethylene Oxide (ETO) & Irradiation',
   sterilizationTreatment: 'Sterilization Treatment',
   salmonella: 'Salmonella',
   eColi: 'E. Coli',

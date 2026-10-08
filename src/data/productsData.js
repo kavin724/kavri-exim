@@ -201,39 +201,79 @@ export const PRODUCTS_DATA = [
   {
     id: 'kolli-pepper',
     slug: 'kolli-pepper',
-    name: 'Kolli Black Pepper',
-    botanicalName: 'Piper nigrum (Kolli Hills Ecotype)',
+    name: 'Kolli Hills Black Pepper (High-Piperine Mountain Pepper)',
+    botanicalName: 'Piper nigrum (Eastern Ghats High-Altitude Ecotype)',
     category: 'spices',
     division: 'Spices & Seasonings',
-    tag: 'Origin Certified | High Piperine',
-    origin: 'Kolli Hills (Kolli Malai), Eastern Ghats, Tamil Nadu',
+    tag: 'High Piperine | FSSAI Central Licensed',
+    compliance: 'Spices Board of India | FSSAI Central Export Licensed',
+    origin: 'Kolli Hills (Kolli Malai), Namakkal District, Tamil Nadu, India (Elevation: 1,000m - 1,300m MSL)',
     image: './assets/images/kolli-pepper.jpg',
-    shortDesc: 'Organically cultivated in the untouched mountain valleys of Kolli Hills, Tamil Nadu, at altitudes of 1,000–1,300 meters. Celebrated by international spice blenders for exceptional piperine pungency (up to 6.5%) and rich earthy heat.',
-    hsnCode: '0904 11 10',
+    shortDesc: 'Cultivated in the biodiverse microclimate and mineral-rich soils of the Kolli Hills (Eastern Ghats) at altitudes exceeding 1,000 meters above sea level. Traditionally shade-grown on natural silver oak living standards in multi-tier agroforestry estates. Kolli peppercorns are globally prized by oleoresin extractors, pharmaceutical processors, and gourmet blenders for their intense natural piperine content (5.0% - 6.2%+), dense uniform core, and distinctive woody, sharp pungency.',
+    hsnCode: '0904 11 10 (Garbled) | 0904 11 20 (Ungarbled)',
     grades: [
-      { name: 'Kolli Bold Shade-Grown Grade A', size: '4.5mm - 5.0mm', density: '550 - 580 g/L (GL)', color: 'Pitch Black Wrinkled', usage: 'Premium pharmaceutical extraction, gourmet spice mills' },
-      { name: 'Kolli Garbled Standard', size: '4.0mm - 4.5mm', density: '520 - 550 g/L (GL)', color: 'Natural Dark Black', usage: 'Artisanal seasoning houses, meat curing, spice blends' },
-      { name: 'Kolli Whole Grinding Grade', size: '3.5mm - 4.0mm', density: '480 - 520 g/L (GL)', color: 'Deep Blackish Brown', usage: 'Curry powders, oleoresin extraction' }
+      { 
+        name: 'Kolli Mountain Bold (Grade A)', 
+        code: 'Grade A', 
+        size: 'Retained on 4.50 mm - 4.75 mm screen', 
+        density: 'Min. 550 - 580 g/L', 
+        color: 'Deep wrinkled charcoal-black, bold uniform berries', 
+        usage: 'Premium gourmet spice mills, boutique single-origin retail, high-potency culinary extracts' 
+      },
+      { 
+        name: 'Kolli Garbled Standard', 
+        code: 'Standard', 
+        size: 'Retained on 4.00 mm screen', 
+        density: 'Min. 525 - 550 g/L', 
+        color: 'Rich black to dark brown, well-dried berries', 
+        usage: 'Artisan seasoning blends, commercial spice repackers, butcher & meat curing formulations' 
+      },
+      { 
+        name: 'Kolli Whole Extraction Grade', 
+        code: 'Extraction', 
+        size: 'Retained on 3.25 mm - 3.75 mm screen', 
+        density: 'Min. 500 g/L', 
+        color: 'Natural black, uniform machine-cleaned peppercorns', 
+        usage: 'High-yield piperine solvent extraction, pharmaceutical raw material, industrial grinding' 
+      }
     ],
     technicalSpecs: {
-      moisture: 'Max 10.5% (Dean-Stark method)',
-      piperineContent: '5.2% to 6.8% (HPLC verified - naturally high)',
-      volatileOil: 'Min 2.8% to 3.5% v/w',
-      bulkDensityGL: '520 - 580 g/L guaranteed',
-      extraneousMatter: 'Max 0.25% (Sortex & magnetic cleaned)',
-      aflatoxins: 'B1 < 2 ppb, Total < 4 ppb (EU compliant)',
-      cultivation: 'Rainfed shade-grown on natural silver oak standards without chemical ripeners'
+      moisture: 'Max 10.5% - 11.0% (Toluene Distillation Method - ASTA 2.0 / ISO 939)',
+      piperineContent: 'Min 5.0% to 6.2%+ (HPLC Method - ASTA 7.0 / ISO 5564; naturally elevated)',
+      volatileOil: 'Min 2.5% to 3.5% v/w (Steam Distillation - ISO 6571)',
+      bulkDensity: '500 g/L to 580+ g/L (Grade calibrated)',
+      extraneousMatter: 'Sortex Cleaned: Max 0.25% w/w (Nil glass/metal) | Machine Garbled: Max 0.50% w/w',
+      lightBerries: 'Max 1.0% (Bold Grade) | Max 2.0% (Standard Grade)',
+      pinheads: 'Max 0.5% (Garbled grades)',
+      nvee: 'Min 6.5% (Non-Volatile Ether Extract)',
+      totalAsh: 'Max 7.0%',
+      acidInsolubleAsh: 'Max 1.0%',
+      aflatoxins: 'B1 < 5 ppb | Total Aflatoxins (B1+B2+G1+G2) < 10 ppb (EU Regulation 2023/915)',
+      ochratoxinA: '< 15 µg/kg (EU compliant)',
+      microbialStandards: 'Salmonella: Absent in 25g x 5 samples | E. coli: < 10 CFU/g',
+      etoIrradiation: '100% Free of ETO and 2-Chloroethanol (< 0.05 mg/kg limit); Non-irradiated'
     },
     packagingOptions: [
-      '25 kg / 50 kg PP Woven Bags with Inner Polyliner',
-      '10 kg / 25 kg Multi-layer Kraft Paper Bags for boutique importers',
-      'Custom vacuum pouches for gourmet private labels'
+      'Commercial Bulk Bags: 25 kg / 50 kg heavy-duty virgin PP woven sacks with heat-sealed food-grade inner LDPE liner.',
+      'Natural Fiber Bags: 25 kg / 50 kg multi-ply natural jute gunny bags with food-grade protective inner liners.',
+      'Boutique Multi-Layer Bags: 10 kg / 25 kg food-grade kraft paper bags with moisture-barrier foil laminate for specialty roasters and importers.',
+      'Retail & Foodservice OEM: 100g, 250g, 500g nitrogen-flushed stand-up barrier pouches, composite cans, or grinder jars with private-label brand printing.'
     ],
     shippingInfo: {
-      minimumOrder: '1 MT (LCL/Air) / 10 MT (FCL)',
-      containerCapacity: '20ft FCL: approx 15 MT | 40ft FCL: approx 26 MT',
-      gatewayPorts: 'Tuticorin VOC Port (TUT), Chennai Sea Port (MAA)',
-      hsCode: '0904.11.10'
+      minimumOrder: '500 kg - 1,000 kg (Air) | 2,000 kg - 5,000 kg (LCL) | 15 MT (Ocean FCL)',
+      containerCapacity: '20ft FCL: ~15.0 - 16.5 MT (Floor-Loaded) / ~12.5 - 13.5 MT (Palletized) | 40ft FCL: ~26.0 - 27.0 MT',
+      containerStuffingBreakdown: {
+        fcl20: [
+          'Floor-Loaded / Loose PP or Jute Bags: ~15.0 - 16.5 MT',
+          'Palletized & Shrink-Wrapped: ~12.5 - 13.5 MT'
+        ],
+        fcl40: [
+          'Floor-Loaded: ~26.0 - 27.0 MT (subject to gross weight road regulations)'
+        ]
+      },
+      gatewayPorts: 'Tuticorin VOC Port (TUT) / Chennai Port (MAA) / Cochin Port (COK)',
+      airTerminals: 'Tiruchirappalli (TRZ) / Coimbatore (CJB) / Chennai (MAA)',
+      hsCode: '0904 11 10 (Garbled) | 0904 11 20 (Ungarbled)'
     }
   },
   {
