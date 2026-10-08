@@ -159,7 +159,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
                   Our Vision
                 </h3>
                 <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-                  To be globally recognized as South India’s premier and most transparent merchant export partner—connecting international markets with pristine, origin-certified spices, export-grade custom textiles, and authentic heritage handicrafts while championing grower welfare, environmental integrity, and uncompromising international regulatory benchmarks.
+                  To be the benchmark export partner bridging South India and the world—delivering origin-certified spices, custom textiles, and authentic heritage handicrafts through radical transparency, ethical sourcing, and uncompromising international compliance.
                 </p>
               </div>
 
@@ -182,7 +182,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
                   Our Mission
                 </h3>
                 <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-                  To empower global importers, institutional repackers, and corporate brands with direct farm-gate and mill-floor traceability, standardized laboratory-tested grading, zero-chemical processing, and seamless containerized port logistics, ensuring unwavering consistency, honest pricing, and contractual dependability in every export consignment.
+                  To empower global importers, institutional repackers, and enterprise brands with direct-origin traceability, lab-verified purity, and seamless port-to-port logistics—delivering unwavering quality, transparent pricing, and contractual dependability in every consignment.
                 </p>
               </div>
 

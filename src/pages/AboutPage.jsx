@@ -60,16 +60,26 @@ export default function AboutPage({ onOpenRfq }) {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-white aspect-square">
-              <img 
-                src="./assets/images/competencies-collage.jpg" 
-                alt="Kavri Exim Core Competencies: Spices, Textiles, and Heritage Handicrafts"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/95 backdrop-blur-md rounded-xl border border-slate-200 shadow-md">
-                <span className="text-xs text-[#0D522F] font-mono font-bold block">Integrated Export Divisions</span>
-                <span className="text-sm font-bold text-slate-900">Spices • Textiles & Garments • Heritage Handicrafts</span>
+            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-white">
+              <div className="aspect-square overflow-hidden bg-slate-100">
+                <img 
+                  src="./assets/images/competencies-collage.jpg" 
+                  alt="Kavri Exim Core Competencies: Spices, Textiles, and Heritage Handicrafts"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4 sm:p-5 bg-white border-t border-slate-100 flex items-center justify-between gap-3">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[#0D522F] uppercase tracking-wider block">
+                    Integrated Export Divisions
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold text-slate-900 block mt-0.5">
+                    Spices • Textiles & Garments • Heritage Handicrafts
+                  </span>
+                </div>
+                <span className="text-[10px] bg-emerald-50 text-[#0D522F] border border-emerald-200 font-bold px-2.5 py-1 rounded-full whitespace-nowrap hidden sm:inline-block">
+                  Direct Origin
+                </span>
               </div>
             </div>
           </div>
@@ -101,7 +111,7 @@ export default function AboutPage({ onOpenRfq }) {
                   Our Vision
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  To be globally recognized as South India’s premier and most transparent merchant export partner—connecting international markets with pristine, origin-certified spices, export-grade custom textiles, and authentic heritage handicrafts while championing grower welfare, environmental integrity, and uncompromising international regulatory benchmarks.
+                  To be the benchmark export partner bridging South India and the world—delivering origin-certified spices, custom textiles, and authentic heritage handicrafts through radical transparency, ethical sourcing, and uncompromising international compliance.
                 </p>
               </div>
               <div className="pt-6 mt-6 border-t border-slate-100 flex items-center space-x-2 text-xs font-bold text-[#0D522F]">
@@ -123,7 +133,7 @@ export default function AboutPage({ onOpenRfq }) {
                   Our Mission
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  To empower global importers, institutional repackers, and corporate brands with direct farm-gate and mill-floor traceability, standardized laboratory-tested grading, zero-chemical processing, and seamless containerized port logistics, ensuring unwavering consistency, honest pricing, and contractual dependability in every export consignment.
+                  To empower global importers, institutional repackers, and enterprise brands with direct-origin traceability, lab-verified purity, and seamless port-to-port logistics—delivering unwavering quality, transparent pricing, and contractual dependability in every consignment.
                 </p>
               </div>
               <div className="pt-6 mt-6 border-t border-slate-100 flex items-center space-x-2 text-xs font-bold text-[#0D522F]">
