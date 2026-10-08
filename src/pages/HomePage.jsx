@@ -92,8 +92,8 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
             <div className="lg:col-span-5">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-white">
                 <img 
-                  src="./assets/images/hero-spices.jpg" 
-                  alt="Kavri Exim Multi-Commodity Export Line" 
+                  src="./assets/images/maritime-container-ship.jpg" 
+                  alt="Kavri Exim Maritime Container Trade & Ocean Logistics" 
                   className="w-full h-80 object-cover object-center"
                 />
                 <div className="p-5 bg-white border-t border-slate-100 space-y-3">

@@ -62,14 +62,14 @@ export default function AboutPage({ onOpenRfq }) {
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-white aspect-square">
               <img 
-                src="./assets/images/hero-spices.jpg" 
-                alt="South Indian Export Heritage"
+                src="./assets/images/competencies-collage.jpg" 
+                alt="Kavri Exim Core Competencies: Spices, Textiles, and Heritage Handicrafts"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/95 backdrop-blur-md rounded-xl border border-slate-200 shadow-md">
-                <span className="text-xs text-[#0D522F] font-mono font-bold block">Direct Origin Networks</span>
-                <span className="text-sm font-bold text-slate-900">Verified Sourcing Across Tamil Nadu & Kerala</span>
+                <span className="text-xs text-[#0D522F] font-mono font-bold block">Integrated Export Divisions</span>
+                <span className="text-sm font-bold text-slate-900">Spices • Textiles & Garments • Heritage Handicrafts</span>
               </div>
             </div>
           </div>

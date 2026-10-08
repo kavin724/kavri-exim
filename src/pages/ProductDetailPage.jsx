@@ -155,9 +155,17 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
   const [inquiryName, setInquiryName] = useState('');
   const [inquiryCompany, setInquiryCompany] = useState('');
   const [inquiryEmail, setInquiryEmail] = useState('');
-  const [inquiryPhone, setInquiryPhone] = useState('');
   const [inquiryPort, setInquiryPort] = useState('');
   const [inquirySubmitted, setInquirySubmitted] = useState(false);
+
+  const categoryNames = {
+    spices: 'Spices & Seasonings',
+    textiles: 'Textiles & Garments',
+    handicrafts: 'Heritage Handicrafts'
+  };
+
+  const parentCategoryRoute = `products?cat=${product.category || 'all'}`;
+  const parentCategoryName = categoryNames[product.category] || 'Dedicated Catalog';
 
   const navigateTo = (route, e) => {
     if (e) e.preventDefault();
@@ -180,11 +188,11 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
         <div className="mb-6 flex items-center justify-between">
           <button
             type="button"
-            onClick={(e) => navigateTo('products', e)}
-            className="text-xs sm:text-sm text-slate-600 hover:text-[#0D522F] flex items-center gap-1.5 transition-colors cursor-pointer font-bold"
+            onClick={(e) => navigateTo(parentCategoryRoute, e)}
+            className="text-xs sm:text-sm text-slate-600 hover:text-[#0D522F] flex items-center gap-2 transition-colors cursor-pointer font-bold group"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to All Products</span>
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span>Back to {parentCategoryName}</span>
           </button>
 
           <span className="text-xs text-[#0D522F] font-mono font-bold">
