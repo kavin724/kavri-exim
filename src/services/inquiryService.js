@@ -1,14 +1,26 @@
 import { FORMS_CONFIG } from '../config/formsConfig';
 
 /**
- * Generates an official export reference ID (e.g., KE-RFQ-2026-4891 or KE-PR-2026-8192)
+ * Generates an official export reference ID starting sequentially at 0001
+ * (e.g., KE-RFQ-2026-0001 or KE-PR-2026-0001)
  * @param {'RFQ' | 'PR' | 'INQ'} prefix 
  * @returns {string}
  */
 export function generateReferenceId(prefix = 'RFQ') {
   const year = new Date().getFullYear();
-  const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-  return `KE-${prefix}-${year}-${randomSuffix}`;
+  let nextSeq = 1;
+  try {
+    if (typeof localStorage !== 'undefined') {
+      const storageKey = `kavri_seq_${prefix}_${year}`;
+      const saved = parseInt(localStorage.getItem(storageKey) || '0', 10);
+      nextSeq = saved + 1;
+      localStorage.setItem(storageKey, String(nextSeq));
+    }
+  } catch (err) {
+    nextSeq = 1;
+  }
+  const padded = String(nextSeq).padStart(4, '0');
+  return `KE-${prefix}-${year}-${padded}`;
 }
 
 /**

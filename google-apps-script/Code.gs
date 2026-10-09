@@ -144,6 +144,9 @@ function recordToGoogleSheet(lead) {
     sheet.setFrozenRows(1);
   }
 
+  // Ensure sequential Reference ID starting from 0001 (e.g. KE-RFQ-2026-0001 or KE-PR-2026-0001)
+  lead.referenceId = resolveSequentialReferenceId(sheet, lead.referenceId, lead.inquiryType);
+
   // Format timestamp for Indian Standard Time
   var formattedDate = Utilities.formatDate(lead.timestamp, "Asia/Kolkata", "yyyy-MM-dd HH:mm:ss 'IST'");
 
@@ -176,6 +179,50 @@ function recordToGoogleSheet(lead) {
       sheet.autoResizeColumn(i);
     }
   }
+}
+
+/**
+ * Resolves sequential Reference ID starting from 0001
+ * Inspects existing rows in the sheet so serial numbers strictly start at 0001
+ * (e.g., KE-RFQ-2026-0001 or KE-PR-2026-0001)
+ */
+function resolveSequentialReferenceId(sheet, requestedId, inquiryType) {
+  var isProforma = (inquiryType && inquiryType.indexOf("Proforma") !== -1) || (requestedId && requestedId.indexOf("KE-PR-") !== -1);
+  var prefix = isProforma ? "KE-PR-" : "KE-RFQ-";
+  var year = new Date().getFullYear();
+  var prefixWithYear = prefix + year + "-";
+
+  var highestSeq = 0;
+  var lastRow = sheet.getLastRow();
+  var existingIds = {};
+
+  if (lastRow > 1) {
+    var values = sheet.getRange(2, 2, lastRow - 1, 1).getValues();
+    for (var i = 0; i < values.length; i++) {
+      var val = String(values[i][0] || "").trim();
+      existingIds[val] = true;
+      if (val.indexOf(prefixWithYear) === 0) {
+        var numStr = val.substring(prefixWithYear.length);
+        var num = parseInt(numStr, 10);
+        if (!isNaN(num) && num > highestSeq) {
+          highestSeq = num;
+        }
+      }
+    }
+  }
+
+  // If requestedId is already in proper format with 4-digit serial and not yet in the sheet, keep it
+  if (requestedId && requestedId.indexOf(prefixWithYear) === 0 && !existingIds[requestedId]) {
+    var reqNum = parseInt(requestedId.substring(prefixWithYear.length), 10);
+    if (!isNaN(reqNum)) {
+      return requestedId;
+    }
+  }
+
+  // Otherwise assign the next serial starting from 0001
+  var nextSeq = highestSeq + 1;
+  var paddedSeq = Utilities.formatString("%04d", nextSeq);
+  return prefixWithYear + paddedSeq;
 }
 
 /**
