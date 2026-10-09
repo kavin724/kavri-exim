@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Search, Download, FileText, ArrowRight, Compass 
+import {
+  Search, Download, FileText, ArrowRight, Compass
 } from 'lucide-react';
 import { PRODUCTS_DATA, COMMODITY_CATEGORIES } from '../data/productsData';
 
@@ -35,7 +35,7 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
   const navigateTo = (route, e) => {
     if (e) e.preventDefault();
     setCurrentRoute(route);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const handleSelectCategory = (catId) => {
@@ -48,8 +48,8 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
   const filteredProducts = PRODUCTS_DATA.filter(prod => {
     const matchesCat = prod.category === selectedCategory;
     const matchesSearch = prod.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          prod.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          prod.grades?.some(g => g.name.toLowerCase().includes(searchQuery.toLowerCase()));
+      prod.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      prod.grades?.some(g => g.name.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCat && matchesSearch;
   });
 
@@ -58,7 +58,7 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Page Header */}
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center space-x-2 bg-emerald-100 border border-emerald-300 px-3.5 py-1 rounded-full text-xs font-bold text-[#0D522F] mb-3">
@@ -75,7 +75,7 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
 
         {/* Filter & Search Bar */}
         <div className="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 mb-10 shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-          
+
           {/* Category Tabs */}
           <div className="flex flex-wrap gap-2">
             {COMMODITY_CATEGORIES.map(cat => (
@@ -83,11 +83,10 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
                 key={cat.id}
                 type="button"
                 onClick={() => handleSelectCategory(cat.id)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                  selectedCategory === cat.id
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${selectedCategory === cat.id
                     ? 'bg-[#0D522F] text-white shadow-md shadow-[#0D522F]/20'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
-                }`}
+                  }`}
               >
                 {cat.name}
               </button>
@@ -111,7 +110,7 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map(prod => (
-            <div 
+            <div
               key={prod.id}
               className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-[#0D522F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group shadow-sm"
             >
@@ -124,9 +123,9 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
                   className="relative w-full h-56 overflow-hidden bg-slate-100 cursor-pointer block text-left group/img focus:outline-none"
                   title={`View Full Technical Specification Page for ${prod.name}`}
                 >
-                  <img 
-                    src={prod.image} 
-                    alt={prod.name} 
+                  <img
+                    src={prod.image}
+                    alt={prod.name}
                     className="w-full h-full object-cover group-hover/img:scale-110 group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-slate-900/0 group-hover/img:bg-slate-900/15 transition-colors pointer-events-none" />
@@ -148,7 +147,7 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
                     <span className="text-[11px] font-mono uppercase tracking-wider text-[#0D522F] font-bold block">
                       {prod.origin}
                     </span>
-                    <h3 
+                    <h3
                       onClick={(e) => navigateTo(`product-${prod.slug}`, e)}
                       className="text-xl font-bold text-slate-900 group-hover:text-[#0D522F] transition-colors cursor-pointer"
                     >

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ShieldCheck, FileText, Lock, EyeOff, Award, 
-  AlertTriangle, Scale, CheckCircle2, ChevronRight, Mail 
+import {
+  ShieldCheck, FileText, Lock, EyeOff, Award,
+  AlertTriangle, Scale, CheckCircle2, ChevronRight, Mail
 } from 'lucide-react';
 
 export default function LegalTermsPage({ initialTab = 'privacy' }) {
@@ -9,13 +9,13 @@ export default function LegalTermsPage({ initialTab = 'privacy' }) {
 
   useEffect(() => {
     setActiveTab(initialTab);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [initialTab]);
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen py-10 sm:py-14">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Page Header */}
         <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 mb-8 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-6 mb-6">
@@ -36,11 +36,10 @@ export default function LegalTermsPage({ initialTab = 'privacy' }) {
               <button
                 type="button"
                 onClick={() => setActiveTab('privacy')}
-                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
-                  activeTab === 'privacy' 
-                    ? 'bg-[#0D522F] text-white shadow-sm' 
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${activeTab === 'privacy'
+                    ? 'bg-[#0D522F] text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
-                }`}
+                  }`}
               >
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>Privacy Policy</span>
@@ -48,11 +47,10 @@ export default function LegalTermsPage({ initialTab = 'privacy' }) {
               <button
                 type="button"
                 onClick={() => setActiveTab('terms')}
-                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
-                  activeTab === 'terms' 
-                    ? 'bg-[#0D522F] text-white shadow-sm' 
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${activeTab === 'terms'
+                    ? 'bg-[#0D522F] text-white shadow-sm'
                     : 'text-slate-600 hover:text-slate-900'
-                }`}
+                  }`}
               >
                 <FileText className="w-3.5 h-3.5" />
                 <span>Terms & Conditions / Disclaimers</span>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Menu, X, ChevronDown, ShieldCheck, 
-  Truck, Building2, PhoneCall, FileText, ArrowRight 
+import {
+  Menu, X, ChevronDown, ShieldCheck,
+  Truck, Building2, PhoneCall, FileText, ArrowRight
 } from 'lucide-react';
 
 export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
@@ -22,13 +22,13 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
     setCurrentRoute(route);
     setIsMobileMenuOpen(false);
     setIsProductsDropdownOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const navLinks = [
     { label: 'Home', route: 'home' },
-    { 
-      label: 'Products', 
+    {
+      label: 'Products',
       route: 'products?cat=spices',
       hasDropdown: true,
       subItems: [
@@ -44,22 +44,21 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
   ];
 
   return (
-    <header className={`sticky top-0 z-40 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2.5 border-b border-slate-200' : 'bg-white py-3.5 border-b border-slate-200'
-    }`}>
+    <header className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-2.5 border-b border-slate-200' : 'bg-white py-3.5 border-b border-slate-200'
+      }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          
+
           {/* Brand Logo Display: Official High-Definition Logo */}
-          <button 
+          <button
             type="button"
             onClick={(e) => navigateTo('home', e)}
             className="flex items-center group text-left cursor-pointer focus:outline-none"
             aria-label="Kavri Exim Home"
           >
-            <img 
-              src="./assets/images/kavri_logo_transparent.png" 
-              alt="Kavri Exim — International Merchant Exporters" 
+            <img
+              src="./assets/images/kavri_logo_transparent.png"
+              alt="Kavri Exim — International Merchant Exporters"
               className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-95 transition-opacity"
             />
           </button>
@@ -69,7 +68,7 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
             {navLinks.map((link) => {
               if (link.hasDropdown) {
                 return (
-                  <div 
+                  <div
                     key={link.label}
                     className="relative"
                     onMouseEnter={() => setIsProductsDropdownOpen(true)}
@@ -78,11 +77,10 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
                     <button
                       type="button"
                       onClick={(e) => navigateTo(link.route, e)}
-                      className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center space-x-1 cursor-pointer ${
-                        currentRoute.startsWith('product') 
-                          ? 'text-[#0D522F] bg-emerald-50' 
+                      className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center space-x-1 cursor-pointer ${currentRoute.startsWith('product')
+                          ? 'text-[#0D522F] bg-emerald-50'
                           : 'text-slate-700 hover:text-[#0D522F] hover:bg-slate-50'
-                      }`}
+                        }`}
                       aria-expanded={isProductsDropdownOpen}
                       aria-haspopup="true"
                     >
@@ -126,11 +124,10 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
                   key={link.label}
                   type="button"
                   onClick={(e) => navigateTo(link.route, e)}
-                  className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${
-                    isActive 
-                      ? 'text-[#0D522F] bg-emerald-50' 
+                  className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${isActive
+                      ? 'text-[#0D522F] bg-emerald-50'
                       : 'text-slate-700 hover:text-[#0D522F] hover:bg-slate-50'
-                  }`}
+                    }`}
                 >
                   {link.label}
                 </button>
@@ -182,9 +179,8 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
                 key={link.label}
                 type="button"
                 onClick={(e) => navigateTo(link.route, e)}
-                className={`w-full text-left px-3.5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
-                  currentRoute === link.route ? 'bg-emerald-50 text-[#0D522F]' : 'text-slate-700 hover:bg-slate-50'
-                }`}
+                className={`w-full text-left px-3.5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${currentRoute === link.route ? 'bg-emerald-50 text-[#0D522F]' : 'text-slate-700 hover:bg-slate-50'
+                  }`}
               >
                 {link.label}
               </button>

@@ -1,31 +1,83 @@
 import React from 'react';
-import { 
-  ArrowRight, ShieldCheck, Compass, Target, 
+import {
+  ArrowRight, ShieldCheck, Compass, Target,
   FileText, CheckCircle2, Award, Sparkles
 } from 'lucide-react';
+
+const CORE_COMPETENCIES = [
+  {
+    id: 'spices',
+    route: 'products?cat=spices',
+    division: 'Division 01',
+    boardCode: 'Spices Board of India CRES',
+    title: 'Spices & Seasonings',
+    image: './assets/images/hero-spices.jpg',
+    imageAlt: 'Spices and Seasonings',
+    description: 'Direct origin sourcing from Western Ghats and Kaveri basin plantations. Fully cleaned, destoned, Sortex-graded, and free from synthetic dyes or chemical adulteration.',
+    keyProducts: [
+      'Alleppey Green Cardamom (8mm+ Extra Bold AGEB)',
+      'Tellicherry & Kolli High-Piperine Black Pepper',
+      'GI Erode & Salem Turmeric Fingers & Ground Powder'
+    ],
+    buttonText: 'Enter Spices Dedicated Catalog'
+  },
+  {
+    id: 'textiles',
+    route: 'products?cat=textiles',
+    division: 'Division 02',
+    boardCode: 'Tirupur & Karur Manufacturing Hubs',
+    title: 'Textiles & Garments',
+    image: './assets/images/tshirts.jpg',
+    imageAlt: 'Textiles & Garments',
+    description: "Custom OEM manufacturing in India's textile heartlands. High color fastness, Oeko-Tex compliant dyes, premium ring-spun cotton, and global retail packaging.",
+    keyProducts: [
+      'Export-Grade Combed Cotton T-Shirts (OEM / Custom GSM)',
+      '400 - 650 GSM Premium Terry Bath & Hand Towels',
+      '300 - 600 TC Luxury Cotton Bedsheets & Home Linens'
+    ],
+    buttonText: 'Enter Textiles Dedicated Catalog'
+  },
+  {
+    id: 'handicrafts',
+    route: 'products?cat=handicrafts',
+    division: 'Division 03',
+    boardCode: 'Heritage Artisan Clusters',
+    title: 'Heritage Handicrafts',
+    image: './assets/images/handicrafts.jpg',
+    imageAlt: 'Indian Heritage Handicrafts',
+    description: "Preserving South India's millennia-old artisan traditions. Authentic lost-wax brass castings, hand-carved natural woods, and kiln-fired architectural terracotta artefacts.",
+    keyProducts: [
+      'Traditional Brass Idols, Urli Bowls & Temple Diya Lamps',
+      'Hand-Carved Teakwood Decorative Panels & Relief Crafts',
+      'Architectural Terracotta Pottery & Indoor/Outdoor Planters'
+    ],
+    buttonText: 'Enter Handicrafts Dedicated Catalog'
+  }
+];
 
 export default function HomePage({ setCurrentRoute, onOpenRfq }) {
   const navigateTo = (route, e) => {
     if (e) e.preventDefault();
     setCurrentRoute(route);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
+
 
   return (
     <div className="bg-white text-slate-800">
-      
+
       {/* 1. HERO SECTION & SHORT INTRO ABOUT THE COMPANY */}
       <section className="relative min-h-[75vh] flex items-center bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-200 overflow-hidden py-14 lg:py-20">
-        
+
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#0D522F_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left Column: Company Intro & Positioning */}
             <div className="lg:col-span-7 space-y-6">
-              
+
               {/* Origin Chip */}
               <div className="inline-flex items-center space-x-2 bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0D522F] shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#0D522F] animate-pulse"></span>
@@ -91,9 +143,9 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
             {/* Right Column: Visual Feature Banner */}
             <div className="lg:col-span-5">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-white">
-                <img 
-                  src="./assets/images/maritime-container-ship.jpg" 
-                  alt="Kavri Exim Maritime Container Trade & Ocean Logistics" 
+                <img
+                  src="./assets/images/maritime-container-ship.jpg"
+                  alt="Kavri Exim Maritime Container Trade & Ocean Logistics"
                   className="w-full h-80 object-cover object-center"
                 />
                 <div className="p-5 bg-white border-t border-slate-100 space-y-3">
@@ -131,7 +183,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
       {/* 2. OUR VISION & OUR MISSION SECTION */}
       <section className="py-16 sm:py-20 bg-slate-50/70 border-b border-slate-200 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-[#0D522F] font-mono block mb-2">
               Corporate Direction & Values
@@ -145,7 +197,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-            
+
             {/* OUR VISION CARD */}
             <div className="bg-white border-2 border-emerald-200/80 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between group">
               <div>
@@ -197,10 +249,10 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
         </div>
       </section>
 
-      {/* 3. OUR CORE COMPETENCIES SECTION (Interactive 3 Product Lines with Popping Hover Animation) */}
+      {/* 3. OUR CORE COMPETENCIES SECTION (Direct Instant Product Line Navigation) */}
       <section id="core-competencies" className="py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center space-x-2 bg-emerald-100 border border-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0D522F] mb-3">
               <Sparkles className="w-3.5 h-3.5" />
@@ -214,206 +266,69 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
             </p>
           </div>
 
+          {/* Competencies 3-Column Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10">
-            
-            {/* COMPETENCY CARD 1: SPICES & SEASONINGS */}
-            <div 
-              onClick={(e) => navigateTo('products?cat=spices', e)}
-              className="group relative bg-white border-2 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#0D522F] transform hover:-translate-y-3 hover:scale-[1.025] transition-all duration-300 ease-out cursor-pointer flex flex-col justify-between"
-            >
-              <div>
-                {/* Image Banner */}
-                <div className="relative h-64 overflow-hidden bg-slate-100">
-                  <img 
-                    src="./assets/images/hero-spices.jpg" 
-                    alt="Spices and Seasonings" 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-                  
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#0D522F] border border-emerald-200 shadow-sm">
-                    Division 01
+            {CORE_COMPETENCIES.map((competency) => (
+              <div
+                key={competency.id}
+                onClick={(e) => navigateTo(competency.route, e)}
+                className="group relative bg-white border-2 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#0D522F] cursor-pointer flex flex-col justify-between"
+              >
+                <div>
+                  {/* Image Banner */}
+                  <div className="relative h-64 overflow-hidden bg-slate-100">
+                    <img
+                      src={competency.image}
+                      alt={competency.imageAlt}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+
+                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#0D522F] border border-emerald-200 shadow-sm">
+                      {competency.division}
+                    </div>
+
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="text-amber-300 text-xs font-bold uppercase tracking-wider block font-mono">
+                        {competency.boardCode}
+                      </span>
+                      <h3 className="text-2xl font-black text-white font-['Plus_Jakarta_Sans']">
+                        {competency.title}
+                      </h3>
+                    </div>
                   </div>
 
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="text-amber-300 text-xs font-bold uppercase tracking-wider block font-mono">
-                      Spices Board of India CRES
-                    </span>
-                    <h3 className="text-2xl font-black text-white font-['Plus_Jakarta_Sans']">
-                      Spices & Seasonings
-                    </h3>
-                  </div>
-                </div>
+                  {/* Content */}
+                  <div className="p-6 sm:p-7 space-y-4">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      {competency.description}
+                    </p>
 
-                {/* Content */}
-                <div className="p-6 sm:p-7 space-y-4">
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Direct origin sourcing from Western Ghats and Kaveri basin plantations. Fully cleaned, destoned, Sortex-graded, and free from synthetic dyes or chemical adulteration.
-                  </p>
-
-                  <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
-                      Key Standardized Products:
-                    </span>
-                    <ul className="text-xs text-slate-700 space-y-1.5 font-medium">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
-                        <span>Alleppey Green Cardamom (8mm+ Extra Bold AGEB)</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
-                        <span>Tellicherry & Kolli High-Piperine Black Pepper</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
-                        <span>GI Erode & Salem Turmeric Fingers & Ground Powder</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Footer */}
-              <div className="p-6 sm:p-7 pt-0">
-                <div className="w-full bg-[#0D522F] group-hover:bg-[#083820] text-white font-bold py-3.5 px-5 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition-all">
-                  <span>Enter Spices Dedicated Catalog</span>
-                  <ArrowRight className="w-4 h-4 text-amber-300 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </div>
-
-            {/* COMPETENCY CARD 2: TEXTILES & GARMENTS */}
-            <div 
-              onClick={(e) => navigateTo('products?cat=textiles', e)}
-              className="group relative bg-white border-2 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#0D522F] transform hover:-translate-y-3 hover:scale-[1.025] transition-all duration-300 ease-out cursor-pointer flex flex-col justify-between"
-            >
-              <div>
-                {/* Image Banner */}
-                <div className="relative h-64 overflow-hidden bg-slate-100">
-                  <img 
-                    src="./assets/images/tshirts.jpg" 
-                    alt="Textiles & Garments" 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-                  
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#0D522F] border border-emerald-200 shadow-sm">
-                    Division 02
-                  </div>
-
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="text-amber-300 text-xs font-bold uppercase tracking-wider block font-mono">
-                      Tirupur & Karur Manufacturing Hubs
-                    </span>
-                    <h3 className="text-2xl font-black text-white font-['Plus_Jakarta_Sans']">
-                      Textiles & Garments
-                    </h3>
+                    <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
+                        Key Standardized Products:
+                      </span>
+                      <ul className="text-xs text-slate-700 space-y-1.5 font-medium">
+                        {competency.keyProducts.map((prod, idx) => (
+                          <li key={idx} className="flex items-center gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
+                            <span>{prod}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6 sm:p-7 space-y-4">
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Custom OEM manufacturing in India's textile heartlands. High color fastness, Oeko-Tex compliant dyes, premium ring-spun cotton, and global retail packaging.
-                  </p>
-
-                  <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
-                      Key Standardized Products:
-                    </span>
-                    <ul className="text-xs text-slate-700 space-y-1.5 font-medium">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
-                        <span>Export-Grade Combed Cotton T-Shirts (OEM / Custom GSM)</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
-                        <span>400 - 650 GSM Premium Terry Bath & Hand Towels</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
-                        <span>300 - 600 TC Luxury Cotton Bedsheets & Home Linens</span>
-                      </li>
-                    </ul>
+                {/* Action Footer */}
+                <div className="p-6 sm:p-7 pt-0">
+                  <div className="w-full bg-[#0D522F] group-hover:bg-[#083820] text-white font-bold py-3.5 px-5 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md">
+                    <span>{competency.buttonText}</span>
+                    <ArrowRight className="w-4 h-4 text-amber-300" />
                   </div>
                 </div>
               </div>
-
-              {/* Action Footer */}
-              <div className="p-6 sm:p-7 pt-0">
-                <div className="w-full bg-[#0D522F] group-hover:bg-[#083820] text-white font-bold py-3.5 px-5 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition-all">
-                  <span>Enter Textiles Dedicated Catalog</span>
-                  <ArrowRight className="w-4 h-4 text-amber-300 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </div>
-
-            {/* COMPETENCY CARD 3: INDIAN HERITAGE HANDICRAFTS */}
-            <div 
-              onClick={(e) => navigateTo('products?cat=handicrafts', e)}
-              className="group relative bg-white border-2 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:border-[#0D522F] transform hover:-translate-y-3 hover:scale-[1.025] transition-all duration-300 ease-out cursor-pointer flex flex-col justify-between"
-            >
-              <div>
-                {/* Image Banner */}
-                <div className="relative h-64 overflow-hidden bg-slate-100">
-                  <img 
-                    src="./assets/images/handicrafts.jpg" 
-                    alt="Indian Heritage Handicrafts" 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-                  
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#0D522F] border border-emerald-200 shadow-sm">
-                    Division 03
-                  </div>
-
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="text-amber-300 text-xs font-bold uppercase tracking-wider block font-mono">
-                      Heritage Artisan Clusters
-                    </span>
-                    <h3 className="text-2xl font-black text-white font-['Plus_Jakarta_Sans']">
-                      Heritage Handicrafts
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 sm:p-7 space-y-4">
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Preserving South India's millennia-old artisan traditions. Authentic lost-wax brass castings, hand-carved natural woods, and kiln-fired architectural terracotta artefacts.
-                  </p>
-
-                  <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
-                      Key Standardized Products:
-                    </span>
-                    <ul className="text-xs text-slate-700 space-y-1.5 font-medium">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
-                        <span>Traditional Brass Idols, Urli Bowls & Temple Diya Lamps</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
-                        <span>Hand-Carved Teakwood Decorative Panels & Relief Crafts</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F] flex-shrink-0" />
-                        <span>Architectural Terracotta Pottery & Indoor/Outdoor Planters</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Footer */}
-              <div className="p-6 sm:p-7 pt-0">
-                <div className="w-full bg-[#0D522F] group-hover:bg-[#083820] text-white font-bold py-3.5 px-5 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition-all">
-                  <span>Enter Handicrafts Dedicated Catalog</span>
-                  <ArrowRight className="w-4 h-4 text-amber-300 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </div>
-
+            ))}
           </div>
 
         </div>
@@ -422,7 +337,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
       {/* 4. STATUTORY EXPORT ACCREDITATIONS & TRANSPARENCY SECTION */}
       <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-[#0D522F] font-mono block mb-2">
               Government Accreditation & Compliance
@@ -437,7 +352,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
 
           {/* Accreditations Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            
+
             <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-2.5">
               <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0D522F] flex items-center justify-center font-bold">
                 <ShieldCheck className="w-5 h-5" />

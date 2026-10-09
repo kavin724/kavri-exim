@@ -1,13 +1,13 @@
 import React from 'react';
-import { 
-  Mail, MapPin, Anchor, MessageCircle 
+import {
+  Mail, MapPin, Anchor, MessageCircle
 } from 'lucide-react';
 
 export default function Footer({ setCurrentRoute, onOpenRfq }) {
   const navigateTo = (route, e) => {
     if (e) e.preventDefault();
     setCurrentRoute(route);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   return (
@@ -17,13 +17,13 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
       {/* Main Footer Directory */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          
+
           {/* Col 1 & 2: Entity & Logo */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
-              <img 
-                src="./assets/images/kavri_logo_transparent.png" 
-                alt="Kavri Exim" 
+              <img
+                src="./assets/images/kavri_logo_transparent.png"
+                alt="Kavri Exim"
                 className="h-10 w-auto object-contain"
               />
             </div>
@@ -182,7 +182,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               <span className="font-bold text-[#0D522F] block sm:inline mr-2">
                 Legal Entity Transparency Notice:
               </span>
-              Kavri Exim is the international trading portal operated by <strong className="text-slate-900">Kavri Spice Exim</strong>, an Indian merchant exporter founded in Erode, Tamil Nadu. 
+              Kavri Exim is the international trading portal operated by <strong className="text-slate-900">Kavri Spice Exim</strong>, an Indian merchant exporter founded in Erode, Tamil Nadu.
               <span className="block mt-1 font-mono text-[11px] text-slate-500">
                 IEC: ANNPR0870K | GSTIN: 33ANNPR0870K1ZM | Spices Board CRES: [CRES-NUMBER]
               </span>

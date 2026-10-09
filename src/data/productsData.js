@@ -523,191 +523,410 @@ export const PRODUCTS_DATA = [
   {
     id: 't-shirts',
     slug: 't-shirts',
-    name: 'Custom Export Cotton T-Shirts',
-    botanicalName: '100% Combed Cotton / Ring-Spun Cotton Knit',
+    name: 'Custom Export Cotton T-Shirts & Corporate Polos (OEM / Private Label)',
+    botanicalName: '100% Combed Compact Ring-Spun Cotton | Single Jersey & Piqué Knit',
     category: 'textiles',
     division: 'Textiles & Garments',
-    tag: 'Customizable | OEM Export',
-    origin: 'Tirupur (Knitwear Capital of India), Tamil Nadu',
+    tag: 'OEM / Private Label | AEPC Registered | OEKO-TEX Standard 100',
+    origin: 'Tirupur Knitwear Cluster, Tamil Nadu, India',
+    compliance: 'AEPC Registered | OEKO-TEX Standard 100 Certified Dyes | EU REACH Compliant',
     image: './assets/images/tshirts.jpg',
-    shortDesc: 'Manufactured in the world-renowned textile cluster of Tirupur, Tamil Nadu. 100% combed cotton, bio-washed, single jersey t-shirts with OEKO-TEX certified reactive dyeing. Completely customizable in GSM, silhouette, printing, and private label branding.',
-    hsnCode: '6109 10 00',
+    shortDesc: 'Manufactured directly within India’s knitwear hub in Tirupur, Tamil Nadu. Engineered from long-staple compact combed cotton, pre-shrunk, and bio-polished with eco-friendly enzymatic washes to eliminate pilling and deliver a soft hand-feel. Fully customizable across fabric GSM, yarn counts, international sizing specifications (US/EU/Asian fits), Pantone reactive dyeing, screen/rotary/DTG printing, and complete private-label retail trims.',
+    hsnCode: '6109 10 00 (T-Shirts, Singlets & Other Vests, Knitted or Crocheted: Of Cotton)',
     grades: [
-      { name: '300 - 320 GSM Uniform Polo T-Shirt for Corporate Needs', size: 'XS to 5XL / Custom Specs', density: '300 - 320 GSM Heavyweight Pique Knit', color: 'Pantone reactive dyed / Solid & Contrast collars', usage: 'Corporate uniforms, institutional workwear, executive branded merchandise' },
-      { name: '180 GSM Heavyweight Streetwear Tee', size: 'XS to 5XL / Custom specs', density: '180 - 200 GSM Single Jersey', color: 'Pantone matched reactive dyed', usage: 'Boutique streetwear, US/EU premium casualwear brands' },
-      { name: '160 GSM Bio-Washed Retail Crewneck', size: 'Custom European / US fit', density: '160 GSM Combed Ring Spun', color: 'Azo-free solid colors & melanges', usage: 'Department store private label, corporate uniforms' },
-      { name: 'Super Combed Lightweight Casual Tee', size: 'Custom sizing chart', density: '150 - 170 GSM 100% Cotton', color: 'Reactive dyed solid shades & pastels', usage: 'High-volume international apparel retail chains' }
+      {
+        name: 'Corporate Uniform Polo Shirt',
+        size: 'XS to 5XL / Custom Specs',
+        density: '280 - 320 GSM Double Piqué / Honeycomb',
+        color: '2/20s or 2/24s Two-Ply Combed Cotton; Pantone reactive dyed; solid & contrast jacquard collars',
+        usage: 'Corporate uniforms, institutional workwear, executive branded merchandise'
+      },
+      {
+        name: 'Heavyweight Streetwear Tee',
+        size: 'XS to 5XL / Drop-shoulder oversized fit',
+        density: '220 - 240 GSM Heavy Single Jersey',
+        color: '16s or 20s Super Combed Ring-Spun Cotton; Pantone matched reactive dyed; vintage wash options',
+        usage: 'Boutique streetwear brands, US/EU premium casualwear lines'
+      },
+      {
+        name: 'Retail Bio-Washed Crewneck',
+        size: 'European / US regular & slim fit',
+        density: '180 - 200 GSM Single Jersey',
+        color: '24s or 30s Compact Combed Cotton; Azo-free solid colors, yarn-dyed stripes, & heather melanges',
+        usage: 'Department store private labels, retail brands, promotional merchandise'
+      },
+      {
+        name: 'Super Combed Lightweight Tee',
+        size: 'Standard international sizing chart',
+        density: '140 - 160 GSM Single Jersey',
+        color: '34s or 40s Ultra-Fine Combed Cotton; Reactive dyed vibrant solids & pastel shades',
+        usage: 'High-volume retail chains, layering basics, innerwear programs'
+      }
     ],
     technicalSpecs: {
-      fabricComposition: '100% Combed Compact Ring Spun Cotton / Cotton-Elastane (95/5) / Poly-Cotton',
-      yarnCount: '24s, 30s, or 34s Super Combed Yarn',
-      fabricWeightGSM: '140 GSM to 320 GSM (Lightweight tees to 320 GSM corporate polo uniforms)',
-      finishing: 'Silicone Softener + Bio-Polishing (Anti-pilling finish)',
-      shrinkageTolerance: 'Max 4% to 5% (AATCC 135 wash protocol)',
-      colorFastnessWashing: 'Grade 4-5 (ISO 105-C06)',
-      colorFastnessRubbing: 'Dry: Grade 4-5 | Wet: Grade 3-4 (ISO 105-X12)',
-      dyesAndChemicals: 'OEKO-TEX Standard 100 & REACH compliant, Zero Azo dyes'
+      fabricComposition: '100% Combed Compact Ring-Spun Cotton | Optional blends: Cotton-Elastane (95/5 Spandex), Poly-Cotton CVC (60/40 or 50/50)',
+      yarnCountCalibration: '140 - 160 GSM: 34s/40s Super Combed | 180 - 200 GSM: 24s/30s Compact | 220 - 240 GSM: 16s/20s Heavy | 280 - 320 GSM: 2/20s or 2/24s Two-Ply (Piqué)',
+      fabricFinishing: 'Enzymatic Bio-Polishing (Anti-pilling) + Silicone Softener; Pre-shrunk Stenter Finish',
+      dimensionalStability: 'Max 4.0% to 5.0% Length & Width (AATCC 135 / ISO 6330 Wash Cycles)',
+      torquingSpirality: 'Max 3.0% post-wash (ISO 16322)',
+      colorFastnessWashing: 'Grade 4-5 (ISO 105-C06 / AATCC 61)',
+      colorFastnessRubbing: 'Dry: Grade 4-5 | Wet: Grade 3-4 (ISO 105-X12 / AATCC 8)',
+      colorFastnessLight: 'Grade 4+ (ISO 105-B02)',
+      chemicalDyeSafety: 'OEKO-TEX Standard 100 & EU REACH Annex XVII compliant (100% Zero Azo dyes, heavy-metal free)',
+      customBranding: 'Screen Printing (Plastisol, Water-base, Discharge, High-Density Puff), Direct-to-Garment (DTG), Computerized Embroidery, Custom Woven Damask Neck Labels, Recycled FSC Hangtags'
     },
     packagingOptions: [
-      'Individual export polybag with custom client barcode & hangtag',
-      'Pre-pack ratio (1-2-2-1) in 5-ply export master corrugated shippers',
-      'Custom luxury magnetic presentation boxes for designer collections'
+      'Individual Garment Packaging: Each piece neatly folded and packed in a transparent, self-adhesive food-grade polybag (PP/LDPE or GRS-certified recycled poly) with statutory child-safety suffocation warnings, custom barcode stickers, and anti-humidity silica gel desiccant packs.',
+      'Master Export Cartons: Standard pre-pack assortment ratio (e.g., S:M:L:XL:2XL / 1:2:2:2:1) packed into heavy-duty 5-ply or 7-ply export-grade corrugated cartons (bursting strength calibrated).',
+      'Palletization & Dispatch: Strapped, edge-protected, and stretch-wrapped on ISPM-15 compliant heat-treated pallets or floor-loaded cartons for maximum container cube utilization.',
+      'Presentation Packaging: Custom rigid magnetic gift boxes, FSC-certified craft sleeves, or flat-pack retail bundles available for boutique collections.'
     ],
     shippingInfo: {
-      minimumOrder: '1,000 pieces per style / colorway',
-      containerCapacity: '20ft FCL: approx 25,000 - 30,000 pieces in master cartons',
-      gatewayPorts: 'Chennai Sea Port, Tuticorin VOC Port (TUT), Coimbatore Air Cargo',
-      hsCode: '6109.10.00'
+      minimumOrder: '500 to 1,000 pieces per style/colorway (Custom Pantone Dyeing & Branding) | Sampling: Proto & Fit approval samples available within 7 - 10 working days',
+      containerCapacity: '20ft FCL: ~20,000 - 25,000 pcs (Lightweight Crewneck Tees) | ~14,000 - 16,000 pcs (Heavyweight Polos / Streetwear Tees) | 40ft High Cube (HC): ~45,000 - 55,000 pcs (Tees) | ~30,000 - 35,000 pcs (Heavy Polos)',
+      containerStuffingBreakdown: {
+        fcl20: [
+          '~20,000 - 25,000 pcs (Lightweight Crewneck Tees in Master Cartons)',
+          '~14,000 - 16,000 pcs (Heavyweight Polos / Streetwear Tees in Master Cartons)'
+        ],
+        fcl40: [
+          '~45,000 - 55,000 pcs (Lightweight Crewneck Tees in Master Cartons)',
+          '~30,000 - 35,000 pcs (Heavyweight Polos in Master Cartons)'
+        ]
+      },
+      gatewayPorts: 'Tuticorin VOC Port (TUT) / Chennai Port (MAA) / Cochin Port (COK)',
+      inlandDepots: 'ICD Tirupur (Veerapandi / Chettipalayam) / ICD Irugur (Coimbatore)',
+      airTerminals: 'Coimbatore International (CJB) / Tiruchirappalli (TRZ) / Chennai (MAA) / Bengaluru (BLR)',
+      hsCode: '6109 10 00'
     }
   },
   {
     id: 'terry-towels',
     slug: 'terry-towels',
-    name: 'Hospitality & Luxury Terry Towels',
-    botanicalName: '100% Ring-Spun Cotton Terry Loop',
+    name: 'Hospitality & Luxury Cotton Terry Towels (OEM / Institutional Export)',
+    botanicalName: '100% Ring-Spun Long-Staple Cotton | 3-Pick Terry Weave (Dobby & Jacquard)',
     category: 'textiles',
     division: 'Textiles & Garments',
-    tag: 'Customizable | High Absorbency',
-    origin: 'Tamil Nadu Textile Corridors (Coimbatore & Karur)',
+    tag: 'OEM / Institutional Export | TEXPROCIL Regd | OEKO-TEX Standard 100',
+    origin: 'Karur & Coimbatore Textile Belts, Tamil Nadu, India',
+    compliance: 'TEXPROCIL Registered | OEKO-TEX Standard 100 Certified | ASTM D5433 Hospitality Compliant',
     image: './assets/images/terry-towels-clean.jpg',
-    shortDesc: 'Plush, ultra-absorbent terry bath linens crafted from long-staple Indian cotton. Ideal for luxury hotel chains, resorts, spas, and department stores worldwide. Fully customizable with jacquard weaves, dobby borders, and custom client embroidery.',
-    hsnCode: '6302 60 00',
+    shortDesc: 'Woven in the renowned home-textile clusters of Karur and Coimbatore from 100% high-grade combed and carded long-staple Indian cotton. Specifically engineered for international luxury hospitality chains, commercial laundries, spas, and department store retail lines. Built with high-tensile pile loops and reinforced double-needle lockstitched hems to endure rigorous industrial tunnel washing cycles while retaining softness, volume, and rapid water absorbency.',
+    hsnCode: '6302 60 00 (Toilet Linen & Kitchen Linen of Terry Towelling, of Cotton)',
     grades: [
-      { name: '600 GSM Luxury Resort Bath Sheet (100x150cm)', size: '100 x 150 cm / 90 x 180 cm', density: '600 - 650 GSM High Pile Loop', color: 'Optical White / Custom Hospitality Palette', usage: '5-Star luxury hotels, resort pools, high-end department stores' },
-      { name: '500 GSM Classic Bath Towel (70x140cm)', size: '70 x 140 cm standard bath', density: '500 GSM 2-ply Ring Spun', color: 'VAT dyed chlorine-resistant shades', usage: 'Hospitality chains, retail home stores, cruise liners' },
-      { name: 'Hand & Face Towel Sets (400-450 GSM)', size: '50 x 90 cm (Hand) / 30 x 30 cm (Wash)', density: '400 - 450 GSM Zero-Twist Cotton', color: 'Coordinated bathroom sets', usage: 'Retail home gift collections, corporate amenities' }
+      {
+        name: 'Luxury Bath Sheet / Pool Towel',
+        size: '90 cm × 180 cm / 100 cm × 150 cm',
+        imperial: '35" × 70" / 40" × 60"',
+        density: '600 - 800 GSM',
+        color: '2/20s Ring-spun combed cotton pile; yarn-dyed vat stripes',
+        usage: 'Luxury 5-star resort pool decks, day spas, VIP suite linen'
+      },
+      {
+        name: 'Executive Hotel Bath Towel',
+        size: '70 cm × 140 cm',
+        imperial: '27" × 54"',
+        density: '500 - 650 GSM',
+        color: '2/20s or 16s Ring-spun cotton pile; reinforced dobby border',
+        usage: 'Commercial hotels, cruise liners, healthcare VIP suites'
+      },
+      {
+        name: 'Hand Towel / Salon Towel',
+        size: '40 cm × 75 cm / 50 cm × 90 cm',
+        imperial: '16" × 30" / 20" × 35"',
+        density: '450 - 550 GSM',
+        color: '16s Single ring-spun loop; high-absorbency weave',
+        usage: 'Hotel guest room vanity, premium hair salons, golf clubs'
+      },
+      {
+        name: 'Face Cloth / Washcloth (Finger Towel)',
+        size: '30 cm × 30 cm / 33 cm × 33 cm',
+        imperial: '12" × 12" / 13" × 13"',
+        density: '450 - 600 GSM',
+        color: '2/20s Double-loop ground; ultra-dense texture',
+        usage: 'Hospitality guest turndown sets, airline first-class packs'
+      },
+      {
+        name: 'Heavyweight Bath Mat (Framed)',
+        size: '50 cm × 80 cm',
+        imperial: '20" × 32"',
+        density: '800 - 1,000 GSM',
+        color: 'Dense double-loop ground; Greek key / picture-frame border',
+        usage: 'Institutional hotel bathroom floor mats (high skid resistance)'
+      }
     ],
     technicalSpecs: {
-      materialComposition: '100% Combed Indian Cotton / Zero-Twist Soft Cotton',
-      yarnSpecification: 'Pile: 20/2 or 16/1 Ring-Spun | Warp: 20/2 | Weft: 16/1',
-      fabricWeightGSM: '380 GSM to 650 GSM (Tailored to buyer target price & hand-feel)',
-      absorbencyRate: '< 3 seconds (AATCC 79 droplet test)',
-      hemFinishing: 'Reinforced double-needle lockstitched side hems to prevent unraveling in commercial laundries',
-      colorFastnessChlorine: 'Grade 4 (Hospitality VAT-dyed for high-temperature laundering)',
-      certification: 'OEKO-TEX Made in Green / GOTS available upon request'
+      fiberComposition: '100% Natural Long-Staple Cotton (Available in Zero-Twist, Low-Twist, or Combed Ring-Spun)',
+      pileYarnOptions: '16s Single, 2/20s Two-Ply, or 12s Open End (Ground weave)',
+      absorbencyRate: '< 3.0 to 5.0 seconds (AATCC Test Method 79 - rapid wetting performance)',
+      waterRetentionCapacity: '> 400% of dry fabric weight (ASTM D4772)',
+      hemConstruction: 'Full length double-needle lockstitch side and end hems (1.0 cm to 1.5 cm) preventing fraying during high-speed commercial laundering',
+      dimensionalStability: 'Max 5.0% - 6.0% after 5 industrial wash cycles (AATCC 135 / ISO 6330)',
+      colorFastnessBleaching: 'Vat Dyeing (Hotel Standard): Grade 4-5 chlorine & hot wash (ISO 105-C06 / ISO 105-N01) | Reactive Dyeing: Grade 4-5 (ISO 105-C06)',
+      colorFastnessRubbing: 'Dry: Grade 4-5 | Wet: Grade 3-4 (ISO 105-X12)',
+      chemicalSafety: 'OEKO-TEX Standard 100 (Product Class II) certified; 100% free from restricted aromatic amines (Azo dyes), formaldehydes, and heavy metals',
+      customBranding: 'Dobby cam borders, custom woven jacquard logos, high-density embroidery, dyed yarn logos, custom woven satin brand labels'
     },
     packagingOptions: [
-      'Pack of 2 / 4 / 6 ribbon-tied sets with branded card inserts',
-      'Bulk compression bale packaging in woven poly-wraps for commercial hotels',
-      'Master export cartons with moisture desiccant bags'
+      'Export Master Cartons (Retail & Premium Hospitality): Polybag-wrapped bundles (e.g., 6 or 12 pcs inner pack) cased inside heavy-duty 5-ply or 7-ply export-grade corrugated cartons; protected with silica gel desiccant packs.',
+      'Hydraulic Compressed Bales (Bulk Commercial & Institutional): Packed in water-resistant poly-wrap and outer heavy-duty PP woven fabric, steel-strapped for maximum freight consolidation.',
+      'Retail Display Packs: Custom printed ribbon bands, belly-bands, FSC-certified card hangers, or PVC zipper bags with custom EAN/UPC barcode stickers.'
     ],
     shippingInfo: {
-      minimumOrder: '2,000 pieces or 1,000 kg equivalent',
-      containerCapacity: '20ft FCL: approx 6 - 7 MT terry cargo | 40ft HC: approx 15 - 16 MT',
-      gatewayPorts: 'Chennai Sea Port (MAA), Tuticorin Port (TUT)',
-      hsCode: '6302.60.00'
+      minimumOrder: '1,000 pieces per size/colorway (Solid reactive dyed) | 2,000 pieces (Custom Jacquard / Dobby weave) | Pilot / Pre-Production Sample: 7 - 10 working days',
+      containerCapacity: '20ft FCL: ~9.5 - 11.0 MT (Compressed Bales) / ~5.0 - 6.5 MT (Master Cartons) | 40ft High Cube (HC): ~20.0 - 22.0 MT (Compressed Bales) / ~12.0 - 14.0 MT (Master Cartons)',
+      containerStuffingBreakdown: {
+        fcl20: [
+          '~9.5 - 11.0 MT (Hydraulic Compressed Bales with Strapping)',
+          '~5.0 - 6.5 MT (Export Master Corrugated Cartons)'
+        ],
+        fcl40: [
+          '~20.0 - 22.0 MT (Hydraulic Compressed Bales with Strapping in 40ft HC)',
+          '~12.0 - 14.0 MT (Export Master Corrugated Cartons in 40ft HC)'
+        ]
+      },
+      gatewayPorts: 'Tuticorin VOC Port (TUT) / Cochin Port (COK) / Chennai Port (MAA)',
+      inlandDepots: 'ICD Karur / ICD Irugur (Coimbatore) / ICD Tirupur',
+      airTerminals: 'Coimbatore (CJB) / Tiruchirappalli (TRZ) / Chennai (MAA)',
+      hsCode: '6302 60 00'
     }
   },
   {
     id: 'bedsheets',
     slug: 'bedsheets',
-    name: 'Luxury Cotton Bedsheet Sets & Duvets',
-    botanicalName: 'Long-Staple Indian Combed Cotton',
+    name: 'Luxury Cotton Bedsheet Sets, Duvets & Pillowcases (OEM / Institutional Export)',
+    botanicalName: '100% Long-Staple Indian Combed Cotton | Percale & Sateen Weaves (200 - 600 TC)',
     category: 'textiles',
     division: 'Textiles & Garments',
-    tag: 'Customizable | High Thread Count',
-    origin: 'Coimbatore & Karur Textile Belts, Tamil Nadu',
+    tag: 'OEM / Institutional Export | TEXPROCIL Regd | OEKO-TEX Standard 100',
+    origin: 'Coimbatore & Karur Textile Corridors, Tamil Nadu, India',
+    compliance: 'TEXPROCIL Registered | OEKO-TEX Standard 100 Certified | ASTM D3775 Compliant',
     image: './assets/images/bedsheets.jpg',
-    shortDesc: 'Hotel-grade bed linen sets woven from long-staple cotton yarns. Available in crisp percale and lustrous sateen weaves from 200 to 600 Thread Count (TC). Tailored to exact international mattress sizes (Twin, Queen, King, Super King) with custom piping and embroidery.',
-    hsnCode: '6302 21 00',
+    shortDesc: 'Woven and stitched across the textile clusters of Coimbatore and Karur utilizing long-staple Indian combed cotton (Suvin and Shankar-6 parentage). Engineered for international five-star hospitality chains, luxury boutique resorts, and premium retail home furnishing brands. Available in crisp, breathable 1-over-1 percale and silky 4-over-1 lustrous sateen weaves, precision-tailored to global mattress dimensions with reinforced double-stitched hems, tear-resistant seams, and high tensile endurance against commercial tunnel laundering.',
+    hsnCode: '6302 31 00 (Bed Linen, Not Printed: Of Cotton) | 6302 21 00 (Bed Linen, Printed: Of Cotton)',
     grades: [
-      { name: '400 TC 100% Indian Long-Staple Sateen Sheet Set', size: 'Queen / King / Super King', density: '400 Thread Count (Single-ply yarns)', color: 'Lustrous Silk White, Pearl Grey, Champagne', usage: 'Luxury residential retail, boutique hotel suites' },
-      { name: '300 TC Crisp Percale Hospitality Sheets', size: 'Twin, Full, Queen, King', density: '300 Thread Count 1-over-1 weave', color: 'Crisp Bleached White (90+ CIE)', usage: 'High-turnover commercial hotels, hospital healthcare suites' },
-      { name: 'Duvet Covers & Oxford Pillowcase Sets', size: '200x200cm, 240x220cm, 260x240cm', density: 'Matching 300-500 TC fabric', color: 'Hemstitched / Satin Stripe / Solid', usage: 'Home fashion catalogs, luxury retail distributors' }
+      {
+        name: '500 - 600 TC Luxury Sateen Set',
+        size: 'King, Cal King, Queen, Super King',
+        density: '500 - 600 TC (4-over-1 Sateen)',
+        color: '80s / 100s Single-Ply Combed Cotton; Mercerized, Reactive Solid & Pastel Dyes',
+        usage: 'Luxury 5-star hotel suites, boutique resorts, premium home fashion department stores'
+      },
+      {
+        name: '300 - 400 TC Executive Sateen Set',
+        size: 'Twin, Full, Queen, King, Super King',
+        density: '300 - 400 TC (4-over-1 Lustrous Sateen)',
+        color: '60s Single-Ply Combed Cotton; Solid Bleached White / 1cm & 2cm Satin Stripe',
+        usage: 'Commercial luxury hotels, serviced apartments, premium retail private labels'
+      },
+      {
+        name: '200 - 300 TC Crisp Percale Set',
+        size: 'Twin XL, Full, Queen, King',
+        density: '200 - 300 TC (1-over-1 Classic Plain Weave)',
+        color: '40s or 50s Single-Ply Combed Yarn; Crisp matte finish, Optical White (90+ CIE)',
+        usage: 'High-turnover hospitality chains, luxury cruise liners, medical healthcare suites'
+      },
+      {
+        name: 'Duvet Covers & Oxford Pillowcases',
+        size: 'Single, Double, King, Super King (Custom Tech Packs)',
+        density: '300 - 500 TC Percale / Sateen',
+        color: 'Matching fabrics with button/zipper closures, 5cm Oxford flanges, French seams',
+        usage: 'Coordinated retail bedding collections, catalog distributors, luxury spas'
+      }
     ],
     technicalSpecs: {
-      fiberComposition: '100% Indian Long-Staple Combed Cotton (Zero Synthetic Blends)',
-      yarnCounts: '40s, 60s, 80s single-ply compact spun yarns',
-      threadCountDensity: '200 TC, 300 TC, 400 TC, 500 TC, 600 TC (Standard ASTM D3775)',
-      weaveStructure: 'Sateen (4/1 structure) or Percale (1/1 classic crisp structure)',
-      dimensionalStability: 'Max 3% shrinkage after 5 commercial wash cycles',
-      tensileStrength: 'Min 45 lbs warp / 35 lbs weft (ASTM D5034)',
-      sewingCraftsmanship: '12 stitches per inch, French seam detailing, heavy-duty elastic on fitted sheets'
+      fiberComposition: '100% Pure Long-Staple Combed Cotton (Zero polyester or synthetic fillers)',
+      threadCountStandard: 'Verified under ASTM D3775 (Authentic single-ply square-inch yarn count; zero multi-ply claims)',
+      fabricFinishing: 'Singeing, Desizing, Scouring, Bleaching, Mercerizing (Enhanced sheen), Sanforizing (Shrinkage control)',
+      dimensionalStability: 'Max 3.0% Length & Width after 5 commercial wash cycles (AATCC 135 / ISO 6330)',
+      tensileTearStrength: 'Tensile: Min 45 lbs Warp / 38 lbs Weft (ASTM D5034) | Tear: Min 3.5 lbs Warp / 3.0 lbs Weft (ASTM D1424)',
+      pillingResistance: 'Class 4 to 5 after 2,000 cycles (ASTM D3512 / Martindale ISO 12945-2)',
+      colorFastnessWashing: 'Grade 4-5 (ISO 105-C06) | Bleach Fastness: Vat dyed Grade 4-5 for commercial white wash formulas',
+      colorFastnessRubbing: 'Dry: Grade 4-5 | Wet: Grade 3-4 (ISO 105-X12)',
+      chemicalSafety: 'OEKO-TEX Standard 100 (Product Class II) certified; 100% compliant with EU REACH Annex XVII (pH 5.5 - 7.0)',
+      workmanshipSpecifications: '10 to 12 stitches per inch (SPI); heavy-duty 360° elastic casing on fitted sheets (up to 40 cm deep); French seams'
     },
     packagingOptions: [
-      'Self-fabric zipper envelope bag with branded gold foil card insert',
-      'PVC / PE window book-fold packaging with hang tags and barcode stickers',
-      'Bulk flat-packed hotel carton cases'
+      'Retail Presentation Packaging: Clear PVC / PE zippered book-fold wallet with custom four-color printed card insert, brand hangtags & barcodes; sustainable self-fabric envelope bags; or rigid luxury magnetic presentation gift boxes.',
+      'Institutional Master Packing: Folded and tied in master bundles (6 to 12 sets per moisture-barrier inner polybag), packed flat into heavy-duty 5-ply or 7-ply corrugated export cartons.',
+      'Palletization & Dispatch: Stretch-wrapped and banded on ISPM-15 certified heat-treated wooden or durable plastic export pallets.'
     ],
     shippingInfo: {
-      minimumOrder: '500 sets per size / colorway',
-      containerCapacity: '20ft FCL: approx 4,500 - 5,500 sheet sets in master cartons',
-      gatewayPorts: 'Chennai Sea Port (MAA), Tuticorin VOC Port (TUT)',
-      hsCode: '6302.21.00'
+      minimumOrder: '500 sets per size / colorway (Retail sets) | 1,000 sets (Institutional hospitality) | Proto & Lab Dip Approvals: 7 - 10 working days',
+      containerCapacity: '20ft FCL: ~3,800 - 4,800 Sets (Retail Cartons) / ~5,500 - 6,500 Sets (Compressed) | 40ft High Cube (HC): ~8,500 - 10,500 Sets (Retail) / ~12,000 - 14,000 Sets (Compressed)',
+      containerStuffingBreakdown: {
+        fcl20: [
+          '~3,800 - 4,800 Sets (Retail PVC Book-Fold / Master Cartons)',
+          '~5,500 - 6,500 Sets (Institutional Flat-Pack / Compressed Cartons)'
+        ],
+        fcl40: [
+          '~8,500 - 10,500 Sets (Retail Master Cartons in 40ft High Cube)',
+          '~12,000 - 14,000 Sets (Institutional Compressed Packs in 40ft High Cube)'
+        ]
+      },
+      gatewayPorts: 'Tuticorin VOC Port (TUT) / Cochin Port (COK) / Chennai Port (MAA)',
+      inlandDepots: 'ICD Karur / ICD Irugur (Coimbatore) / ICD Tirupur',
+      airTerminals: 'Coimbatore (CJB) / Tiruchirappalli (TRZ) / Chennai (MAA) / Bengaluru (BLR)',
+      hsCode: '6302 31 00 / 6302 21 00'
     }
   },
   {
     id: 'linens',
     slug: 'linens',
-    name: 'Table, Kitchen & Dining Linens',
-    botanicalName: 'Pure Flax Linen & Cotton-Linen Blends',
+    name: 'Table, Kitchen & Dining Linens (OEM / Private Label Export)',
+    botanicalName: '100% European Flax Linen, 100% Combed Cotton, & Cotton-Linen Blends',
     category: 'textiles',
     division: 'Textiles & Garments',
-    tag: 'Customizable | Natural Flax & Cotton',
-    origin: 'Karur Handloom & Powerloom Hub, Tamil Nadu',
+    tag: 'OEM / Private Label | HEPC / TEXPROCIL Regd | OEKO-TEX Standard 100',
+    origin: 'Karur Handloom & Powerloom Textile Cluster, Tamil Nadu, India',
+    compliance: 'HEPC / TEXPROCIL Registered | OEKO-TEX Standard 100 Certified | EU REACH Compliant',
     image: './assets/images/linens.jpg',
-    shortDesc: 'Artisanal table runners, placemats, dining napkins, apron sets, and kitchen tea towels woven in Karur, Tamil Nadu. Known for rustic textures, vintage stonewash finishes, and supreme durability for fine dining and home décor importers.',
-    hsnCode: '6302 51 00',
+    shortDesc: 'Woven and crafted in India\'s premier home-textile hub in Karur, Tamil Nadu. Designed for international lifestyle retailers, department store private labels, commercial banquet venues, and hospitality dining establishments. Available in natural stonewashed pure flax linen, crisp cotton damasks, and high-absorbency waffle weaves. Featuring precision tailoring including mitered corners, delicate hemstitching, reinforced bar-tacking, and enzymatic stonewashing for an elegant drape and minimal residual shrinkage.',
+    hsnCode: '6302 51 00 (Cotton Table) | 6302 59 00 (Linen Table) | 6302 91 00 (Cotton Kitchen) | 6302 99 00 (Flax Kitchen)',
     grades: [
-      { name: 'Stonewashed Pure Flax Linen Table Runner & Napkins', size: 'Runner 40x180cm / Napkins 45x45cm', density: '180 - 220 GSM Natural Flax', color: 'Natural Oatmeal, Sage Green, Clay Rose', usage: 'Fine dining restaurants, European boutique lifestyle stores' },
-      { name: 'Jacquard Woven Cotton Tablecloths', size: '140x180cm, 150x250cm, 160x300cm', density: '220 GSM Heavyweight Cotton', color: 'Yarn-dyed damasks, stripes, checks', usage: 'Banquet halls, holiday home retail, catering companies' },
-      { name: 'Waffle Weave Kitchen Tea Towels', size: '50 x 70 cm', density: '240 GSM Waffle Texture', color: 'Lint-free absorbent yarn-dyed', usage: 'Cookware stores, culinary gift collections' }
+      {
+        name: 'Stonewashed Pure Linen Table Runner & Napkins',
+        size: 'Runner: 40 × 180 cm / 45 × 250 cm; Napkins: 45 × 45 cm / 50 × 50 cm',
+        density: '180 - 220 GSM 100% Flax Linen',
+        color: 'Pre-washed enzyme stonewash, 2 cm hemstitched border with precision mitered corners',
+        usage: 'High-end boutique home retail, Michelin-tier fine dining, luxury rustic resort dining'
+      },
+      {
+        name: 'Yarn-Dyed Cotton Banquet Tablecloths',
+        size: '140 × 180 cm, 150 × 250 cm, 160 × 300 cm (Round: 180 cm / 220 cm dia)',
+        density: '200 - 240 GSM Heavy Cotton',
+        color: 'Yarn-dyed jacquard damask, woven checks, or solid poplins; soil-release finish optional',
+        usage: 'Commercial banquet halls, hotel food & beverage service, holiday home collections'
+      },
+      {
+        name: 'Waffle Weave & Flat-Weave Tea Towels',
+        size: '50 × 70 cm / 45 × 65 cm',
+        density: '220 - 260 GSM Honeycomb / Waffle or Herringbone',
+        color: '100% Combed Cotton, lint-free weave, reinforced corner hanging loop, lockstitched hems',
+        usage: 'Culinary gift sets, specialty cookware stores, institutional kitchen service'
+      },
+      {
+        name: 'Chef Aprons & Heavy Utility Kitchen Sets',
+        size: '70 × 85 cm (Adjustable neck strap & waist ties)',
+        density: '240 - 280 GSM Heavy Cotton Canvas or Twill',
+        color: 'Stress points reinforced with bar-tack stitching, deep front utility pockets, brass hardware',
+        usage: 'Restaurant staff uniform programs, barista gear, premium lifestyle retail'
+      }
     ],
     technicalSpecs: {
-      composition: '100% French/Belgian Flax Linen, 100% Recycled Cotton, or 55/45 Cotton-Linen blend',
-      weightRangeGSM: '160 GSM to 280 GSM',
-      edgeFinish: 'Mitered corners with 1.5cm - 2cm hemstitch or frayed raw edge design',
-      colorFastnessLight: 'Grade 5 (ISO 105-B02)',
-      washingCare: 'Pre-washed and enzyme stonewashed for soft vintage drape and minimal residual shrinkage (< 2%)'
+      fiberComposition: '100% Long-Staple European Flax Linen / 100% Combed Cotton / 55% French Linen & 45% Cotton Blend / GRS Recycled Cotton',
+      weaveStructure: 'Plain Weave, 4-Sided Oxford Hemstitch, Waffle/Honeycomb, Herringbone, Jacquard Damask',
+      fabricFinishing: 'Enzyme stonewashed or bio-softened for soft hand-feel and dimensional stability',
+      dimensionalStability: 'Max 2.0% to 3.0% post-wash (AATCC 135 / ISO 6330 Wash Cycles)',
+      absorbencyRate: '< 4 seconds wetting time (AATCC 79 droplet test)',
+      colorFastnessWashing: 'Grade 4 to 5 (ISO 105-C06)',
+      colorFastnessLight: 'Grade 4 to 5 (ISO 105-B02 / Xenon Arc)',
+      colorFastnessRubbing: 'Dry: Grade 4-5 | Wet: Grade 3-4 (ISO 105-X12)',
+      chemicalSafety: 'OEKO-TEX Standard 100 (Product Class II) certified; 100% compliant with EU REACH Annex XVII',
+      workmanshipSpecifications: '10 to 12 stitches per inch (SPI); clean mitered corner tailoring; bar-tacked hanging loops'
     },
     packagingOptions: [
-      'Pack of 4 / 6 napkins tied with natural jute twine and kraft paper bellyband',
-      'Hanger packs for department store display',
-      'Polybagged master shippers with desiccant'
+      'Retail Presentation Packs: Pack of 4 or 6 napkins bound with natural jute twine, herringbone ribbon, or FSC kraft paper bellyband; hanger-packed tea towels; or book-fold presentation in biodegradable clear polybags with barcodes.',
+      'Master Export Cartons: Poly-lined bundles packed into durable 5-ply or 7-ply export-grade corrugated cartons; protected with silica gel desiccant packs.',
+      'Palletization & Dispatch: Stretch-wrapped on ISPM-15 compliant heat-treated wooden or plastic export pallets.'
     ],
     shippingInfo: {
-      minimumOrder: '1,000 units per item',
-      containerCapacity: '20ft FCL: approx 15,000 - 20,000 linen units',
-      gatewayPorts: 'Chennai Port (MAA), Tuticorin VOC Port (TUT)',
-      hsCode: '6302.51.00'
+      minimumOrder: '500 to 1,000 units per style/colorway (Runners/Tablecloths) | 1,500 to 2,000 units (Napkins/Tea Towels) | Proto & Lab-Dip Approvals: 7 - 10 working days',
+      containerCapacity: '20ft FCL: ~20,000 - 26,000 pieces (~6.5 - 7.5 MT net) / ~35,000 - 45,000 pcs (Napkins/Towels) | 40ft High Cube (HC): ~45,000 - 55,000 pieces',
+      containerStuffingBreakdown: {
+        fcl20: [
+          '~20,000 - 26,000 pieces (~6.5 - 7.5 MT net) (Assorted Table & Kitchen Linen Master Cartons)',
+          '~35,000 - 45,000 pieces (Dedicated Napkins / Tea Towels in Master Cartons)'
+        ],
+        fcl40: [
+          '~45,000 - 55,000 assorted pieces in 40ft High Cube Master Cartons'
+        ]
+      },
+      gatewayPorts: 'Tuticorin VOC Port (TUT) / Cochin Port (COK) / Chennai Port (MAA)',
+      inlandDepots: 'ICD Karur / ICD Irugur (Coimbatore) / ICD Tirupur',
+      airTerminals: 'Tiruchirappalli International (TRZ) / Coimbatore (CJB) / Chennai (MAA)',
+      hsCode: '6302 51 00 / 6302 59 00 / 6302 91 00 / 6302 99 00'
     }
   },
   {
     id: 'shirting-fabrics',
     slug: 'shirting-fabrics',
-    name: 'Yarn-Dyed Fabrics',
-    botanicalName: '100% Compact Combed Cotton Woven',
+    name: 'Mill-Woven Yarn-Dyed Fabrics (Shirting, Bottom-Weight & Suitings)',
+    botanicalName: '100% Long-Staple Combed Cotton, Linen Blends & Stretch Cotton | Auto-Loom & Airjet Woven',
     category: 'textiles',
     division: 'Textiles & Garments',
-    tag: 'Customizable | Mill-Made Rolls',
-    origin: 'Tamil Nadu Woven Textile Hubs (Coimbatore & Erode)',
+    tag: 'OEM / Private Label | TEXPROCIL Regd | OEKO-TEX Standard 100',
+    origin: 'Coimbatore & Erode Woven Textile Belts, Tamil Nadu, India',
+    compliance: 'TEXPROCIL Registered | OEKO-TEX Standard 100 Certified | ASTM D5430 4-Point System Inspected',
     image: './assets/images/shirting-fabrics.jpg',
-    shortDesc: 'Precision-woven mill fabrics for global apparel manufacturers and tailor houses. Featuring fine yarn counts from 40s to 80s in Oxford weaves, pinpoint poplins, herringbone twills, and custom tartan checks, alongside premium bottom-weight pant fabrics with silky durable hand-feel.',
-    hsnCode: '5208 42 00 / 5209 42 00',
+    shortDesc: 'Engineered across the advanced airjet and rapier weaving mills of Coimbatore and Erode in Tamil Nadu. Crafted using premium ring-spun compact combed cotton yarns dyed with high-fastness reactive dyestuffs prior to weaving. Specially produced for international garment manufacturers, corporate uniform converters, and bespoke tailoring brands. Available in classic poplins, royal Oxfords, fine twills, pinpoint weaves, tattersall checks, and bottom-weight chino stretch gabardines with advanced wrinkle-resistant, liquid ammonia, and silky easy-care finishes.',
+    hsnCode: '5208 42 00 (Shirting Plain Weave ≤ 200 GSM) | 5208 43 00 (Shirting Twills ≤ 200 GSM) | 5209 43 00 (Bottom-Weight Twills > 200 GSM)',
     grades: [
-      { name: 'Shirt Garments (Formal & Casual Yarn-Dyed Fabrics)', size: 'Fabric Width 58" / 60" (147 - 152 cm)', density: '115 - 145 GSM Oxford / Poplin / Twill', color: 'Royal Navy, Sky Blue, Pink, Windowpane & Stripes', usage: 'Executive corporate shirts, formal wear, bespoke tailoring' },
-      { name: 'Pant Garments (Bottom-Weight Chinos & Trouser Fabrics)', size: 'Fabric Width 58" / 60" (147 - 152 cm)', density: '220 - 280 GSM Heavy Twill & Stretch Gabardine', color: 'Khaki, Olive, Navy, Charcoal & Stone Grey', usage: 'Tailored trousers, casual chinos, uniform pants, workwear' },
-      { name: '60s / 80s 2-Ply Royal Oxford Woven', size: 'Fabric Width 58" / 60" (147 - 152 cm)', density: '120 - 135 GSM Medium Weight', color: 'Classic Sky Blue, Crisp White, French Stripe', usage: 'Executive formal shirts, bespoke shirtmakers' },
-      { name: '50s Compact Cotton Poplin & Twills', size: 'Fabric Width 58" (147 cm)', density: '110 - 125 GSM Smooth Weave', color: 'Vibrant yarn-dyed checks & solids', usage: 'Casual and smart-casual menswear & womenswear' },
-      { name: 'Linen-Cotton Shirting (Summer Weave)', size: 'Fabric Width 56" / 58"', density: '130 - 145 GSM Breathable Slub', color: 'Natural mélange and pastel tones', usage: 'Resortwear, summer shirt collections' }
+      {
+        name: 'Royal Oxford & Pinpoint Shirting',
+        size: '58" / 60" (147 - 152 cm); 100m - 120m rolls',
+        density: '125 - 145 GSM 2-over-2 Basket / Pinpoint Weave',
+        color: '60/2, 80/2, or 100/2 Compact Double-Ply Yarns; Yarn-dyed solids, bengal stripes',
+        usage: 'Executive corporate dress shirts, bespoke tailor houses, luxury formalwear'
+      },
+      {
+        name: 'Classic Micro-Check & Poplin Shirting',
+        size: '58" (147 cm); 100m - 120m rolls',
+        density: '110 - 130 GSM 1-over-1 Plain Weave Poplin',
+        color: '50s or 60s Single Compact Combed Cotton; High-definition yarn-dyed checks',
+        usage: 'Smart casual shirts, premium retail brands, corporate office collections'
+      },
+      {
+        name: 'Chino & Trouser Bottom-Weight Twill',
+        size: '58" / 60" (147 - 152 cm); 80m - 100m rolls',
+        density: '220 - 280 GSM 3/1 or 2/1 Right-Hand Twill / Gabardine',
+        color: '16s, 20s, or 2/30s Cotton (Optional: 98/2 Cotton-Spandex Stretch); Yarn-dyed cross twill',
+        usage: 'Tailored chinos, five-pocket trousers, executive uniforms, durable workwear'
+      },
+      {
+        name: 'Linen-Cotton Summer Slub Weave',
+        size: '56" / 58" (142 - 147 cm); 100m rolls',
+        density: '130 - 150 GSM Breathable Slub Plain Weave',
+        color: '55% European Flax Linen / 45% Combed Cotton; Yarn-dyed natural chambray & mélanges',
+        usage: 'Resortwear, summer shirt collections, casual tailoring, premium boutique labels'
+      }
     ],
     technicalSpecs: {
-      fiberBase: '100% Indian Long Staple Cotton',
-      yarnCounts: '40/1, 50/1, 60/1, 80/2, 100/2 compact ring-spun yarns',
-      widthTolerances: 'Usable cut width 58" +/- 1" (Roll put-up on cardboard tubes of 100 meters)',
-      finishOptions: 'Liquid Ammonia finish, Silk Touch Easy-Care finish, or Natural Soft Wash',
-      tensileTearStrength: 'Exceeds ISO 13934-1 & ISO 13937-2 standards for luxury apparel',
-      inspectionStandard: 'Inspected under 4-Point System (ASTM D5430) with zero tolerance for running defects'
+      fiberBase: '100% Long-Staple Indian Combed Cotton (Shankar-6 / Suvin lineage) | Linen-Cotton Blends | Cotton-Spandex (98/2)',
+      yarnCounts: '40/1, 50/1, 60/1, 80/2, 100/2 Ne compact ring-spun yarns',
+      visualGradingStandard: '100% inspected under the ASTM D5430 4-Point System (First Quality / Grade A standard: Max 20–24 penalty points per 100 sq. yards; zero continuous running flaws)',
+      dimensionalStability: 'Max 2.0% to 2.5% Warp & Weft after 3 commercial washes (AATCC 135 / ISO 6330)',
+      tensileStrength: 'Warp: Min 45 kgf | Weft: Min 35 kgf (ISO 13934-1)',
+      tearStrength: 'Warp: Min 1,800 g | Weft: Min 1,500 g (ISO 13937-2 Elmendorf method)',
+      fabricFinishingOptions: 'Liquid Ammonia Finish (Enhanced luster, silk hand-feel, superior crease recovery) | Silk Touch Easy-Care Finish (Durable press, free formaldehyde < 75 ppm compliant) | Mercerized & Pre-Shrunk (Sanforized)',
+      colorFastnessWashing: 'Grade 4 to 5 (ISO 105-C06)',
+      colorFastnessRubbing: 'Dry: Grade 4-5 | Wet: Grade 3-4 (ISO 105-X12)',
+      colorFastnessLight: 'Grade 4 to 5 (ISO 105-B02 / Xenon Arc)',
+      chemicalSafety: 'OEKO-TEX Standard 100 (Product Class II) certified; 100% compliant with EU REACH Annex XVII (Azo-free, zero restricted phthalates, skin-friendly neutral pH 5.5 - 7.0)'
     },
     packagingOptions: [
-      'Double-folded cardboard tube rolls (100 meters per bolt) wrapped in heavy LDPE transparent waterproof film',
-      'Corrugated master bale cartons banded with polypropylene strapping'
+      'Standard Roll Packaging: Fabric rolled crease-free on heavy-duty, reinforced 1.5" or 2" inner cardboard tubes (100 to 120 running meters per roll); sealed in double-layer transparent food-grade LDPE moisture-proof film with outer protective woven poly-sleeves.',
+      'Roll Identification: Detailed roll-end sticker labels indicating roll number, lot/batch number, gross/net weight, total running meters, width, and inspection barcode.',
+      'Bale / Carton Packing: Bulk rolls packed in sturdy 5-ply export master cartons for high-end boutique fabric lengths, or baled rolls strapped with high-tensile polyester bands for containerized ocean consolidation.',
+      'Palletization: Vertical or horizontal roll stacking on ISPM-15 compliant heat-treated pallets wrapped with heavy-duty stretch film and corner protectors.'
     ],
     shippingInfo: {
-      minimumOrder: '1,500 meters per pattern / weave',
-      containerCapacity: '20ft FCL: approx 35,000 - 40,000 running meters',
-      gatewayPorts: 'Chennai Sea Port (MAA), Tuticorin VOC Port (TUT)',
-      hsCode: '5208.42.00'
+      minimumOrder: '1,200 to 1,500 running meters per pattern / colorway | Pattern Desk / Handloom Sample Strip: Available within 7 - 10 working days',
+      containerCapacity: '20ft FCL: ~38,000 - 42,000 m (Shirting, ~8.0 MT) / ~18,000 - 22,000 m (Chinos, ~8.5 MT) | 40ft High Cube (HC): ~80,000 - 90,000 m (Shirting) / ~42,000 - 48,000 m (Chinos)',
+      containerStuffingBreakdown: {
+        fcl20: [
+          '~38,000 - 42,000 running meters (~8.0 MT) (Lightweight Shirting Rolls, 115 - 145 GSM, 58" Width)',
+          '~18,000 - 22,000 running meters (~8.5 MT) (Bottom-Weight Chino / Pant Rolls, 220 - 280 GSM, 58" Width)'
+        ],
+        fcl40: [
+          '~80,000 - 90,000 running meters in 40ft High Cube (Lightweight Shirting Rolls)',
+          '~42,000 - 48,000 running meters in 40ft High Cube (Bottom-Weight Chinos / Pants)'
+        ]
+      },
+      gatewayPorts: 'Tuticorin VOC Port (TUT) / Cochin Port (COK) / Chennai Port (MAA)',
+      inlandDepots: 'ICD Irugur (Coimbatore) / ICD Tirupur / ICD Karur',
+      airTerminals: 'Coimbatore International (CJB) / Tiruchirappalli (TRZ) / Chennai (MAA)',
+      hsCode: '5208 42 00 / 5208 43 00 / 5209 43 00'
     }
   },
 
@@ -720,127 +939,227 @@ export const PRODUCTS_DATA = [
   {
     id: 'traditional-metalcraft',
     slug: 'traditional-metalcraft',
-    name: 'Artisanal Brassware & Bronze Artefacts',
-    botanicalName: 'Cast Brass / Bell Metal Alloy',
+    name: 'Artisanal Brassware & Lost-Wax Bronze Artefacts',
+    botanicalName: 'Sand-Cast Brass & Traditional Cire Perdue (Lost-Wax) Bronze',
     category: 'handicrafts',
     division: 'Indian Heritage Handicrafts',
-    tag: 'Custom Sourcing Available',
-    origin: 'Thanjavur, Swamimalai & Madurai (Tamil Nadu)',
+    tag: 'EPCH Regd | Lost-Wax (Cire Perdue) | GI Provenance',
+    origin: 'Swamimalai, Thanjavur & Nachiarkoil Artisan Clusters, Tamil Nadu, India',
+    compliance: 'EPCH Registered | ASI Non-Antiquity Compliant | GI Cluster Provenance',
     image: './assets/images/handicrafts.jpg',
-    shortDesc: 'Handcrafted solid brass oil lamps (Kuthuvilakku), ornamental Urlis, temple bells, and bronze statues cast using the lost-wax (Cire Perdue) method perfected over centuries by master craftsmen in Tamil Nadu.',
-    hsnCode: '7419 80 30',
+    shortDesc: 'Handcrafted by generational master sthapatis and metal artisans in the historic craft clusters of Swamimalai, Thanjavur, and Nachiarkoil in Tamil Nadu. Featuring traditional lost-wax cast (Cire Perdue) Chola-style bronze sculptures, hand-lathed solid brass Kuthuvilakku oil lamps, ornate floral Urlis, and decorative temple bells. Every piece is individually cast, hand-chiseled, and sealed with high-grade anti-tarnish protective lacquer to ensure lifelong luster for luxury hospitality, art galleries, and fine architectural interiors.',
+    hsnCode: '8306 29 20 (Brass Statuettes & Ornaments) | 7419 80 30 (Brass Vessels & Utensils) | 9703 00 00 (Original Bronze Statuary)',
     grades: [
-      { name: 'Traditional Kuthuvilakku Brass Oil Lamps', size: '12 inches up to 6 feet height', density: 'Heavy cast solid brass', color: 'Polished Gold / Antique Patina', usage: 'Temples, luxury hotels, heritage interior architecture' },
-      { name: 'Engraved Peacock & Floral Urli Bowls', size: 'Diameter 8 inches to 36 inches', density: 'Thick brass vessel', color: 'Golden sheen / Vintage finish', usage: 'Boutique decor, water floral centerpieces' },
-      { name: 'Hand-Cast Chola Bronze Statues', size: 'Custom dimensions 6\" to 48\"', density: 'High copper-tin alloy', color: 'Traditional bronze patina', usage: 'Art galleries, collectors, luxury private estates' }
+      {
+        name: 'Traditional Nachiarkoil Kuthuvilakku (Oil Lamp)',
+        size: 'Height: 12" to 72" (30 cm to 180 cm); 5-spout / 7-spout tops',
+        density: '2.5 kg up to 45 kg per lamp; Solid sand-cast base',
+        color: 'Solid Cast Brass (60/40); Mirror high-polish gold or antique oxidized finish',
+        usage: 'Temple sanctums, luxury hotel lobbies, heritage interior architecture, gifting'
+      },
+      {
+        name: 'Ornamental Peacock & Floral Urli Bowls',
+        size: 'Diameter: 10" to 36" (25 cm to 90 cm); Depth: 3" to 12"',
+        density: '3.0 kg to 28 kg; Heavy solid rim with hand-chiseled motifs',
+        color: 'Heavy Bell Brass; Luminous golden sheen or vintage bronze patina',
+        usage: 'Boutique resort water lounges, floral floating centerpieces, spa reception focal points'
+      },
+      {
+        name: 'Swamimalai Lost-Wax Chola Bronzes (GI-Tagged)',
+        size: 'Height: 6" to 60"+ (Custom sacred iconography)',
+        density: '2.0 kg up to 150+ kg; Solid lost-wax bronze casting',
+        color: 'Traditional Bronze / Panchaloha alloy; Natural antique museum patina',
+        usage: 'Art galleries, luxury estates, international collectors, architectural sanctums'
+      },
+      {
+        name: 'Hand-Engraved Temple Bells & Wall Hangings',
+        size: 'Diameter: 4" to 18"; Hanging length: 12" to 48"',
+        density: '1.5 kg to 18 kg; Resonant acoustic casting',
+        color: 'Acoustic Bell Metal (Copper-Tin Bronze); Hand-etched chain links',
+        usage: 'Architectural entryways, sacred spaces, heritage dining ambience'
+      }
     ],
     technicalSpecs: {
-      materialComposition: 'Solid Brass (60-70% Copper, 30-40% Zinc) or Traditional Bronze (Panchaloha / Bell Metal)',
-      finishingOptions: 'Mirror High-Polish Gold, Antique Oxidized Finish, or Matt Brushed Satin',
-      protectiveCoating: 'Clear anti-tarnish protective lacquer applied',
-      craftsmanship: '100% Hand-finished by GI-recognized artisan clusters in Tamil Nadu'
+      alloyMetallurgy: 'Solid Brass: 60% - 65% Cu, 35% - 40% Zn | Bronze: 78% - 80% Cu, 20% - 22% Sn | Panchaloha 5-Metal Alloy',
+      castingTechnology: 'Traditional Lost-Wax Process (Cire Perdue) for figurines; Precision Cohesive Clay Sand-Casting for lamps & bowls',
+      surfaceProtection: 'Multi-coat transparent automotive-grade anti-tarnish acrylic/cellulose lacquer; resists humidity and oxidation',
+      finishingVariations: 'High-Mirror Polished Brass, Deep Antique Bronze Patina, Verde Gris (Verdigris green oxidized), or Matt Brushed Satin',
+      craftIntegrity: '100% hand-detailed, file-worked, and chiseled by heritage artisan guilds (Compliant with GI specifications)'
     },
     packagingOptions: [
-      'Individual bubble-wrap with expanded polyethylene (EPE) foam edge protectors',
-      'Custom branded inner gift box with velvet cushioning',
-      'ISPM-15 Heat-Treated / Fumigated Wooden Crates for international sea & air freight'
+      'Primary Protection: Each item degreased, wrapped in moisture-barrier paper, wrapped in anti-tarnish VCI (Vapor Corrosion Inhibitor) film, and cushioned in multi-layer 10mm high-density expanded polyethylene (EPE) foam.',
+      'Inner Packing: Custom heavy-duty corrugated inner cartons contoured with molded foam profiles; optional luxury velvet-lined wooden presentation boxes for gallery items.',
+      'Master Export Crating: Heavy-duty ISPM-15 certified heat-treated pine/plywood crates with reinforced steel corner brackets and industrial strapping.',
+      'Moisture & Marine Protection: Silica gel packs and container-grade desiccant bags to prevent moisture damage during tropical sea freight.'
     ],
     shippingInfo: {
-      minimumOrder: '$2,500 USD equivalent or 50 pieces',
-      containerCapacity: 'LCL Palletized wooden crates or 20ft FCL mixed handicraft cargo',
-      gatewayPorts: 'Chennai Sea Port, Tuticorin Port, Chennai Air Cargo Hub',
-      hsCode: '7419.80.30'
+      minimumOrder: 'Tier 1 (Artisanal Brassware / Urlis / Lamps): $2,500 USD equivalent (or 30 - 50 pieces) | Tier 2 (Lost-Wax Master Bronzes): Individual bespoke commissions accepted (Single piece up to life-size)',
+      containerCapacity: 'LCL Sea Freight: Palletized & banded ISPM-15 heat-treated plywood crates | Air Cargo: Shock-cushioned wooden cases | 20ft FCL: ~12.0 - 15.0 MT gross payload',
+      containerStuffingBreakdown: {
+        fcl20: [
+          '20ft FCL Mixed Handicraft Cargo: ~12.0 - 15.0 MT gross payload in heat-treated crates',
+          'LCL Sea Freight: Palletized & banded ISPM-15 heat-treated plywood crates'
+        ],
+        fcl40: [
+          'Air Cargo: Reinforced shock-cushioned wooden cases for high-value statuary & expedited delivery'
+        ]
+      },
+      gatewayPorts: 'Chennai Port (MAA) / Tuticorin VOC Port (TUT) / Cochin Port (COK)',
+      airTerminals: 'Chennai International (MAA) / Tiruchirappalli (TRZ) / Bengaluru (BLR)',
+      hsCode: '8306 29 20 / 7419 80 30 / 9703 00 00'
     }
   },
   {
     id: 'modern-home-decor',
     slug: 'modern-home-decor',
-    name: 'Modern Home Decors & Heritage Artefacts',
-    botanicalName: 'Handcrafted Wood, Terracotta & Artisanal Wall Accents',
+    name: 'Modern Home Décor, Woodenware & Heritage Artefacts (OEM / Custom Sourcing)',
+    botanicalName: 'Kiln-Dried Sheesham, Teak, Mango Wood, Natural Terracotta & Mixed Media',
     category: 'handicrafts',
     division: 'Indian Heritage Handicrafts',
-    tag: 'Artisanal & Modern Living',
-    origin: 'Tamil Nadu, Rajasthan & Pan-India Craft Guilds',
+    tag: 'OEM / Custom Sourcing | EPCH Regd | VRIKSH Certified',
+    origin: 'Tamil Nadu, Rajasthan & Traditional Indian Artisan Guilds',
+    compliance: 'EPCH Registered | VRIKSH Certified (CITES Timber Legality) | ISPM-15 Compliant',
     image: './assets/images/modern-home-decor.jpg',
-    shortDesc: 'Curated artisanal home accents blending traditional Indian craftsmanship with contemporary living aesthetics. Featuring handcrafted wooden jewellery boxes, artisanal wall hanging decors, elegant floral accents, bespoke custom-made wooden artefacts on demand, and heritage terracotta creations.',
-    hsnCode: '4420 90 90 / 6913 90 00',
+    shortDesc: 'A curated export portfolio combining timeless Indian artisanal craftsmanship with sleek contemporary interior silhouettes. Sourced directly from accredited artisan clusters across Tamil Nadu and Rajasthan. Featuring solid hardwood jewellery boxes with brass inlays, modern sculptural wall relief panels, artisanal terracotta accents, and bespoke food-grade wooden tableware. Every timber piece is kiln-seasoned to controlled moisture levels (8%–12%), anti-termite boron treated, and sealed with eco-friendly, non-toxic finishes engineered to withstand global climatic shifts.',
+    hsnCode: '4420 90 90 (Wooden Boxes & Decor) | 4419 90 90 (Wooden Tableware) | 6913 90 00 (Terracotta & Ceramics)',
     grades: [
-      { 
-        name: 'Handcrafted wooden artefacts', 
-        size: 'Jewellery boxes 8x6x4" to bespoke chests', 
-        density: 'Seasoned Sheesham & Teak hardwood', 
-        color: 'Natural walnut polish / brass inlay', 
-        usage: 'Luxury giftware, boutique home decor, residential bedside and tabletop accent pieces',
+      {
+        name: 'Artisanal Wooden Keepsake & Jewellery Boxes',
+        size: '8"×6"×4" up to 14"×10"×6" (Custom sizes)',
+        density: 'Kiln-Dried Sheesham / Mango Wood; solid brass inlay hardware; velvet interior',
+        color: 'Natural Walnut, Matte Natural Teak, Bleached Oak, or Rich Ebony; lacquer sealed',
+        usage: 'Luxury retail giftware, boutique home décor, high-end department store private labels',
         image: './assets/images/modern-home-decor.jpg'
       },
-      { 
-        name: 'Artisanal Wall Hanging Decors', 
-        size: 'Framed panels 16x24" to 30x40" sets', 
-        density: 'Framed hand-painted canvas & wooden relief', 
-        color: 'Contemporary earth tones & gold leaf accents', 
-        usage: 'Feature walls, boutique hotels, modern apartment living',
+      {
+        name: 'Contemporary Wall Relief Panels & Hangings',
+        size: '16"×24", 24"×36", 30"×40" individual & triptych sets',
+        density: 'Seasoned hardwood frame with hand-carved relief, canvas, & brass accents',
+        color: 'Matte earth tones, distressed off-white, antique metallic & gold leaf accents',
+        usage: 'Feature walls, boutique hotel lobbies, luxury residential apartments, interior designers',
         image: './assets/images/wall-hanging-decor.jpg'
       },
-      { 
-        name: 'Custom-Made Wooden Artefacts On Demand', 
-        size: 'Handcrafted cups & saucers, tableware & bespoke CAD blueprints', 
-        density: 'Seasoned Teakwood & FSC kiln-dried hardwoods', 
-        color: 'Natural hand-carved wood grain / custom organic wax finish', 
-        usage: 'Artisanal wooden tea sets, cups & saucers, boutique tableware, and full turnkey capability to engineer any bespoke wooden artefacts to international buyer specifications',
+      {
+        name: 'Bespoke Wooden Tableware & Tea Collections',
+        size: 'Cups, Saucers, Bowls, Platters (Custom CAD drawings)',
+        density: 'Seasoned Teakwood / Neem Wood (Dense, close-grained, naturally antimicrobial)',
+        color: '100% Food-Safe cold-pressed plant oils / organic beeswax; zero toxic varnishes',
+        usage: 'Specialty culinary boutiques, eco-luxury lifestyle stores, sustainable hospitality',
         image: './assets/images/wooden-artefacts.jpg'
+      },
+      {
+        name: 'Terracotta & Earthenware Sculptural Accents',
+        size: 'Height: 6" to 24" (Tabletop & floor planters/vases)',
+        density: 'Refined low-porosity alluvial terracotta clay; high-fire kiln cured',
+        color: 'Raw unglazed terracotta, smoke-blackened pottery, or matte glazed highlights',
+        usage: 'Eco-friendly home collections, organic modern living, landscape architecture',
+        image: './assets/images/modern-home-decor.jpg'
       }
     ],
     technicalSpecs: {
-      materialComposition: 'Kiln-dried sheesham wood, seasoned teak, hand-painted canvas, brass hardware, glazed ceramic',
-      craftsmanship: '100% Hand-crafted by master woodworkers and artisan guilds across India',
-      customSourcingCapability: 'Full capacity to source and manufacture bespoke wooden artefacts on demand to client CAD drawings',
-      surfaceFinish: 'Non-toxic lead-free polishes, natural beeswax sealants, anti-termite boron treatment',
-      durabilityPackaging: 'Custom drop-tested export packaging with shock-absorbent molded EPE cushioning'
+      timberMoistureContent: 'Strict 8.0% to 12.0% (Vacuum kiln-dried; verified by pin-type digital moisture meters)',
+      woodSeasoningTreatment: 'Chemical-free vacuum-pressure Boron-Boric treatment (non-hazardous anti-termite & anti-fungal)',
+      foodContactSafety: 'US FDA 21 CFR 175.300 & EU Regulation (EC) No 1935/2004 compliant (Non-leaching, food-contact safe)',
+      coatingsFinishing: 'Ultra-low VOC, 100% lead-free water-based sealants, food-grade mineral oils & natural beeswax',
+      transitIntegrity: 'ISTA 1A / 3A drop-tested master cartons engineered for international e-commerce & retail transit',
+      turnkeyOemCapability: 'In-house prototyping from client CAD blueprints, 3D renderings & tech packs with custom brand engraving'
     },
     packagingOptions: [
-      'Individual gift-ready corrugated boxes with custom foam inserts',
-      'Drop-tested 5-ply export shippers with corner edge guards',
-      'ISPM-15 Heat-treated wooden crates for palletized freight'
+      'Unit Presentation Packaging: Individual drop-tested gift-ready boxes with interior velvet lining, tissue wrap, and molded expanded polyethylene (EPE) shock absorbers.',
+      'Master Shippers: Heavy-duty 5-ply / 7-ply double-wall export corrugated master cartons with reinforced corner edge guards and strapping.',
+      'Palletization & Crating: Stretch-wrapped on ISPM-15 compliant heat-treated solid timber or plywood pallets with internal silica gel desiccant packs.'
     ],
     shippingInfo: {
-      minimumOrder: '$2,000 USD equivalent or 50 sets',
-      containerCapacity: 'LCL palletized shipments or 20ft / 40ft FCL mixed cargo',
-      gatewayPorts: 'Chennai Port (MAA), Tuticorin VOC Port (TUT), Chennai Air Cargo (MAA)',
-      hsCode: '4420.90.90 / 6913.90.00'
+      minimumOrder: 'Standard Catalog: $2,000 USD (or 50 units/design) | Bespoke OEM: 100 units/design | Prototypes: 10 - 14 working days',
+      containerCapacity: '20ft FCL: ~1,500 - 2,500 master cartons (~26 - 28 CBM) | 40ft High Cube (HC): ~55 - 60 CBM mixed home décor cargo',
+      containerStuffingBreakdown: {
+        fcl20: [
+          '20ft FCL (Assorted Master Shippers): ~1,500 - 2,500 master cartons (~26 - 28 CBM)',
+          'LCL Sea Freight: Palletized & banded ISPM-15 heat-treated plywood crates'
+        ],
+        fcl40: [
+          '40ft High Cube (HC): ~55 - 60 CBM mixed home décor cargo'
+        ]
+      },
+      gatewayPorts: 'Chennai Port (MAA) / Tuticorin VOC Port (TUT) / Cochin Port (COK)',
+      airTerminals: 'Chennai International (MAA) / Coimbatore (CJB) / Bengaluru (BLR)',
+      hsCode: '4420 90 90 / 4419 90 90 / 6913 90 00'
     }
   },
   {
     id: 'oem-private-label',
     slug: 'oem-private-label',
-    name: 'B2B Private Label & Custom Sourcing',
-    botanicalName: 'Turnkey Multi-Category Contract Procurement',
+    name: 'B2B Turnkey Private Label, OEM & Custom Contract Sourcing',
+    botanicalName: 'End-to-End Procurement, Custom Packaging, Regulatory Compliance & Export Consolidation',
     category: 'handicrafts',
-    division: 'Indian Heritage Handicrafts',
-    tag: 'Turnkey Contract Sourcing',
-    origin: 'All over India / Pan-India Sourcing Hubs',
+    division: 'Turnkey Contract Sourcing',
+    tag: 'Turnkey OEM & Private Label | DGFT / IEC Registered | US FDA & EU Ready',
+    origin: 'Verified Manufacturing Hubs Across South India & Pan-India Industrial Clusters',
+    compliance: 'DGFT / IEC Registered | US FDA Food Contact Compliant | EU REACH & CE Ready',
     image: './assets/images/private-label.jpg',
-    shortDesc: 'Turnkey contract sourcing for boutique retail brands, lifestyle chains, and specialty distributors across North America, Europe, and the Middle East. Sourcing sustainable eco-goods (bamboo toothbrushes, glassware, custom spice jars, textile amenities) across verified manufacturing clusters all over India / Pan-India with custom barcoding and private label retail packaging.',
-    hsnCode: 'Custom Multi-HSN',
+    shortDesc: 'A dedicated turnkey sourcing and private-label manufacturing desk bridging international retail brands, supermarket chains, hospitality groups, and e-commerce importers with audited Indian manufacturing clusters. We manage the entire cross-border procurement lifecycle: vendor qualification, CAD prototype tooling, formulation & lab testing, custom retail packaging (blister cards, glass spice jars, nitrogen-flushed tins, rigid gift boxes), GS1 barcode integration, and final container consolidation with unified export documentation.',
+    hsnCode: 'Consolidated Multi-Category (7010.90 / 9603.21 / 8210.00 / 6302.60 / 4819.10)',
     grades: [
-      { name: 'Eco-Friendly Lifestyle Goods (Bamboo & Glass)', size: 'Custom retail SKUs', density: 'Biodegradable / Recyclable', color: 'Natural Bamboo & Clear Glass', usage: 'Zero-waste lifestyle brands, hotel amenities, retail stores' },
-      { name: 'Custom Spice Glass Jars & Grinders', size: '50g to 250g retail units', density: 'Nitrogen flushed', color: 'Custom buyer branding', usage: 'Supermarket private label spice shelves' },
-      { name: 'Luxury Corporate & Boutique Gift Hampers', size: 'Curated spice, textile & brass combos', density: 'Deluxe gift packaging', color: 'Gold foil embossing', usage: 'Diplomatic missions, luxury corporate gifting' }
+      {
+        name: 'Private-Label Retail Spices & Condiments',
+        size: '50g to 500g glass jars, adjustable ceramic grinder caps, composite tins',
+        density: 'Whole & ground single-origin spices; US FDA / EU MRL compliant raw material',
+        color: 'Nitrogen flushing, induction foil heat-sealing, tamper-evident neck bands, GS1 barcodes',
+        usage: 'Supermarket private labels, gourmet grocery chains, specialty food brands',
+        image: './assets/images/private-label.jpg'
+      },
+      {
+        name: 'Sustainable Living & Hotel Amenities',
+        size: 'Bamboo toothbrushes, neem combs, loofah pads, cotton vanity sets',
+        density: 'FSC-certified Moso bamboo, 100% biodegradable polymers, BPA-free bristles',
+        color: 'Kraft pillow boxes, engraved laser logos, zero-plastic retail presentation',
+        usage: 'Eco-luxury resorts, zero-waste lifestyle retailers, airline comfort kits',
+        image: './assets/images/wooden-artefacts.jpg'
+      },
+      {
+        name: 'Boutique Glassware & Tableware Accessories',
+        size: 'High-borosilicate spice jars, oil pourers, airtight bamboo-lid containers',
+        density: 'Lead-free, cadmium-free borosilicate glass; food-contact approved silicone seals',
+        color: 'Custom screen-printed bottles, bespoke silicone sleeves, drop-tested retail cartons',
+        usage: 'Kitchenware retail chains, home organization brands, roasteries',
+        image: './assets/images/private-label.jpg'
+      },
+      {
+        name: 'Curated Luxury Corporate & Diplomatic Hampers',
+        size: 'Thematic combinations (Spices + Artisan Brassware + Organic Textiles)',
+        density: 'Certified single-origin spices, hand-cast brass Urlis/lamps, handloom linens',
+        color: 'Rigid magnetic luxury gift boxes, gold/silver foil stamping, satin ribbon inserts',
+        usage: 'Corporate VIP gifting, diplomatic missions, festival retail collections',
+        image: './assets/images/handicrafts.jpg'
+      }
     ],
     technicalSpecs: {
-      servicesIncluded: 'Origin vetting, lab testing (SGS/Bureau Veritas upon request), packaging design adaptation, barcoding, FDA / EU label compliance',
-      leadTime: '30 to 45 days from sample sign-off to port loading',
-      minimumOrderValue: '$5,000 USD',
-      sustainability: 'FSC-certified bamboo, lead-free borosilicate glassware, biodegradable carton packaging'
+      vendorQualificationAudits: 'Every partner facility is pre-audited for quality infrastructure, labor ethics, environmental compliance & delivery track record',
+      foodContactSafety: 'Fully certified under US FDA 21 CFR 175/177, California Proposition 65 (Lead/Cadmium < 0.1 ppm) & EU Regulation (EC) No 1935/2004',
+      thirdPartyInspection: 'Consignment inspection & batch testing executed via accredited testing houses (SGS, Bureau Veritas, Intertek, or NABL labs) upon buyer nomination',
+      labelingRegulatoryAlignment: 'US Market: FDA 21 CFR Part 101 panels | EU: FIC Regulation 1169/2011 & CE marks | GCC: GSO 9/2013 bilingual (Arabic/English) standards',
+      ecommerceFbaCompliance: 'Turnkey fulfillment prep: FNSKU barcode application, suffocation warning polybags, carton weight < 50 lbs, GMA / Euro pallet configuration'
     },
     packagingOptions: [
-      'Retail shelf-ready packaging (SRP) in master shippers',
-      'Barcode, SKU label, and Amazon FBA pallet prep compliant'
+      'Shelf-Ready Packaging (SRP): Perforated retail display outers (RRP/SRP) engineered for direct placement onto supermarket and retail shelves.',
+      'Transit Integrity & Drop Testing: Packed inside heavy-duty 5-ply / 7-ply double-wall export master cartons meeting ISTA 1A / 3A drop-test criteria to eliminate e-commerce transit damage.',
+      'Consolidated Container Packing: Multi-SKU consolidation with clear pallet mapping, color-coded carton labels, and shrink-wrapped ISPM-15 heat-treated export pallets.'
     ],
     shippingInfo: {
-      minimumOrder: 'Project based ($5,000 USD)',
-      containerCapacity: 'Air Cargo Express or 20ft / 40ft FCL',
-      gatewayPorts: 'Chennai Air/Sea, Tuticorin VOC Port, Bangalore Air',
-      hsCode: 'Custom'
+      minimumOrder: 'Minimum Project Value (MOV): $5,000 USD (Consolidated mixed SKUs or single-line OEM runs) | Turnkey Project Lead Time: 25 - 45 business days',
+      containerCapacity: '20ft / 40ft FCL Factory-Direct Stuffing | LCL Multi-Vendor Palletized Consolidation | Air Cargo Express',
+      containerStuffingBreakdown: {
+        fcl20: [
+          'Full Container Load (20ft / 40ft FCL): Factory-direct stuffing with mixed SKU manifest',
+          'Less than Container Load (LCL): Consolidated multi-vendor palletized shipments'
+        ],
+        fcl40: [
+          'Air Cargo Express / Priority: Dedicated sampling runs and expedited retail deliveries'
+        ]
+      },
+      gatewayPorts: 'Chennai Port (MAA) / Tuticorin VOC Port (TUT) / Cochin Port (COK)',
+      airTerminals: 'Chennai (MAA) / Bangalore Kempegowda (BLR) / Coimbatore (CJB)',
+      hsCode: 'Consolidated Multi-Category (7010.90 / 9603.21 / 8210.00 / 6302.60 / 4819.10)'
     }
   }
 ];

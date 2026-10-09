@@ -5,7 +5,8 @@
     /* Brand Colors derived from official Kavri Exim logo */
     --brand-green-950: #052615;
     --brand-green-900: #083820;
-    --brand-green-800: #0d522f; /* Primary Logo Deep Forest Green */
+    --brand-green-800: #0d522f;
+    /* Primary Logo Deep Forest Green */
     --brand-green-700: #126d3f;
     --brand-green-600: #188a50;
     --brand-green-100: #e8f5ee;
@@ -61,6 +62,7 @@
   box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .card-clean:hover {
   border-color: #cbd5e1;
   box-shadow: 0 12px 24px -4px rgba(13, 82, 47, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
