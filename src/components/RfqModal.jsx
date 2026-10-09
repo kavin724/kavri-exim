@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { 
   X, Send, CheckCircle, MessageCircle, FileText, 
-  Package
+  Package, Loader2
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/productsData';
+import { submitInquiry, generateReferenceId } from '../services/inquiryService';
 
 export default function RfqModal({ isOpen, onClose, initialProduct = null }) {
   const [formData, setFormData] = useState({
@@ -22,6 +23,7 @@ export default function RfqModal({ isOpen, onClose, initialProduct = null }) {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [quoteReference, setQuoteReference] = useState('');
 
@@ -47,10 +49,20 @@ export default function RfqModal({ isOpen, onClose, initialProduct = null }) {
 
   const selectedProductObj = PRODUCTS_DATA.find(p => p.id === formData.productId) || PRODUCTS_DATA[0];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const refCode = `KE-RFQ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+    setIsSubmitting(true);
+    const refCode = generateReferenceId('RFQ');
     setQuoteReference(refCode);
+
+    await submitInquiry({
+      ...formData,
+      referenceId: refCode,
+      inquiryType: 'Export RFQ',
+      product: selectedProductObj.name
+    });
+
+    setIsSubmitting(false);
     setIsSubmitted(true);
   };
 
@@ -113,14 +125,21 @@ export default function RfqModal({ isOpen, onClose, initialProduct = null }) {
                 <CheckCircle className="w-8 h-8" />
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <h4 className="text-xl font-bold text-slate-900">RFQ Transmitted Successfully!</h4>
+                <div className="inline-flex items-center space-x-1.5 bg-emerald-100 text-[#0D522F] px-3.5 py-1 rounded-full text-xs font-bold border border-emerald-300">
+                  <CheckCircle className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span>Logged to Trade CRM & Emailed to trade@kavriexim.com</span>
+                </div>
                 <p className="text-sm text-slate-600 max-w-md mx-auto">
                   Your inquiry has been logged under reference code:
                 </p>
                 <div className="inline-block bg-emerald-50 border border-emerald-300 text-[#0D522F] font-mono text-base px-4 py-1.5 rounded-lg font-bold tracking-wider">
                   {quoteReference}
                 </div>
+                <p className="text-xs text-slate-500">
+                  Official Proforma Invoice and certified lab limits will be issued within <strong>12 business hours</strong>.
+                </p>
               </div>
 
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 text-left text-xs space-y-2 text-slate-700 max-w-lg mx-auto">
@@ -411,10 +430,20 @@ export default function RfqModal({ isOpen, onClose, initialProduct = null }) {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full bg-[#0D522F] hover:bg-[#083820] text-white font-bold py-3.5 rounded-xl text-sm shadow-lg shadow-[#0D522F]/20 flex items-center justify-center space-x-2 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#0D522F] hover:bg-[#083820] text-white font-bold py-3.5 rounded-xl text-sm shadow-lg shadow-[#0D522F]/20 flex items-center justify-center space-x-2 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-4 h-4 stroke-[2.2] text-amber-300" />
-                  <span>Transmit Official Request For Quote</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 text-amber-300 animate-spin" />
+                      <span>Transmitting RFQ to Trade Desk...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 stroke-[2.2] text-amber-300" />
+                      <span>Transmit Official Request For Quote</span>
+                    </>
+                  )}
                 </button>
               </div>
 

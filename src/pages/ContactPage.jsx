@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { 
   Mail, MapPin, Clock, MessageCircle, 
-  Send, CheckCircle2, Upload 
+  Send, CheckCircle2, Upload, Loader2
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/productsData';
+import { submitInquiry, generateReferenceId } from '../services/inquiryService';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -19,10 +20,25 @@ export default function ContactPage() {
     fileAttached: false
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [referenceId, setReferenceId] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    const refCode = generateReferenceId('PR');
+    setReferenceId(refCode);
+
+    await submitInquiry({
+      ...formData,
+      referenceId: refCode,
+      inquiryType: 'Proforma Invoice Request',
+      quantity: formData.volume,
+      message: formData.specs
+    });
+
+    setIsSubmitting(false);
     setSubmitted(true);
   };
 
@@ -68,9 +84,9 @@ export default function ContactPage() {
                 <div className="flex items-start space-x-3">
                   <Mail className="w-5 h-5 text-[#0D522F] mt-0.5 flex-shrink-0" />
                   <div>
-                    <strong className="text-slate-900 block mb-0.5">Official Trade Email:</strong>
-                    <a href="mailto:trade@kavriexim.com" className="text-[#0D522F] font-semibold hover:underline">trade@kavriexim.com</a>
-                    <span className="block text-slate-400 text-xs mt-0.5">Monitored 24/7 by commercial trade desk</span>
+                    <strong className="text-slate-900 block mb-0.5">Corporate & General Desk:</strong>
+                    <a href="mailto:connect@kavriexim.com" className="text-[#0D522F] font-semibold hover:underline">connect@kavriexim.com</a>
+                    <span className="block text-slate-400 text-xs mt-0.5">Official communication & general trade correspondence</span>
                   </div>
                 </div>
 
@@ -134,18 +150,33 @@ export default function ContactPage() {
 
             {submitted ? (
               <div className="py-12 text-center space-y-4">
-                <CheckCircle2 className="w-12 h-12 text-[#0D522F] mx-auto" />
-                <h3 className="text-xl font-bold text-slate-900">Inquiry Successfully Transmitted!</h3>
-                <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
-                  Thank you, <strong>{formData.name}</strong> ({formData.company}). Our trade operations desk has received your request for <strong>{formData.product}</strong> and will follow up shortly at <strong>{formData.email}</strong>.
+                <CheckCircle2 className="w-12 h-12 text-[#0D522F] mx-auto animate-bounce" />
+                <h3 className="text-xl font-bold text-slate-900">Proforma Request Transmitted!</h3>
+                <div className="inline-flex items-center space-x-1.5 bg-emerald-100 text-[#0D522F] px-3.5 py-1 rounded-full text-xs font-bold border border-emerald-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span>Logged to Trade CRM & Emailed to trade@kavriexim.com</span>
+                </div>
+                <div className="pt-1">
+                  <span className="text-xs text-slate-500 block mb-1">Official Reference Code:</span>
+                  <div className="inline-block bg-emerald-50 border border-emerald-300 text-[#0D522F] font-mono text-sm px-4 py-1.5 rounded-lg font-bold">
+                    {referenceId}
+                  </div>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                  Thank you, <strong>{formData.name}</strong> ({formData.company}). Our trade operations desk has received your request for <strong>{formData.product}</strong> and will follow up with formal Proforma Invoice and certified lab limits within <strong>12 business hours</strong> at <strong>{formData.email}</strong>.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setSubmitted(false)}
-                  className="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold px-4 py-2 rounded-lg"
-                >
-                  Submit Another Inquiry
-                </button>
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSubmitted(false);
+                      setFormData(prev => ({ ...prev, volume: '', specs: '' }));
+                    }}
+                    className="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold px-4 py-2 rounded-lg cursor-pointer"
+                  >
+                    Submit Another Inquiry
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -285,10 +316,20 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-[#0D522F] hover:bg-[#083820] text-white font-bold py-3.5 rounded-xl text-sm flex items-center justify-center space-x-2 shadow-lg shadow-[#0D522F]/20 transition-all cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#0D522F] hover:bg-[#083820] text-white font-bold py-3.5 rounded-xl text-sm flex items-center justify-center space-x-2 shadow-lg shadow-[#0D522F]/20 transition-all cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-4 h-4 stroke-[2.2] text-amber-300" />
-                  <span>Transmit Export Inquiry to Trade Desk</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 text-amber-300 animate-spin" />
+                      <span>Transmitting Inquiry to Trade Desk...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 stroke-[2.2] text-amber-300" />
+                      <span>Transmit Export Inquiry to Trade Desk</span>
+                    </>
+                  )}
                 </button>
 
               </form>

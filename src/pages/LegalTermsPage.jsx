@@ -68,7 +68,7 @@ export default function LegalTermsPage({ initialTab = 'privacy' }) {
             <span className="hidden sm:inline">•</span>
             <span>Effective Date: Current Export Fiscal Year 2024–2026</span>
             <span className="hidden sm:inline">•</span>
-            <span>Direct Inquiries: <a href="mailto:trade@kavriexim.com" className="text-[#0D522F] font-semibold underline">trade@kavriexim.com</a></span>
+            <span>Direct Inquiries: <a href="mailto:connect@kavriexim.com" className="text-[#0D522F] font-semibold underline">connect@kavriexim.com</a></span>
           </div>
         </div>
 
@@ -158,7 +158,7 @@ export default function LegalTermsPage({ initialTab = 'privacy' }) {
                   <span className="text-[#0D522F] font-mono">6.</span> Data Retention & Importer Rights
                 </h3>
                 <p>
-                  Commercial order histories, customs documentation, and invoices are preserved for the statutory duration mandated by Indian taxation and foreign trade regulations. Buyers may at any time request an update, verification, or deletion of non-statutory communication records by writing to our trade desk at <a href="mailto:trade@kavriexim.com" className="text-[#0D522F] font-semibold underline">trade@kavriexim.com</a>.
+                  Commercial order histories, customs documentation, and invoices are preserved for the statutory duration mandated by Indian taxation and foreign trade regulations. Buyers may at any time request an update, verification, or deletion of non-statutory communication records by writing to our trade desk at <a href="mailto:connect@kavriexim.com" className="text-[#0D522F] font-semibold underline">connect@kavriexim.com</a>.
                 </p>
               </section>
             </div>
@@ -281,11 +281,11 @@ export default function LegalTermsPage({ initialTab = 'privacy' }) {
                   For formal legal notices or commercial arbitration correspondence:
                 </div>
                 <a
-                  href="mailto:trade@kavriexim.com"
+                  href="mailto:connect@kavriexim.com"
                   className="inline-flex items-center gap-2 text-xs font-bold text-[#0D522F] hover:underline"
                 >
                   <Mail className="w-3.5 h-3.5" />
-                  <span>trade@kavriexim.com</span>
+                  <span>connect@kavriexim.com</span>
                 </a>
               </section>
             </div>

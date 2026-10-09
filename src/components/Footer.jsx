@@ -39,7 +39,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-[#0D522F] flex-shrink-0" />
-                <a href="mailto:trade@kavriexim.com" className="text-[#0D522F] font-semibold hover:underline">trade@kavriexim.com</a>
+                <a href="mailto:connect@kavriexim.com" className="text-[#0D522F] font-semibold hover:underline">connect@kavriexim.com</a>
               </div>
               <div className="flex items-center space-x-2">
                 <MessageCircle className="w-4 h-4 text-[#0D522F] flex-shrink-0" />
