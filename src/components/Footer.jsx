@@ -1,9 +1,7 @@
 import React from 'react';
 import { 
-  Mail, MapPin, Phone, ShieldCheck, 
-  ArrowUpRight, Award, Anchor, CheckCircle2, MessageCircle 
+  Mail, MapPin, Anchor, MessageCircle 
 } from 'lucide-react';
-import { TRUST_BADGES } from '../data/productsData';
 
 export default function Footer({ setCurrentRoute, onOpenRfq }) {
   const navigateTo = (route, e) => {
@@ -14,27 +12,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
 
   return (
     <footer className="bg-slate-50 text-slate-700 border-t border-slate-200">
-      
-      {/* Statutory Trust Ribbon Strip */}
-      <div className="border-b border-slate-200 bg-white py-5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center space-x-2 text-slate-800 text-xs sm:text-sm font-bold">
-              <Award className="w-5 h-5 text-[#0D522F]" />
-              <span>Statutory Trade Registrations & Government Authorities:</span>
-            </div>
-            <div className="flex flex-wrap items-center gap-2.5">
-              {TRUST_BADGES.map((badge) => (
-                <div key={badge.name} className="inline-flex items-center space-x-1.5 bg-slate-100/80 border border-slate-200 rounded-full px-3 py-1 text-xs text-slate-800">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F]" />
-                  <span className="font-semibold">{badge.name}</span>
-                  <span className="text-[10px] text-amber-700 font-mono">({badge.code})</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       {/* Main Footer Directory */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
@@ -61,7 +39,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-[#0D522F] flex-shrink-0" />
-                <a href="mailto:trade@kavriexim.com" className="text-[#0D522F] font-semibold hover:underline">trade@kavriexim.com</a>
+                <a href="mailto:connect@kavriexim.com" className="text-[#0D522F] font-semibold hover:underline">connect@kavriexim.com</a>
               </div>
               <div className="flex items-center space-x-2">
                 <MessageCircle className="w-4 h-4 text-[#0D522F] flex-shrink-0" />
@@ -180,16 +158,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
                   Incoterms 2020 & Port Freight
                 </button>
               </li>
-              <li>
-                <button type="button" onClick={(e) => navigateTo('privacy-policy', e)} className="hover:text-[#0D522F] transition-colors text-left">
-                  Privacy Policy
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={(e) => navigateTo('terms-conditions', e)} className="hover:text-[#0D522F] transition-colors text-left">
-                  Terms & Conditions / Disclaimers
-                </button>
-              </li>
+
               <li className="pt-2">
                 <button
                   type="button"

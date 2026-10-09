@@ -4,12 +4,32 @@ import {
 } from 'lucide-react';
 import { PRODUCTS_DATA, COMMODITY_CATEGORIES } from '../data/productsData';
 
-export default function ProductsPage({ initialCategory = 'all', setCurrentRoute, onOpenRfq, onOpenTds }) {
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+const CATEGORY_META = {
+  spices: {
+    badge: 'Division 01 • Spices Board of India Registered',
+    title: 'Spices & Seasonings Export Catalog',
+    desc: 'Direct farm-origin harvesting from South India’s Western Ghats and Kaveri basin. Standardized Sortex-cleaned grades of Alleppey Green Cardamom, Tellicherry & Kolli Pepper, and GI-certified Erode & Salem Turmeric with laboratory test benchmarks.'
+  },
+  textiles: {
+    badge: 'Division 02 • Tirupur & Karur Manufacturing Hubs',
+    title: 'Textiles & Garments Export Catalog',
+    desc: 'Custom OEM apparel, luxury terry towels, hotel-grade bedsheets, and industrial woven fabrics manufactured to rigorous international colorfastness and AATCC/ISO standards.'
+  },
+  handicrafts: {
+    badge: 'Division 03 • Heritage Artisan Clusters',
+    title: 'Handicrafts & Artefacts Export Catalog',
+    desc: 'Authentic South Indian lost-wax cast bronze & brass idols, hand-carved teakwood decorative artefacts, and traditional architectural terracotta pottery.'
+  }
+};
+
+export default function ProductsPage({ initialCategory = 'spices', setCurrentRoute, onOpenRfq, onOpenTds }) {
+  const normalizedCategory = (initialCategory && initialCategory !== 'all') ? initialCategory : 'spices';
+  const [selectedCategory, setSelectedCategory] = useState(normalizedCategory);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    setSelectedCategory(initialCategory);
+    const validCat = (initialCategory && initialCategory !== 'all') ? initialCategory : 'spices';
+    setSelectedCategory(validCat);
   }, [initialCategory]);
 
   const navigateTo = (route, e) => {
@@ -21,21 +41,19 @@ export default function ProductsPage({ initialCategory = 'all', setCurrentRoute,
   const handleSelectCategory = (catId) => {
     setSelectedCategory(catId);
     if (setCurrentRoute) {
-      if (catId === 'all') {
-        setCurrentRoute('products');
-      } else {
-        setCurrentRoute(`products?cat=${catId}`);
-      }
+      setCurrentRoute(`products?cat=${catId}`);
     }
   };
 
   const filteredProducts = PRODUCTS_DATA.filter(prod => {
-    const matchesCat = selectedCategory === 'all' || prod.category === selectedCategory;
+    const matchesCat = prod.category === selectedCategory;
     const matchesSearch = prod.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           prod.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           prod.grades?.some(g => g.name.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCat && matchesSearch;
   });
+
+  const currentMeta = CATEGORY_META[selectedCategory] || CATEGORY_META.spices;
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen py-12">
@@ -45,13 +63,13 @@ export default function ProductsPage({ initialCategory = 'all', setCurrentRoute,
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center space-x-2 bg-emerald-100 border border-emerald-300 px-3.5 py-1 rounded-full text-xs font-bold text-[#0D522F] mb-3">
             <Compass className="w-3.5 h-3.5" />
-            <span>Standardized International Trade Catalog</span>
+            <span>{currentMeta.badge}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-['Plus_Jakarta_Sans']">
-            Export Commodities & Product Lines
+            {currentMeta.title}
           </h1>
           <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
-            Browse our full catalog of origin-certified spices, custom export textiles & garments, and Indian Heritage Handicrafts including terracotta artefacts. Complete technical data sheets (TDS) and proforma quotations available.
+            {currentMeta.desc}
           </p>
         </div>
 

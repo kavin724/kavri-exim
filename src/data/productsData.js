@@ -1,5 +1,4 @@
 export const COMMODITY_CATEGORIES = [
-  { id: 'all', name: 'All Divisions' },
   { id: 'spices', name: 'Spices & Seasonings' },
   { id: 'textiles', name: 'Textiles & Garments' },
   { id: 'handicrafts', name: 'Handicrafts & Artefacts' }
@@ -849,7 +848,6 @@ export const PRODUCTS_DATA = [
 export const TRUST_BADGES = [
   { name: 'Spices Board of India', code: 'CRES Registered', desc: 'Statutory registration for authentic spice merchant exports' },
   { name: 'Directorate General of Foreign Trade (DGFT)', code: 'IEC Certified', desc: 'Valid Government of India Importer-Exporter Code' },
-  { name: 'APEDA', code: 'Agri Export Authority', desc: 'Agricultural and Processed Food Products Export Development' },
   { name: 'FSSAI', code: 'Central Food Safety License', desc: 'Food Safety and Standards Authority of India compliance' },
   { name: 'GST & Zero-Rated LUT', code: 'Export Compliant', desc: 'Fully compliant GST invoicing under Letter of Undertaking' }
 ];

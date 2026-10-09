@@ -36,14 +36,14 @@ export default function TopUtilityBar() {
           {/* Separator 3 */}
           <span className="text-emerald-400/50 select-none flex-shrink-0">|</span>
 
-          {/* 4. Trade Desk Email */}
+          {/* 4. Corporate Contact Email */}
           <a
-            href="mailto:trade@kavriexim.com"
+            href="mailto:connect@kavriexim.com"
             className="group flex items-center space-x-1.5 text-emerald-100 hover:text-white transition-colors flex-shrink-0"
-            title="Direct Corporate Trade Desk"
+            title="Official Corporate Communication Desk"
           >
             <Mail className="w-3.5 h-3.5 text-emerald-100 group-hover:text-white flex-shrink-0 transition-colors" />
-            <span>trade@kavriexim.com</span>
+            <span>connect@kavriexim.com</span>
           </a>
 
           {/* Separator 4 */}

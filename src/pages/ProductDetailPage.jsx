@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { 
   ArrowLeft, Download, FileText, CheckCircle2, ShieldCheck, 
-  Package, Send, ArrowRight 
+  Package, Send, ArrowRight, Loader2
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/productsData';
+import { submitInquiry, generateReferenceId } from '../services/inquiryService';
 
 export const SPEC_LABEL_MAP = {
   moisture: 'Moisture Content',
@@ -155,9 +156,19 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
   const [inquiryName, setInquiryName] = useState('');
   const [inquiryCompany, setInquiryCompany] = useState('');
   const [inquiryEmail, setInquiryEmail] = useState('');
-  const [inquiryPhone, setInquiryPhone] = useState('');
   const [inquiryPort, setInquiryPort] = useState('');
+  const [isSubmittingInquiry, setIsSubmittingInquiry] = useState(false);
   const [inquirySubmitted, setInquirySubmitted] = useState(false);
+  const [inquiryRefId, setInquiryRefId] = useState('');
+
+  const categoryNames = {
+    spices: 'Spices & Seasonings',
+    textiles: 'Textiles & Garments',
+    handicrafts: 'Heritage Handicrafts'
+  };
+
+  const parentCategoryRoute = `products?cat=${product.category || 'all'}`;
+  const parentCategoryName = categoryNames[product.category] || 'Dedicated Catalog';
 
   const navigateTo = (route, e) => {
     if (e) e.preventDefault();
@@ -165,8 +176,25 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleDirectInquiry = (e) => {
+  const handleDirectInquiry = async (e) => {
     e.preventDefault();
+    setIsSubmittingInquiry(true);
+    const refCode = generateReferenceId('INQ');
+    setInquiryRefId(refCode);
+
+    await submitInquiry({
+      fullName: inquiryName,
+      companyName: inquiryCompany,
+      email: inquiryEmail,
+      portOfDischarge: inquiryPort,
+      product: product.name,
+      referenceId: refCode,
+      inquiryType: 'Direct Product Inquiry',
+      incoterm: 'CIF',
+      message: `Direct inquiry for ${product.name} submitted from product specification page.`
+    });
+
+    setIsSubmittingInquiry(false);
     setInquirySubmitted(true);
   };
 
@@ -180,11 +208,11 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
         <div className="mb-6 flex items-center justify-between">
           <button
             type="button"
-            onClick={(e) => navigateTo('products', e)}
-            className="text-xs sm:text-sm text-slate-600 hover:text-[#0D522F] flex items-center gap-1.5 transition-colors cursor-pointer font-bold"
+            onClick={(e) => navigateTo(parentCategoryRoute, e)}
+            className="text-xs sm:text-sm text-slate-600 hover:text-[#0D522F] flex items-center gap-2 transition-colors cursor-pointer font-bold group"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to All Products</span>
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span>Back to {parentCategoryName}</span>
           </button>
 
           <span className="text-xs text-[#0D522F] font-mono font-bold">
@@ -296,11 +324,14 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
               </div>
 
               {inquirySubmitted ? (
-                <div className="bg-emerald-50 border border-emerald-300 rounded-xl p-4 text-center space-y-2">
-                  <CheckCircle2 className="w-6 h-6 text-[#0D522F] mx-auto" />
-                  <div className="text-sm font-bold text-slate-900">Inquiry Received</div>
-                  <p className="text-xs text-slate-600">
-                    Our trade desk is preparing proforma quotation and test specs for <strong>{product.name}</strong>.
+                <div className="bg-emerald-50 border border-emerald-300 rounded-xl p-5 text-center space-y-2.5">
+                  <CheckCircle2 className="w-8 h-8 text-[#0D522F] mx-auto animate-bounce" />
+                  <div className="text-sm font-bold text-slate-900">Inquiry Transmitted to Trade Desk</div>
+                  <div className="inline-block bg-white border border-emerald-300 text-[#0D522F] font-mono text-xs px-3 py-1 rounded-md font-bold">
+                    Ref: {inquiryRefId}
+                  </div>
+                  <p className="text-xs text-slate-600 max-w-sm mx-auto">
+                    Logged to Trade CRM & sent to <strong>trade@kavriexim.com</strong>. Our operations team is preparing your formal proforma quotation and test specs for <strong>{product.name}</strong>.
                   </p>
                 </div>
               ) : (
@@ -344,10 +375,20 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
 
                   <button
                     type="submit"
-                    className="w-full bg-[#0D522F] hover:bg-[#083820] text-white font-bold py-2.5 rounded-lg text-xs flex items-center justify-center space-x-2 shadow-sm transition-all cursor-pointer"
+                    disabled={isSubmittingInquiry}
+                    className="w-full bg-[#0D522F] hover:bg-[#083820] text-white font-bold py-2.5 rounded-lg text-xs flex items-center justify-center space-x-2 shadow-sm transition-all cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-3.5 h-3.5 text-amber-300" />
-                    <span>Submit Inquiry for {product.name}</span>
+                    {isSubmittingInquiry ? (
+                      <>
+                        <Loader2 className="w-3.5 h-3.5 text-amber-300 animate-spin" />
+                        <span>Transmitting Inquiry...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-3.5 h-3.5 text-amber-300" />
+                        <span>Submit Inquiry for {product.name}</span>
+                      </>
+                    )}
                   </button>
                 </form>
               )}
