@@ -49,3 +49,35 @@ This guide enables automatic **Google Sheets logging** and **elegant HTML email 
    - Delivered immediately to **`trade@kavriexim.com`**.
    - **`Reply-To` is automatically set to the buyer's email**: Just click **"Reply"** in Gmail to write back to the buyer immediately!
    - Features Kavri Exim branding, quick-action WhatsApp button for the buyer, formatted order specs, and trade desk SOP checklist.
+
+---
+
+## 🔍 Why Emails Skip the Inbox & How to Fix It
+
+### The Reason:
+In Google Workspace, if your primary login is **`kavinkumar@kavriexim.com`** and **`trade@kavriexim.com`** is an alias:
+1. The Apps Script executes as **`kavinkumar@kavriexim.com`** (the sender).
+2. The destination is **`trade@kavriexim.com`** (the same account).
+3. **Gmail automatically routes self-sent emails into "Sent Mail" and skips the Primary Inbox!**
+   - Check your **Sent** folder or search `to:trade@kavriexim.com` in Gmail—your inquiries are already there!
+
+### Fix 1: Update Apps Script Deployment (Takes 1 Minute)
+1. In Google Sheets, open **Extensions** > **Apps Script**.
+2. Replace `Code.gs` with the updated code (which adds BCC and uses `moveToInbox()` + `markUnread()`).
+3. Click **Deploy** > **Manage deployments**.
+4. Click the **Pencil (Edit)** icon next to your active deployment.
+5. In the **Version** dropdown, select **New version**.
+6. Click **Deploy**. (The URL stays exactly the same!)
+
+### Fix 2: Add a 30-Second Gmail Filter (Recommended)
+In your Gmail account:
+1. In the top search bar, click the **Show search options** icon (filter slider).
+2. In the **To** field, enter: `trade@kavriexim.com`.
+3. Click **Create filter**.
+4. Check the following boxes:
+   - ✅ **Never send it to Spam**
+   - ✅ **Always mark it as important**
+   - ✅ **Apply the label:** (Create a label like `Trade Inquiries / RFQs`)
+   - ✅ **Categorize as: Primary**
+5. Click **Create filter**.
+All past and future RFQs will now be prominently visible in your Primary Inbox!

@@ -447,12 +447,35 @@ function sendTradeDeskNotificationEmail(lead) {
     '</body>' +
     '</html>';
 
-  // Send email with replyTo set to buyer's email address
-  MailApp.sendEmail({
-    to: RECIPIENT_EMAIL,
-    replyTo: lead.email || RECIPIENT_EMAIL,
-    subject: subject,
-    body: textBody,
-    htmlBody: htmlBody
-  });
+  // Send email with replyTo set to buyer's email address and BCC to force Gmail inbox ingestion
+  try {
+    GmailApp.sendEmail(RECIPIENT_EMAIL, subject, textBody, {
+      htmlBody: htmlBody,
+      name: "Kavri Exim Trade Desk",
+      replyTo: lead.email || RECIPIENT_EMAIL,
+      bcc: RECIPIENT_EMAIL
+    });
+
+    // Fix for Google Workspace / Gmail alias self-send:
+    // When kavinkumar@kavriexim.com sends an email to its own alias (trade@kavriexim.com),
+    // Gmail defaults to routing self-sent emails into "Sent Mail" and skips the Inbox.
+    // Explicitly moving the thread to Inbox and marking unread ensures it appears in Primary Inbox with an alert:
+    Utilities.sleep(1200);
+    var threads = GmailApp.search('subject:"' + subject + '"', 0, 1);
+    if (threads && threads.length > 0) {
+      threads[0].moveToInbox();
+      threads[0].markUnread();
+    }
+  } catch (gmailErr) {
+    Logger.log("GmailApp send fallback to MailApp: " + gmailErr.toString());
+    MailApp.sendEmail({
+      to: RECIPIENT_EMAIL,
+      bcc: RECIPIENT_EMAIL,
+      name: "Kavri Exim Trade Desk",
+      replyTo: lead.email || RECIPIENT_EMAIL,
+      subject: subject,
+      body: textBody,
+      htmlBody: htmlBody
+    });
+  }
 }
