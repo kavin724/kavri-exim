@@ -231,7 +231,7 @@ function resolveSequentialReferenceId(sheet, requestedId, inquiryType) {
 function sendTradeDeskNotificationEmail(lead) {
   var formattedDate = Utilities.formatDate(lead.timestamp, "Asia/Kolkata", "dd MMM yyyy, hh:mm a 'IST'");
 
-  var subject = "[" + lead.inquiryType + " • " + lead.referenceId + "] " +
+  var subject = "[RFQ Website • " + lead.inquiryType + " • " + lead.referenceId + "] " +
                 lead.product + " - " + lead.companyName + " (" + (lead.destinationCountry || lead.portOfDischarge || "Global") + ")";
 
   // WhatsApp quick link for the trade officer
@@ -451,27 +451,50 @@ function sendTradeDeskNotificationEmail(lead) {
   try {
     GmailApp.sendEmail(RECIPIENT_EMAIL, subject, textBody, {
       htmlBody: htmlBody,
-      name: "Kavri Exim Trade Desk",
+      name: "RFQ Website",
       replyTo: lead.email || RECIPIENT_EMAIL,
       bcc: RECIPIENT_EMAIL
     });
 
     // Fix for Google Workspace / Gmail alias self-send:
     // When kavinkumar@kavriexim.com sends an email to its own alias (trade@kavriexim.com),
-    // Gmail defaults to routing self-sent emails into "Sent Mail" and skips the Inbox.
-    // Explicitly moving the thread to Inbox and marking unread ensures it appears in Primary Inbox with an alert:
-    Utilities.sleep(1200);
-    var threads = GmailApp.search('subject:"' + subject + '"', 0, 1);
+    // Gmail defaults to treating self-sent emails as already "Read".
+    // We locate the thread using the clean Reference ID (e.g. KE-RFQ-2026-0001), move it to Inbox,
+    // attach the "RFQ Website" label tag, and explicitly mark both the messages and the thread as UNREAD:
+    Utilities.sleep(1800);
+    var query = lead.referenceId;
+    var threads = GmailApp.search(query, 0, 3);
+    if (!threads || threads.length === 0) {
+      Utilities.sleep(1500);
+      threads = GmailApp.search(query, 0, 3);
+    }
+
     if (threads && threads.length > 0) {
-      threads[0].moveToInbox();
-      threads[0].markUnread();
+      var rfqLabel;
+      try {
+        rfqLabel = GmailApp.getUserLabelByName("RFQ Website") || GmailApp.createLabel("RFQ Website");
+      } catch (labelErr) {
+        Logger.log("Label creation note: " + labelErr.toString());
+      }
+
+      for (var t = 0; t < threads.length; t++) {
+        threads[t].moveToInbox();
+        if (rfqLabel) {
+          threads[t].addLabel(rfqLabel);
+        }
+        var msgs = threads[t].getMessages();
+        for (var m = 0; m < msgs.length; m++) {
+          msgs[m].markUnread();
+        }
+        threads[t].markUnread();
+      }
     }
   } catch (gmailErr) {
     Logger.log("GmailApp send fallback to MailApp: " + gmailErr.toString());
     MailApp.sendEmail({
       to: RECIPIENT_EMAIL,
       bcc: RECIPIENT_EMAIL,
-      name: "Kavri Exim Trade Desk",
+      name: "RFQ Website",
       replyTo: lead.email || RECIPIENT_EMAIL,
       subject: subject,
       body: textBody,
@@ -479,3 +502,37 @@ function sendTradeDeskNotificationEmail(lead) {
     });
   }
 }
+
+/**
+ * =========================================================================
+ * UTILITY TOOL: Mark all past RFQ/Proforma inquiries as UNREAD in your Inbox
+ * =========================================================================
+ * How to use:
+ * 1. In the Apps Script toolbar at the top, select "markAllPastInquiriesUnread" from the function dropdown.
+ * 2. Click "Run" (▶).
+ * All previously delivered inquiries will immediately turn bold/UNREAD in your Primary Inbox!
+ */
+function markAllPastInquiriesUnread() {
+  var query = "KE-RFQ- OR KE-PR- OR KE-INQ-";
+  var threads = GmailApp.search(query, 0, 50);
+  Logger.log("Found " + threads.length + " inquiry threads matching query: " + query);
+
+  var rfqLabel;
+  try {
+    rfqLabel = GmailApp.getUserLabelByName("RFQ Website") || GmailApp.createLabel("RFQ Website");
+  } catch (labelErr) {}
+
+  for (var i = 0; i < threads.length; i++) {
+    threads[i].moveToInbox();
+    if (rfqLabel) {
+      threads[i].addLabel(rfqLabel);
+    }
+    var msgs = threads[i].getMessages();
+    for (var m = 0; m < msgs.length; m++) {
+      msgs[m].markUnread();
+    }
+    threads[i].markUnread();
+  }
+  Logger.log("Successfully moved " + threads.length + " threads to Inbox, labeled with 'RFQ Website', and marked them UNREAD.");
+}
+

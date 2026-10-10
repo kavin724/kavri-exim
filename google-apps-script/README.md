@@ -63,11 +63,18 @@ In Google Workspace, if your primary login is **`kavinkumar@kavriexim.com`** and
 
 ### Fix 1: Update Apps Script Deployment (Takes 1 Minute)
 1. In Google Sheets, open **Extensions** > **Apps Script**.
-2. Replace `Code.gs` with the updated code (which adds BCC and uses `moveToInbox()` + `markUnread()`).
+2. Replace `Code.gs` with the updated code (which adds BCC and uses `moveToInbox()` + `msg.markUnread()` + `thread.markUnread()`).
 3. Click **Deploy** > **Manage deployments**.
 4. Click the **Pencil (Edit)** icon next to your active deployment.
 5. In the **Version** dropdown, select **New version**.
 6. Click **Deploy**. (The URL stays exactly the same!)
+
+### How to Turn Past Inquiries Into UNREAD Right Now:
+If previous inquiries in your Inbox are showing as already read:
+1. In the Apps Script toolbar at the top, select the function dropdown (where it says `doPost` or `myFunction`).
+2. Choose **`markAllPastInquiriesUnread`**.
+3. Click the **Run** (▶) button.
+4. Check your Gmail Inbox: all inquiry emails will immediately turn bold (**UNREAD**) with notification badges!
 
 ### Fix 2: Add a 30-Second Gmail Filter (Recommended)
 In your Gmail account:
@@ -81,3 +88,16 @@ In your Gmail account:
    - ✅ **Categorize as: Primary**
 5. Click **Create filter**.
 All past and future RFQs will now be prominently visible in your Primary Inbox!
+
+---
+
+## 🏷️ Why Gmail Shows "me" & How It Displays "RFQ Website"
+
+### Why Gmail shows "me":
+In Gmail's web and mobile interface, the sender column hardcodes the label **`me`** whenever an email is sent from your own logged-in account (`kavinkumar@kavriexim.com`). This is a built-in interface feature in Gmail for self-sent mail.
+
+### How the Updated Script Displays "RFQ Website":
+1. **Official Sender Display Name**: Configured as **`RFQ Website`**. When you open the email or check notifications, it shows **`From: RFQ Website <kavinkumar@kavriexim.com>`**.
+2. **Prominent Gmail Label Badge**: The script automatically attaches a Gmail label called **`RFQ Website`**. In your inbox, you will see a badge `[RFQ Website]` right next to the conversation!
+3. **Subject Line Prefix**: The subject line now starts with **`[RFQ Website • Export RFQ • KE-RFQ-2026-XXXX]`**, so you immediately recognize it in your inbox row.
+
