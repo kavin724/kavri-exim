@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   ShieldCheck, FileText, Lock, EyeOff, Award,
-  AlertTriangle, Scale, CheckCircle2, ChevronRight, Mail
+  AlertTriangle, Scale, CheckCircle2, Mail
 } from 'lucide-react';
 
 export default function LegalTermsPage({ initialTab = 'privacy' }) {
@@ -27,7 +27,7 @@ export default function LegalTermsPage({ initialTab = 'privacy' }) {
                 Legal Policies & Commercial Governance
               </h1>
               <p className="text-xs sm:text-sm text-slate-500 mt-2">
-                Kavri Spice Exim • Tamil Nadu, India • IEC: ANNPR0870K • Spices Board Registered
+                Kavri Spice Exim • Tamil Nadu, India • Statutory Bodies Registered • ✓ IEC • ✓ GST
               </p>
             </div>
 
@@ -61,7 +61,7 @@ export default function LegalTermsPage({ initialTab = 'privacy' }) {
           <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
             <span className="inline-flex items-center gap-1 font-semibold text-slate-700">
               <CheckCircle2 className="w-3.5 h-3.5 text-[#0D522F]" />
-              Official DGFT & Spices Board Merchant Exporter
+              Official Statutory Bodies & DGFT Merchant Exporter
             </span>
             <span className="hidden sm:inline">•</span>
             <span>Effective Date: Current Export Fiscal Year 2024–2026</span>

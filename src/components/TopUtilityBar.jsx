@@ -30,7 +30,7 @@ export default function TopUtilityBar() {
           {/* 3. Statutory Registration */}
           <div className="flex items-center space-x-1.5 text-amber-300 font-medium flex-shrink-0">
             <Award className="w-3.5 h-3.5 text-amber-300 flex-shrink-0" />
-            <span>IEC and Spices Board Registered</span>
+            <span>EPCs Registered • ✓ IEC • ✓ GST</span>
           </div>
 
           {/* Separator 3 */}

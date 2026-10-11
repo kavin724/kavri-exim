@@ -1173,10 +1173,12 @@ export const PRODUCTS_DATA = [
 ];
 
 export const TRUST_BADGES = [
-  { name: 'Spices Board of India', code: 'CRES Registered', desc: 'Statutory registration for authentic spice merchant exports' },
-  { name: 'Directorate General of Foreign Trade (DGFT)', code: 'IEC Certified', desc: 'Valid Government of India Importer-Exporter Code' },
-  { name: 'FSSAI', code: 'Central Food Safety License', desc: 'Food Safety and Standards Authority of India compliance' },
-  { name: 'GST & Zero-Rated LUT', code: 'Export Compliant', desc: 'Fully compliant GST invoicing under Letter of Undertaking' }
+  { name: 'Spices Board', code: 'Statutory Body', desc: 'Statutory export promotion council for authentic spices' },
+  { name: 'AEPC', code: 'Statutory Body', desc: 'Apparel Export Promotion Council' },
+  { name: 'TEXPROCIL', code: 'Statutory Body', desc: 'The Cotton Textiles Export Promotion Council' },
+  { name: 'EPCH', code: 'Statutory Body', desc: 'Export Promotion Council for Handicrafts' },
+  { name: 'IEC', code: 'Statutory Accreditation', desc: 'Valid Government of India Importer-Exporter Code' },
+  { name: 'GST', code: 'Statutory Accreditation', desc: 'Goods & Services Tax export compliant under LUT' }
 ];
 
 export const GATEWAY_PORTS = [

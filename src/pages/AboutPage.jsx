@@ -47,15 +47,40 @@ export default function AboutPage({ onOpenRfq }) {
               <strong>Kavri Spice Exim</strong> was established to provide international buyers with a transparent, direct origin-to-port export bridge across both agricultural commodities and manufactured goods. Operating under our global trade brand <strong>Kavri Exim</strong>, we eliminate speculative middlemen by coordinating directly with verified cultivator cooperatives, spinning mills, and artisan clusters.
             </p>
             
-            <div className="bg-white border border-slate-200 p-5 rounded-2xl space-y-2 text-xs shadow-sm">
+            <div className="bg-white border border-slate-200 p-5 rounded-2xl space-y-3 text-xs shadow-sm">
               <span className="text-[#0D522F] font-bold uppercase tracking-wider block font-mono">
                 Statutory Corporate Registration Credentials:
               </span>
               <div><strong className="text-slate-900">Registered Entity:</strong> Kavri Spice Exim (Founded in Erode, Tamil Nadu, India)</div>
               <div><strong className="text-slate-900">Trade Division Portal:</strong> Kavri Exim (kavriexim.com)</div>
-              <div><strong className="text-slate-900">DGFT Importer-Exporter Code (IEC):</strong> ANNPR0870K</div>
-              <div><strong className="text-slate-900">Spices Board of India CRES:</strong> [CRES-NUMBER]</div>
-              <div><strong className="text-slate-900">Goods & Services Tax (GSTIN):</strong> 33ANNPR0870K1ZM</div>
+              <div>
+                <strong className="text-slate-900 block mb-1">Statutory Bodies:</strong>
+                <div className="flex flex-wrap gap-2 text-slate-700">
+                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-md font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> Spices Board
+                  </span>
+                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-md font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> AEPC
+                  </span>
+                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-md font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> TEXPROCIL
+                  </span>
+                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-md font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> EPCH
+                  </span>
+                </div>
+              </div>
+              <div>
+                <strong className="text-slate-900 block mb-1">Statutory Accreditations:</strong>
+                <div className="flex flex-wrap gap-2 text-slate-700">
+                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-md font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> IEC
+                  </span>
+                  <span className="inline-flex items-center gap-1 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-md font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> GST
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 

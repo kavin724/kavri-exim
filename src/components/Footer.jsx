@@ -183,9 +183,6 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
                 Legal Entity Transparency Notice:
               </span>
               Kavri Exim is the international trading portal operated by <strong className="text-slate-900">Kavri Spice Exim</strong>, an Indian merchant exporter founded in Erode, Tamil Nadu.
-              <span className="block mt-1 font-mono text-[11px] text-slate-500">
-                IEC: ANNPR0870K | GSTIN: 33ANNPR0870K1ZM | Spices Board CRES: [CRES-NUMBER]
-              </span>
             </div>
             <div className="text-[11px] text-slate-500 whitespace-nowrap flex-shrink-0 flex items-center gap-2">
               <button type="button" onClick={(e) => navigateTo('privacy-policy', e)} className="hover:text-[#0D522F] underline cursor-pointer">Privacy</button>

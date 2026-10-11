@@ -64,20 +64,20 @@ export default function TdsModal({ isOpen, onClose, product, onOpenRfq }) {
               </div>
               <div className="text-[11px] text-slate-500 font-mono mt-0.5">
                 {product.category === 'spices'
-                  ? 'Govt Regd: IEC ANNPR0870K | GSTIN 33ANNPR0870K1ZM | Spices Board CRES [CRES-NUMBER]'
+                  ? 'Govt Regd: ✓ IEC | ✓ GST | Spices Board Registered'
                   : ['terry-towels', 'bedsheets', 'shirting-fabrics'].includes(product.id)
-                  ? 'Govt Regd: IEC ANNPR0870K | GSTIN 33ANNPR0870K1ZM | TEXPROCIL Registered | OEKO-TEX Standard 100'
+                  ? 'Govt Regd: ✓ IEC | ✓ GST | TEXPROCIL Registered | OEKO-TEX Standard 100'
                   : product.id === 'linens'
-                  ? 'Govt Regd: IEC ANNPR0870K | GSTIN 33ANNPR0870K1ZM | HEPC / TEXPROCIL Registered | OEKO-TEX Standard 100'
+                  ? 'Govt Regd: ✓ IEC | ✓ GST | TEXPROCIL Registered | OEKO-TEX Standard 100'
                   : product.category === 'textiles'
-                  ? 'Govt Regd: IEC ANNPR0870K | GSTIN 33ANNPR0870K1ZM | AEPC Registered | OEKO-TEX Standard 100'
+                  ? 'Govt Regd: ✓ IEC | ✓ GST | AEPC Registered | OEKO-TEX Standard 100'
                   : product.id === 'traditional-metalcraft'
-                  ? 'Govt Regd: IEC ANNPR0870K | GSTIN 33ANNPR0870K1ZM | EPCH Registered | ASI Non-Antiquity Compliant'
+                  ? 'Govt Regd: ✓ IEC | ✓ GST | EPCH Registered | ASI Non-Antiquity Compliant'
                   : product.id === 'modern-home-decor'
-                  ? 'Govt Regd: IEC ANNPR0870K | GSTIN 33ANNPR0870K1ZM | EPCH Registered | VRIKSH Certified (CITES Timber Legality)'
+                  ? 'Govt Regd: ✓ IEC | ✓ GST | EPCH Registered | VRIKSH Certified (CITES Timber Legality)'
                   : product.id === 'oem-private-label'
-                  ? 'Govt Regd: IEC ANNPR0870K | GSTIN 33ANNPR0870K1ZM | DGFT / IEC Registered | US FDA & EU REACH Compliant'
-                  : 'Govt Regd: IEC ANNPR0870K | GSTIN 33ANNPR0870K1ZM'}
+                  ? 'Govt Regd: ✓ IEC | ✓ GST | EPCH / TEXPROCIL Registered | US FDA & EU REACH Compliant'
+                  : 'Govt Regd: ✓ IEC | ✓ GST'}
               </div>
             </div>
             <div className="text-left sm:text-right">

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   ArrowRight, ShieldCheck, Compass, Target,
-  FileText, CheckCircle2, Award, Sparkles
+  FileText, CheckCircle2, Sparkles
 } from 'lucide-react';
 
 const CORE_COMPETENCIES = [
@@ -9,7 +9,7 @@ const CORE_COMPETENCIES = [
     id: 'spices',
     route: 'products?cat=spices',
     division: 'Division 01',
-    boardCode: 'Spices Board of India CRES',
+    boardCode: 'Spices Board Registered',
     title: 'Spices & Seasonings',
     image: './assets/images/hero-spices.jpg',
     imageAlt: 'Spices and Seasonings',
@@ -126,15 +126,15 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
               <div className="pt-6 border-t border-slate-200 flex flex-wrap items-center gap-6 text-xs text-slate-600">
                 <div className="flex items-center space-x-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0D522F]" />
-                  <span className="font-semibold text-slate-800">Spices Board Registered (CRES)</span>
+                  <span className="font-semibold text-slate-800">EPCs Registered</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0D522F]" />
-                  <span className="font-semibold text-slate-800">DGFT Validated IEC</span>
+                  <span className="font-semibold text-slate-800">IEC</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0D522F]" />
-                  <span className="font-semibold text-slate-800">FSSAI Central Export Licensed</span>
+                  <span className="font-semibold text-slate-800">GST</span>
                 </div>
               </div>
 
@@ -350,53 +350,48 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
             </p>
           </div>
 
-          {/* Accreditations Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-
-            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-2.5">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0D522F] flex items-center justify-center font-bold">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-              <h3 className="text-base font-bold text-slate-900">Spices Board of India</h3>
-              <p className="text-xs text-[#0D522F] font-mono font-bold">CRES Registered Exporter</p>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Mandatory statutory registration for authentic, laboratory-verified spice exports from India.
-              </p>
+          {/* Statutory Export Bodies & Accreditations */}
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm mb-12 max-w-4xl mx-auto">
+            <div className="text-center sm:text-left mb-6">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#0D522F] font-mono block">
+                Statutory Bodies
+              </span>
             </div>
 
-            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-2.5">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0D522F] flex items-center justify-center font-bold">
-                <Award className="w-5 h-5" />
+            {/* Statutory Bodies listed beside or below each other: Spices Board, AEPC, TEXPROCIL, EPCH */}
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6 mb-6">
+              <div className="flex items-center space-x-2.5 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <span className="font-bold text-slate-900 text-sm sm:text-base">Spices Board</span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">DGFT (Govt. of India)</h3>
-              <p className="text-xs text-[#0D522F] font-mono font-bold">IEC Certified: ANNPR0870K</p>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Authorized Importer-Exporter Code under the Directorate General of Foreign Trade, Ministry of Commerce.
-              </p>
+              <div className="flex items-center space-x-2.5 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <span className="font-bold text-slate-900 text-sm sm:text-base">AEPC</span>
+              </div>
+              <div className="flex items-center space-x-2.5 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <span className="font-bold text-slate-900 text-sm sm:text-base">TEXPROCIL</span>
+              </div>
+              <div className="flex items-center space-x-2.5 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <span className="font-bold text-slate-900 text-sm sm:text-base">EPCH</span>
+              </div>
             </div>
 
-            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-2.5">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0D522F] flex items-center justify-center font-bold">
-                <CheckCircle2 className="w-5 h-5" />
+            {/* Statutory Accreditations: IEC & GST with tick marks */}
+            <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-6">
+              <span className="text-xs font-bold font-mono uppercase tracking-wider text-slate-500 mr-2">
+                Statutory Accreditations:
+              </span>
+              <div className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <span className="font-bold text-slate-900 text-sm sm:text-base">IEC</span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">FSSAI Central License</h3>
-              <p className="text-xs text-[#0D522F] font-mono font-bold">Central Export Licensed</p>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Certified by the Food Safety and Standards Authority of India for hygienic processing and export.
-              </p>
-            </div>
-
-            <div className="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm space-y-2.5">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0D522F] flex items-center justify-center font-bold">
-                <FileText className="w-5 h-5" />
+              <div className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 shadow-xs">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <span className="font-bold text-slate-900 text-sm sm:text-base">GST</span>
               </div>
-              <h3 className="text-base font-bold text-slate-900">GST Zero-Rated LUT</h3>
-              <p className="text-xs text-[#0D522F] font-mono font-bold">GSTIN: 33ANNPR0870K1ZM</p>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Fully compliant cross-border commercial invoicing under official Letter of Undertaking for zero-rated export duties.
-              </p>
             </div>
-
           </div>
 
           {/* Legal Governance & Policy Access Banner */}

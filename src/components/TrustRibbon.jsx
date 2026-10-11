@@ -21,8 +21,8 @@ export default function TrustRibbon() {
           </p>
         </div>
 
-        {/* 5 Accreditations Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {/* 6 Accreditations Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {TRUST_BADGES.map((badge) => (
             <div 
               key={badge.name}
