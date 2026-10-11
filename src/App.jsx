@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopUtilityBar from './components/TopUtilityBar';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -16,22 +16,117 @@ import ContactPage from './pages/ContactPage';
 import TermsOfTradePage from './pages/TermsOfTradePage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
+/**
+ * Route helpers for hash-based browser history synchronization
+ */
+function routeToHash(route) {
+  if (!route || route === 'home') return '#/';
+  return `#/${route}`;
+}
+
+function hashToRoute(hash) {
+  if (!hash || hash === '#' || hash === '#/' || hash === '#/home' || hash === '#home') {
+    return 'home';
+  }
+  const clean = hash.replace(/^#\/?/, '').trim();
+  return clean || 'home';
+}
+
 export default function App() {
-  const [currentRoute, setCurrentRoute] = useState('home');
+  const [currentRoute, setCurrentRoute] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return hashToRoute(window.location.hash);
+    }
+    return 'home';
+  });
+
   const [isRfqOpen, setIsRfqOpen] = useState(false);
   const [selectedProductForRfq, setSelectedProductForRfq] = useState(null);
   
   const [isTdsOpen, setIsTdsOpen] = useState(false);
   const [selectedProductForTds, setSelectedProductForTds] = useState(null);
 
+  // Initialize browser history stack on load
+  // If user opens a sub-page directly on mobile, anchor 'home' underneath so pressing back
+  // returns to homepage rather than closing the browser/exiting the tab.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const initialRoute = hashToRoute(window.location.hash);
+    if (initialRoute && initialRoute !== 'home') {
+      window.history.replaceState({ route: 'home' }, '', '#/');
+      window.history.pushState({ route: initialRoute }, '', routeToHash(initialRoute));
+      setCurrentRoute(initialRoute);
+    } else {
+      window.history.replaceState({ route: 'home' }, '', '#/');
+      setCurrentRoute('home');
+    }
+  }, []);
+
+  // Listen for mobile back button & browser navigation (popstate)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handlePopState = (event) => {
+      // 1. If RFQ modal drawer is open on mobile, dismiss it first
+      if (isRfqOpen) {
+        setIsRfqOpen(false);
+        return;
+      }
+
+      // 2. If TDS modal is open on mobile, dismiss it first
+      if (isTdsOpen) {
+        setIsTdsOpen(false);
+        return;
+      }
+
+      // 3. Resolve destination route from state or URL hash
+      const targetRoute = event.state?.route || hashToRoute(window.location.hash);
+      setCurrentRoute(targetRoute || 'home');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [isRfqOpen, isTdsOpen]);
+
+  // Unified navigation handler that pushes history state for mobile & desktop
+  const handleNavigate = (newRoute) => {
+    if (!newRoute) newRoute = 'home';
+    if (newRoute === currentRoute) return;
+
+    // Push new entry onto browser history stack
+    window.history.pushState({ route: newRoute }, '', routeToHash(newRoute));
+    setCurrentRoute(newRoute);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
   const handleOpenRfq = (product = null) => {
     setSelectedProductForRfq(product);
     setIsRfqOpen(true);
+    // Push modal state so mobile back button cleanly dismisses drawer
+    window.history.pushState({ modal: 'rfq', route: currentRoute }, '', window.location.hash);
+  };
+
+  const handleCloseRfq = () => {
+    setIsRfqOpen(false);
+    if (window.history.state?.modal === 'rfq') {
+      window.history.back();
+    }
   };
 
   const handleOpenTds = (product) => {
     setSelectedProductForTds(product);
     setIsTdsOpen(true);
+    // Push modal state so mobile back button cleanly dismisses modal
+    window.history.pushState({ modal: 'tds', route: currentRoute }, '', window.location.hash);
+  };
+
+  const handleCloseTds = () => {
+    setIsTdsOpen(false);
+    if (window.history.state?.modal === 'tds') {
+      window.history.back();
+    }
   };
 
   // Render active view
@@ -39,7 +134,7 @@ export default function App() {
     if (currentRoute === 'home') {
       return (
         <HomePage 
-          setCurrentRoute={setCurrentRoute} 
+          setCurrentRoute={handleNavigate} 
           onOpenRfq={handleOpenRfq} 
           onOpenTds={handleOpenTds} 
         />
@@ -58,7 +153,7 @@ export default function App() {
         <ProductsPage 
           key={currentRoute}
           initialCategory={categoryMatch} 
-          setCurrentRoute={setCurrentRoute} 
+          setCurrentRoute={handleNavigate} 
           onOpenRfq={handleOpenRfq} 
           onOpenTds={handleOpenTds} 
         />
@@ -70,7 +165,7 @@ export default function App() {
       return (
         <ProductDetailPage 
           productSlug={slug} 
-          setCurrentRoute={setCurrentRoute} 
+          setCurrentRoute={handleNavigate} 
           onOpenRfq={handleOpenRfq} 
           onOpenTds={handleOpenTds} 
         />
@@ -96,7 +191,7 @@ export default function App() {
       default:
         return (
           <HomePage 
-            setCurrentRoute={setCurrentRoute} 
+            setCurrentRoute={handleNavigate} 
             onOpenRfq={handleOpenRfq} 
             onOpenTds={handleOpenTds} 
           />
@@ -113,7 +208,7 @@ export default function App() {
       {/* 2. Main Sticky Navigation with Official Transparent Logo */}
       <Navbar 
         currentRoute={currentRoute} 
-        setCurrentRoute={setCurrentRoute} 
+        setCurrentRoute={handleNavigate} 
         onOpenRfq={() => handleOpenRfq(null)} 
       />
 
@@ -124,21 +219,21 @@ export default function App() {
 
       {/* 4. Global Legal Transparency Footer */}
       <Footer 
-        setCurrentRoute={setCurrentRoute} 
+        setCurrentRoute={handleNavigate} 
         onOpenRfq={() => handleOpenRfq(null)} 
       />
 
       {/* 5. Interactive RFQ Drawer */}
       <RfqModal 
         isOpen={isRfqOpen} 
-        onClose={() => setIsRfqOpen(false)} 
+        onClose={handleCloseRfq} 
         initialProduct={selectedProductForRfq} 
       />
 
       {/* 6. Technical Data Sheet (TDS) Download Modal */}
       <TdsModal 
         isOpen={isTdsOpen} 
-        onClose={() => setIsTdsOpen(false)} 
+        onClose={handleCloseTds} 
         product={selectedProductForTds} 
         onOpenRfq={handleOpenRfq} 
       />
