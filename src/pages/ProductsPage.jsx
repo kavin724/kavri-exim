@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Search, Download, FileText, ArrowRight, Compass
+  Search, Download, FileText, ArrowRight, Compass, X
 } from 'lucide-react';
 import { PRODUCTS_DATA, COMMODITY_CATEGORIES } from '../data/productsData';
 
@@ -8,17 +8,26 @@ const CATEGORY_META = {
   spices: {
     badge: 'Division 01 • Spices Board of India Registered',
     title: 'Spices & Seasonings Export Catalog',
-    desc: 'Direct farm-origin harvesting from South India’s Western Ghats and Kaveri basin. Standardized Sortex-cleaned grades of Alleppey Green Cardamom, Tellicherry & Kolli Pepper, and GI-certified Erode & Salem Turmeric with laboratory test benchmarks.'
+    desc: 'Direct farm-origin harvesting from South India’s Western Ghats and Kaveri basin. Standardized Sortex-cleaned grades of Alleppey Green Cardamom, Tellicherry & Kolli Pepper, and GI-certified Erode & Salem Turmeric with laboratory test benchmarks.',
+    searchPlaceholder: 'Search spices & grades (e.g. Cardamom, AGEB, Tellicherry, Salem, 8mm)...',
+    suggestedQueries: ['Cardamom (AGEB)', 'Tellicherry Pepper', 'Salem Turmeric', 'Kolli Mountain', 'Erode GI Finger', 'Turmeric Powder'],
+    noResultsMessage: 'Try searching for Cardamom, Black Pepper, Salem Turmeric, AGEB, or Curcumin.'
   },
   textiles: {
     badge: 'Division 02 • Tirupur & Karur Manufacturing Hubs',
     title: 'Textiles & Garments Export Catalog',
-    desc: 'Custom OEM apparel, luxury terry towels, hotel-grade bedsheets, and industrial woven fabrics manufactured to rigorous international colorfastness and AATCC/ISO standards.'
+    desc: 'Custom OEM apparel, luxury terry towels, hotel-grade bedsheets, and industrial woven fabrics manufactured to rigorous international colorfastness and AATCC/ISO standards.',
+    searchPlaceholder: 'Search textiles & specs (e.g. T-Shirts, Terry Towels, 400 TC, Bedsheets, Shirting)...',
+    suggestedQueries: ['Cotton T-Shirts', 'Terry Towels', 'Bedsheets (400 TC)', 'Table Linens', 'Yarn-Dyed Shirting'],
+    noResultsMessage: 'Try searching for T-Shirts, Terry Towels, Bedsheet Sets, Sateen, or Shirting Fabrics.'
   },
   handicrafts: {
     badge: 'Division 03 • Heritage Artisan Clusters',
     title: 'Handicrafts & Artefacts Export Catalog',
-    desc: 'Authentic South Indian lost-wax cast bronze & brass idols, hand-carved teakwood decorative artefacts, and traditional architectural terracotta pottery.'
+    desc: 'Authentic South Indian lost-wax cast bronze & brass idols, hand-carved teakwood decorative artefacts, and traditional architectural terracotta pottery.',
+    searchPlaceholder: 'Search handicrafts & artefacts (e.g. Brass Kuthuvilakku, Bronze, Urli, Woodcraft, Terracotta)...',
+    suggestedQueries: ['Nachiarkoil Lamp', 'Chola Bronze', 'Brass Urli', 'Wooden Keepsake', 'Home Décor'],
+    noResultsMessage: 'Try searching for Brassware, Kuthuvilakku Lamp, Chola Bronze, Woodcraft, or Urli Bowls.'
   }
 };
 
@@ -30,6 +39,7 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
   useEffect(() => {
     const validCat = (initialCategory && initialCategory !== 'all') ? initialCategory : 'spices';
     setSelectedCategory(validCat);
+    setSearchQuery('');
   }, [initialCategory]);
 
   const navigateTo = (route, e) => {
@@ -40,6 +50,7 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
 
   const handleSelectCategory = (catId) => {
     setSelectedCategory(catId);
+    setSearchQuery('');
     if (setCurrentRoute) {
       setCurrentRoute(`products?cat=${catId}`);
     }
@@ -47,9 +58,20 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
 
   const filteredProducts = PRODUCTS_DATA.filter(prod => {
     const matchesCat = prod.category === selectedCategory;
-    const matchesSearch = prod.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      prod.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      prod.grades?.some(g => g.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    if (!searchQuery.trim()) return matchesCat;
+
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch = 
+      prod.name.toLowerCase().includes(q) ||
+      prod.shortDesc?.toLowerCase().includes(q) ||
+      prod.botanicalName?.toLowerCase().includes(q) ||
+      prod.hsnCode?.toLowerCase().includes(q) ||
+      prod.origin?.toLowerCase().includes(q) ||
+      prod.grades?.some(g => 
+        g.name.toLowerCase().includes(q) || 
+        (g.code && g.code.toLowerCase().includes(q)) ||
+        (g.size && g.size.toLowerCase().includes(q))
+      );
     return matchesCat && matchesSearch;
   });
 
@@ -93,18 +115,62 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
             ))}
           </div>
 
-          {/* Search Input */}
-          <div className="relative min-w-[260px]">
+          {/* Search Input with category-specific suggestive text */}
+          <div className="relative min-w-[280px] sm:min-w-[360px]">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              placeholder="Search grade (e.g. 8mm, Erode, T-shirt, 400 TC)..."
-              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-4 py-2 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0D522F] focus:bg-white"
+              placeholder={currentMeta.searchPlaceholder}
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-10 pr-9 py-2.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#0D522F] focus:bg-white shadow-xs transition-colors"
             />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-0.5 rounded cursor-pointer transition-colors"
+                aria-label="Clear search"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
           </div>
 
+        </div>
+
+        {/* Suggestive Quick Search Pills related to the current Main Product Line */}
+        <div className="flex items-center gap-1.5 flex-wrap -mt-6 mb-8 px-1">
+          <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+            Suggested in {COMMODITY_CATEGORIES.find(c => c.id === selectedCategory)?.name || 'Division'}:
+          </span>
+          {currentMeta.suggestedQueries.map(item => {
+            const keyword = item.replace(/\s*\(.*\)/, '').trim();
+            const isActive = searchQuery.toLowerCase().includes(keyword.toLowerCase());
+            return (
+              <button
+                key={item}
+                type="button"
+                onClick={() => setSearchQuery(isActive ? '' : keyword)}
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${
+                  isActive
+                    ? 'bg-emerald-100 text-[#0D522F] border-emerald-300 font-bold shadow-xs'
+                    : 'bg-white text-slate-600 border-slate-200 hover:border-emerald-300 hover:text-[#0D522F] shadow-xs'
+                }`}
+              >
+                {item}
+              </button>
+            );
+          })}
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="text-xs text-rose-600 hover:underline font-bold ml-1.5 cursor-pointer"
+            >
+              Reset filter
+            </button>
+          )}
         </div>
 
         {/* Products Grid */}
@@ -218,8 +284,19 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
 
         {filteredProducts.length === 0 && (
           <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center text-slate-500 shadow-sm">
-            <p className="text-base font-bold text-slate-800">No products matched your search.</p>
-            <p className="text-xs mt-1">Try searching for Cardamom, Black Pepper, Turmeric, T-shirts, or Towels.</p>
+            <p className="text-base font-bold text-slate-800">
+              No products matched "{searchQuery}" in {COMMODITY_CATEGORIES.find(c => c.id === selectedCategory)?.name}.
+            </p>
+            <p className="text-xs mt-1.5 text-slate-600">
+              {currentMeta.noResultsMessage}
+            </p>
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="mt-3.5 inline-flex items-center text-xs font-bold text-[#0D522F] hover:underline cursor-pointer"
+            >
+              View all {COMMODITY_CATEGORIES.find(c => c.id === selectedCategory)?.name}
+            </button>
           </div>
         )}
 

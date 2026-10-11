@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   X, Send, CheckCircle, MessageCircle, FileText, 
   Package, Loader2, Edit3, Globe, Anchor
@@ -123,7 +123,7 @@ export default function RfqModal({ isOpen, onClose, initialProduct = null }) {
     setDialogConfig(prev => ({ ...prev, isOpen: false }));
   };
 
-  const handleDialogCancel = () => {
+  const handleDialogCancel = useCallback(() => {
     if (dialogConfig.field === 'gradeSpec' && !customGrade) {
       setFormData(prev => ({ ...prev, gradeSpec: dialogConfig.fallback }));
     } else if (dialogConfig.field === 'destinationCountry' && !customCountry) {
@@ -132,7 +132,7 @@ export default function RfqModal({ isOpen, onClose, initialProduct = null }) {
       setFormData(prev => ({ ...prev, portOfDischarge: dialogConfig.fallback }));
     }
     setDialogConfig(prev => ({ ...prev, isOpen: false }));
-  };
+  }, [dialogConfig.field, dialogConfig.fallback, customGrade, customCountry, customPort]);
 
   // Handle ESC key to close modal/drawer
   useEffect(() => {
@@ -147,7 +147,7 @@ export default function RfqModal({ isOpen, onClose, initialProduct = null }) {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose, dialogConfig, customGrade, customCountry, customPort]);
+  }, [isOpen, onClose, dialogConfig.isOpen, handleDialogCancel]);
 
   if (!isOpen) return null;
 
