@@ -189,7 +189,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               <span>•</span>
               <button type="button" onClick={(e) => navigateTo('terms-conditions', e)} className="hover:text-[#0D522F] underline cursor-pointer">Terms & Disclaimers</button>
               <span>•</span>
-              <span>© {new Date().getFullYear()} Kavri Exim.</span>
+              <span>© {new Date().getFullYear()} Kavri Exim. All Rights Reserved.</span>
             </div>
           </div>
         </div>

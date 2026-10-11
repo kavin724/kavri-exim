@@ -195,9 +195,6 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
                     className="w-full h-full object-cover group-hover/img:scale-110 group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-slate-900/0 group-hover/img:bg-slate-900/15 transition-colors pointer-events-none" />
-                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded text-[11px] font-mono text-slate-800 border border-slate-200 font-bold shadow-sm">
-                    HSN: {prod.hsnCode}
-                  </div>
                   <div className="absolute bottom-3 right-3 bg-emerald-50/90 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-bold text-[#0D522F] border border-emerald-200 shadow-sm">
                     {prod.tag}
                   </div>

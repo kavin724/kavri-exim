@@ -306,7 +306,7 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
             <span>Back to {parentCategoryName}</span>
           </button>
 
-          <span className="text-xs text-[#0D522F] font-mono font-bold">
+          <span className="text-xs text-[#0D522F] font-mono font-bold bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg shadow-xs">
             HSN: {product.hsnCode}
           </span>
         </div>
