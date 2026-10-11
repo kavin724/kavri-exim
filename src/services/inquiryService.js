@@ -31,12 +31,14 @@ export function generateReferenceId(prefix = 'RFQ') {
  * @returns {Promise<{ success: boolean, referenceId: string, error?: string }>}
  */
 export async function submitInquiry(data) {
-  const referenceId = data.referenceId || generateReferenceId(data.inquiryType?.includes('Proforma') ? 'PR' : 'RFQ');
+  const isProforma = Boolean(data.inquiryType?.includes('Proforma') || data.referenceId?.includes('KE-PR-'));
+  const fallbackPrefix = isProforma ? 'PR' : 'RFQ';
+  const fallbackRefId = data.referenceId || generateReferenceId(fallbackPrefix);
 
   const payload = {
-    referenceId,
+    referenceId: data.referenceId || '',
     timestamp: new Date().toISOString(),
-    inquiryType: data.inquiryType || 'Export RFQ',
+    inquiryType: data.inquiryType || (isProforma ? 'Proforma Invoice Request' : 'Export RFQ'),
     fullName: data.fullName || data.name || '',
     companyName: data.companyName || data.company || '',
     email: data.email || '',
@@ -53,18 +55,6 @@ export async function submitInquiry(data) {
     destinationEmail: FORMS_CONFIG.TRADE_DESK_EMAIL
   };
 
-  // 1. Audit backup in browser local storage
-  try {
-    if (typeof localStorage !== 'undefined') {
-      const existing = JSON.parse(localStorage.getItem('kavri_exim_inquiries') || '[]');
-      existing.unshift(payload);
-      localStorage.setItem('kavri_exim_inquiries', JSON.stringify(existing.slice(0, 50)));
-    }
-  } catch (err) {
-    console.warn('Local storage audit log skipped:', err);
-  }
-
-  // 2. Dispatch to Google Apps Script Web App
   const scriptUrl = FORMS_CONFIG.GOOGLE_SCRIPT_URL;
 
   // If the user has not yet plugged in their Google Script URL, or it's still the placeholder
@@ -73,39 +63,77 @@ export async function submitInquiry(data) {
       'Google Apps Script URL is in test/placeholder mode. Payload logged locally:',
       payload
     );
+    saveAuditLog({ ...payload, referenceId: fallbackRefId });
     return {
       success: true,
-      referenceId,
+      referenceId: fallbackRefId,
       isMock: true,
       message: 'Logged locally. Deploy the Google Apps Script to enable live Google Sheet & email dispatch.'
     };
   }
 
+  let finalRefId = fallbackRefId;
+
   try {
-    // We send payload as JSON text with 'no-cors' mode.
-    // In Google Apps Script, doPost(e) reads e.postData.contents safely,
-    // avoiding browser cross-origin preflight/CORS blocks on static hosts (GitHub Pages).
-    await fetch(scriptUrl, {
+    // 1. First attempt standard POST (text/plain is CORS-safelisted; Apps Script responds with Access-Control-Allow-Origin: *)
+    const response = await fetch(scriptUrl, {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'text/plain;charset=utf-8',
       },
       body: JSON.stringify(payload),
     });
 
-    return {
-      success: true,
-      referenceId,
-      isMock: false
-    };
+    if (response.ok) {
+      const result = await response.json();
+      if (result && result.referenceId) {
+        finalRefId = result.referenceId;
+      }
+    }
+  } catch (corsOrNetworkErr) {
+    console.warn('Standard fetch attempt encountered CORS or network limit; dispatching via no-cors fallback:', corsOrNetworkErr);
+    try {
+      // 2. Safe fallback via no-cors to guarantee transmission to Apps Script
+      await fetch(scriptUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(payload),
+      });
+    } catch (fallbackErr) {
+      console.error('Failed to transmit inquiry to Google Apps Script:', fallbackErr);
+      saveAuditLog({ ...payload, referenceId: finalRefId });
+      return {
+        success: false,
+        referenceId: finalRefId,
+        error: fallbackErr.message || 'Transmission error'
+      };
+    }
+  }
+
+  // Save audit log with official reference ID
+  saveAuditLog({ ...payload, referenceId: finalRefId });
+
+  return {
+    success: true,
+    referenceId: finalRefId,
+    isMock: false
+  };
+}
+
+/**
+ * Saves local audit record of submitted inquiry
+ */
+function saveAuditLog(item) {
+  try {
+    if (typeof localStorage !== 'undefined') {
+      const existing = JSON.parse(localStorage.getItem('kavri_exim_inquiries') || '[]');
+      existing.unshift(item);
+      localStorage.setItem('kavri_exim_inquiries', JSON.stringify(existing.slice(0, 50)));
+    }
   } catch (err) {
-    console.error('Failed to transmit inquiry to Google Apps Script:', err);
-    // Even if network fails, return reference ID so the user is never blocked from WhatsApp option
-    return {
-      success: false,
-      referenceId,
-      error: err.message || 'Transmission error'
-    };
+    console.warn('Local storage audit log skipped:', err);
   }
 }

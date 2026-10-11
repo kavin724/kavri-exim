@@ -101,3 +101,26 @@ In Gmail's web and mobile interface, the sender column hardcodes the label **`me
 2. **Prominent Gmail Label Badge**: The script automatically attaches a Gmail label called **`RFQ Website`**. In your inbox, you will see a badge `[RFQ Website]` right next to the conversation!
 3. **Subject Line Prefix**: The subject line now starts with **`[RFQ Website • Export RFQ • KE-RFQ-2026-XXXX]`**, so you immediately recognize it in your inbox row.
 
+---
+
+## 🔢 RFQ & Proforma Numbering: Sequential Auto-Numbering Guide
+
+### Why RFQ Numbers Appeared at Random Earlier:
+1. In earlier code, when test requests arrived without an ID, Apps Script had a fallback `Math.floor(1000 + Math.random() * 9000)` that generated numbers like `9803` or `9342`.
+2. Once that row was saved in your Google Sheet, the sequential function saw `9803` as the highest number and began incrementing `9804`, `9805`, `9807`... making it look like random numbering.
+3. Also, client-side browsers stored sequence counters in local browser cache, meaning testing in incognito or on a different device reset back to `0001`, colliding with existing rows in the Sheet.
+
+### The Permanent Fix Applied:
+1. **Removed all random number generators**: Every single Reference ID is strictly sequential (`0001`, `0002`, `0003`...).
+2. **Filtered Out Test Artifacts**: Any numbers >= 1000 from old test runs are ignored so they never push new RFQs into the 9000-series.
+3. **True Server-Side Authority**: The Google Sheet CRM assigns the official serial number. The website displays and embeds the exact same ID into WhatsApp and audit logs.
+
+### How to Clean & Re-Sequence Your Google Sheet CRM (1 Click):
+If your sheet currently has rows with messy 9000-series test numbers and you want them cleanly re-numbered from `0001` upwards:
+1. Open your Google Sheet > **Extensions** > **Apps Script**.
+2. Paste the updated `Code.gs` and click **Save** (💾).
+3. In the toolbar at the top, select the function dropdown and choose **`cleanAndResetAllSheetReferenceIds`**.
+4. Click **Run** (▶).
+5. All rows in your CRM sheet will immediately be re-indexed cleanly as `KE-RFQ-2026-0001`, `KE-RFQ-2026-0002`... and your next submission will seamlessly continue the exact sequence!
+6. Click **Deploy** > **Manage deployments** > **Edit (Pencil)** > **Version: New version** > **Deploy**!
+

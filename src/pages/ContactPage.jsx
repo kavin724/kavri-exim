@@ -4,7 +4,7 @@ import {
   Send, CheckCircle2, Upload, Loader2
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/productsData';
-import { submitInquiry, generateReferenceId } from '../services/inquiryService';
+import { submitInquiry } from '../services/inquiryService';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -27,17 +27,15 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const refCode = generateReferenceId('PR');
-    setReferenceId(refCode);
 
-    await submitInquiry({
+    const res = await submitInquiry({
       ...formData,
-      referenceId: refCode,
       inquiryType: 'Proforma Invoice Request',
       quantity: formData.volume,
       message: formData.specs
     });
 
+    setReferenceId(res.referenceId);
     setIsSubmitting(false);
     setSubmitted(true);
   };

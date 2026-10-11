@@ -4,7 +4,7 @@ import {
   Package, Loader2
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/productsData';
-import { submitInquiry, generateReferenceId } from '../services/inquiryService';
+import { submitInquiry } from '../services/inquiryService';
 
 export default function RfqModal({ isOpen, onClose, initialProduct = null }) {
   const [formData, setFormData] = useState({
@@ -52,16 +52,14 @@ export default function RfqModal({ isOpen, onClose, initialProduct = null }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const refCode = generateReferenceId('RFQ');
-    setQuoteReference(refCode);
 
-    await submitInquiry({
+    const res = await submitInquiry({
       ...formData,
-      referenceId: refCode,
       inquiryType: 'Export RFQ',
       product: selectedProductObj.name
     });
 
+    setQuoteReference(res.referenceId);
     setIsSubmitting(false);
     setIsSubmitted(true);
   };

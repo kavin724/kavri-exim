@@ -4,7 +4,7 @@ import {
   Package, Send, ArrowRight, Loader2
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/productsData';
-import { submitInquiry, generateReferenceId } from '../services/inquiryService';
+import { submitInquiry } from '../services/inquiryService';
 
 export const SPEC_LABEL_MAP = {
   moisture: 'Moisture Content',
@@ -272,21 +272,19 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
   const handleDirectInquiry = async (e) => {
     e.preventDefault();
     setIsSubmittingInquiry(true);
-    const refCode = generateReferenceId('INQ');
-    setInquiryRefId(refCode);
 
-    await submitInquiry({
+    const res = await submitInquiry({
       fullName: inquiryName,
       companyName: inquiryCompany,
       email: inquiryEmail,
       portOfDischarge: inquiryPort,
       product: product.name,
-      referenceId: refCode,
-      inquiryType: 'Direct Product Inquiry',
+      inquiryType: 'Export RFQ',
       incoterm: 'CIF',
       message: `Direct inquiry for ${product.name} submitted from product specification page.`
     });
 
+    setInquiryRefId(res.referenceId);
     setIsSubmittingInquiry(false);
     setInquirySubmitted(true);
   };

@@ -43,11 +43,7 @@ function doPost(e) {
 
     // Sanitize and normalize fields
     var lead = {
-      referenceId: data.referenceId || (
-        (data.inquiryType && data.inquiryType.indexOf("Proforma") !== -1 ? "KE-PR-" : "KE-RFQ-") +
-        new Date().getFullYear() + "-" +
-        Math.floor(1000 + Math.random() * 9000)
-      ),
+      referenceId: (data.referenceId || "").trim(),
       timestamp: data.timestamp ? new Date(data.timestamp) : new Date(),
       inquiryType: data.inquiryType || "Export RFQ",
       fullName: data.fullName || data.name || "N/A",
@@ -66,13 +62,13 @@ function doPost(e) {
       status: "New - Action Required (12h)"
     };
 
-    // 1. Record into Google Sheet CRM
+    // 1. Record into Google Sheet CRM and assign authoritative sequential reference ID
     recordToGoogleSheet(lead);
 
     // 2. Dispatch Elegant HTML Email to trade@kavriexim.com
     sendTradeDeskNotificationEmail(lead);
 
-    // 3. Return JSON response
+    // 3. Return JSON response with official reference ID
     return ContentService
       .createTextOutput(JSON.stringify({ status: "success", referenceId: lead.referenceId }))
       .setMimeType(ContentService.MimeType.JSON);
@@ -86,9 +82,25 @@ function doPost(e) {
 }
 
 /**
- * Handle GET requests for health-check / verification
+ * Handle GET requests for health-check / verification / next sequence query
  */
 function doGet(e) {
+  var action = (e && e.parameter && e.parameter.action) || "health";
+
+  // Allows frontend to query next available sequence ID if needed
+  if (action === "getNextId") {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName(SHEET_TAB_NAME);
+    var inquiryType = (e && e.parameter && e.parameter.inquiryType) || "Export RFQ";
+    var nextId = "KE-RFQ-" + new Date().getFullYear() + "-0001";
+    if (sheet) {
+      nextId = resolveSequentialReferenceId(sheet, "", inquiryType);
+    }
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: "success", nextId: nextId }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
   return ContentService
     .createTextOutput(JSON.stringify({
       status: "online",
@@ -182,12 +194,14 @@ function recordToGoogleSheet(lead) {
 }
 
 /**
- * Resolves sequential Reference ID starting from 0001
- * Inspects existing rows in the sheet so serial numbers strictly start at 0001
+ * Resolves sequential Reference ID starting strictly from 0001
+ * Inspects existing rows in the CRM sheet so serial numbers strictly advance 0001, 0002, 0003...
  * (e.g., KE-RFQ-2026-0001 or KE-PR-2026-0001)
+ * Ignores any past random test artifacts (>= 1000) so they can never poison future sequences.
  */
 function resolveSequentialReferenceId(sheet, requestedId, inquiryType) {
-  var isProforma = (inquiryType && inquiryType.indexOf("Proforma") !== -1) || (requestedId && requestedId.indexOf("KE-PR-") !== -1);
+  var isProforma = (inquiryType && inquiryType.indexOf("Proforma") !== -1) || 
+                   (requestedId && requestedId.indexOf("KE-PR-") !== -1);
   var prefix = isProforma ? "KE-PR-" : "KE-RFQ-";
   var year = new Date().getFullYear();
   var prefixWithYear = prefix + year + "-";
@@ -198,28 +212,40 @@ function resolveSequentialReferenceId(sheet, requestedId, inquiryType) {
 
   if (lastRow > 1) {
     var values = sheet.getRange(2, 2, lastRow - 1, 1).getValues();
+    var validNums = [];
+
     for (var i = 0; i < values.length; i++) {
       var val = String(values[i][0] || "").trim();
-      existingIds[val] = true;
-      if (val.indexOf(prefixWithYear) === 0) {
-        var numStr = val.substring(prefixWithYear.length);
-        var num = parseInt(numStr, 10);
-        if (!isNaN(num) && num > highestSeq) {
-          highestSeq = num;
+      if (val) {
+        existingIds[val] = true;
+        if (val.indexOf(prefixWithYear) === 0) {
+          var numStr = val.substring(prefixWithYear.length);
+          var num = parseInt(numStr, 10);
+          // Filter out dirty test artifacts (e.g. 9803, 9807, 9342, 2516)
+          // Unless the sheet has grown past 500 rows, any number >= 1000 is an anomalous artifact from old test runs
+          if (!isNaN(num) && (num < 1000 || values.length >= 500)) {
+            validNums.push(num);
+          }
         }
       }
     }
-  }
 
-  // If requestedId is already in proper format with 4-digit serial and not yet in the sheet, keep it
-  if (requestedId && requestedId.indexOf(prefixWithYear) === 0 && !existingIds[requestedId]) {
-    var reqNum = parseInt(requestedId.substring(prefixWithYear.length), 10);
-    if (!isNaN(reqNum)) {
-      return requestedId;
+    if (validNums.length > 0) {
+      highestSeq = Math.max.apply(null, validNums);
+    } else {
+      // If all existing entries were anomalous test numbers (>= 1000), count genuine rows with this prefix
+      var count = 0;
+      for (var j = 0; j < values.length; j++) {
+        var cellVal = String(values[j][0] || "").trim();
+        if (cellVal.indexOf(prefixWithYear) === 0) {
+          count++;
+        }
+      }
+      highestSeq = count;
     }
   }
 
-  // Otherwise assign the next serial starting from 0001
+  // Calculate next sequential number strictly
   var nextSeq = highestSeq + 1;
   var paddedSeq = Utilities.formatString("%04d", nextSeq);
   return prefixWithYear + paddedSeq;
@@ -534,5 +560,60 @@ function markAllPastInquiriesUnread() {
     threads[i].markUnread();
   }
   Logger.log("Successfully moved " + threads.length + " threads to Inbox, labeled with 'RFQ Website', and marked them UNREAD.");
+}
+
+/**
+ * =========================================================================
+ * UTILITY TOOL: Clean and re-sequence all past inquiries in your CRM Sheet
+ * =========================================================================
+ * How to use:
+ * 1. In Google Sheets > Extensions > Apps Script.
+ * 2. Select "cleanAndResetAllSheetReferenceIds" from the function dropdown at the top.
+ * 3. Click "Run" (▶).
+ * All inquiry rows in your sheet will be cleanly and sequentially re-indexed:
+ * KE-RFQ-2026-0001, KE-RFQ-2026-0002, KE-RFQ-2026-0003...
+ * Any messy 9000-series test numbers will be replaced with clean serial numbers!
+ */
+function cleanAndResetAllSheetReferenceIds() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName(SHEET_TAB_NAME);
+  if (!sheet) {
+    Logger.log("Sheet tab " + SHEET_TAB_NAME + " not found.");
+    return;
+  }
+
+  var lastRow = sheet.getLastRow();
+  if (lastRow <= 1) {
+    Logger.log("Sheet is empty or has only headers. No rows to re-index.");
+    return;
+  }
+
+  var range = sheet.getRange(2, 2, lastRow - 1, 2); // Column 2 (Ref ID) and Column 3 (Inquiry Type)
+  var values = range.getValues();
+  var year = new Date().getFullYear();
+
+  var rfqCount = 0;
+  var prCount = 0;
+
+  for (var i = 0; i < values.length; i++) {
+    var refId = String(values[i][0] || "").trim();
+    var inquiryType = String(values[i][1] || "").trim();
+    var isProforma = inquiryType.indexOf("Proforma") !== -1 || refId.indexOf("KE-PR-") !== -1;
+
+    if (isProforma) {
+      prCount++;
+      values[i][0] = "KE-PR-" + year + "-" + Utilities.formatString("%04d", prCount);
+    } else {
+      rfqCount++;
+      values[i][0] = "KE-RFQ-" + year + "-" + Utilities.formatString("%04d", rfqCount);
+    }
+  }
+
+  // Update Column 2 with clean sequential Reference IDs
+  var refIdColRange = sheet.getRange(2, 2, lastRow - 1, 1);
+  var updatedRefs = values.map(function(row) { return [row[0]]; });
+  refIdColRange.setValues(updatedRefs);
+
+  Logger.log("Successfully re-sequenced " + values.length + " inquiries: " + rfqCount + " RFQs and " + prCount + " Proformas.");
 }
 
