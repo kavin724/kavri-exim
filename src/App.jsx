@@ -20,7 +20,9 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
  * Route helpers for hash-based browser history synchronization
  */
 function routeToHash(route) {
-  if (!route || route === 'home') return '#/';
+  if (!route || route === 'home') {
+    return window.location.pathname + (window.location.search || '');
+  }
   return `#/${route}`;
 }
 
@@ -53,12 +55,19 @@ export default function App() {
     if (typeof window === 'undefined') return;
 
     const initialRoute = hashToRoute(window.location.hash);
+    const cleanHomeUrl = window.location.pathname + (window.location.search || '');
+
     if (initialRoute && initialRoute !== 'home') {
-      window.history.replaceState({ route: 'home' }, '', '#/');
+      window.history.replaceState({ route: 'home' }, '', cleanHomeUrl);
       window.history.pushState({ route: initialRoute }, '', routeToHash(initialRoute));
       setCurrentRoute(initialRoute);
     } else {
-      window.history.replaceState({ route: 'home' }, '', '#/');
+      // Clean up '#/' or '#' from URL on home page so default URL is clean
+      if (window.location.hash) {
+        window.history.replaceState({ route: 'home' }, '', cleanHomeUrl);
+      } else {
+        window.history.replaceState({ route: 'home' }, '', window.location.href);
+      }
       setCurrentRoute('home');
     }
   }, []);
