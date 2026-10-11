@@ -16,7 +16,7 @@ export default function AboutPage({ onOpenRfq }) {
             <span>Corporate Identity & Trade Heritage</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight font-['Plus_Jakarta_Sans']">
-            Bridging South India's Harvest & Manufacturing with Global Markets
+            Bridging India's Harvest & Manufacturing with Global Markets
           </h1>
           <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
             Kavri Exim represents the international export brand operated by <strong>Kavri Spice Exim</strong>, a legally registered Indian merchant export enterprise based in Tamil Nadu.
@@ -36,12 +36,12 @@ export default function AboutPage({ onOpenRfq }) {
                 Origin of Our Name: The River Kaveri
               </span>
               <p className="leading-relaxed">
-                The company name <strong>"Kavri"</strong> is derived from a stylized version of the sacred <strong>River Kaveri</strong>, on whose banks the historic city of <strong>Erode</strong> is located and where the company was founded. Rooted in Erode—famed worldwide as South India’s turmeric capital—our enterprise draws inspiration from the perennial Kaveri river that has sustained the region’s rich soil, agricultural heritage, and merchant trade for generations.
+                The company name <strong>"Kavri"</strong> is derived from a stylized version of the sacred <strong>River Kaveri</strong>, on whose banks the historic city of <strong>Erode</strong> is located and where the company was founded. Rooted in Erode—famed worldwide as India’s turmeric capital—our enterprise draws inspiration from the perennial Kaveri river that has sustained the region’s rich soil, agricultural heritage, and merchant trade for generations.
               </p>
             </div>
 
             <p>
-              South India's agrarian heartlands—from the Cardamom Hills of Idukki and the Kolli Hills of Tamil Nadu to the fertile Kaveri river basin—produce some of the planet's most aromatic, potent spices. Parallelly, Tamil Nadu's industrial belts in Tirupur, Coimbatore, and Karur constitute global powerhouses of export knitwear, home textiles, and cotton fabrics.
+              India's agrarian heartlands—from the Cardamom Hills of Idukki and the Kolli Hills of Tamil Nadu to the fertile Kaveri river basin—produce some of the planet's most aromatic, potent spices. Parallelly, Tamil Nadu's industrial belts in Tirupur, Coimbatore, and Karur constitute global powerhouses of export knitwear, home textiles, and cotton fabrics.
             </p>
             <p>
               <strong>Kavri Spice Exim</strong> was established to provide international buyers with a transparent, direct origin-to-port export bridge across both agricultural commodities and manufactured goods. Operating under our global trade brand <strong>Kavri Exim</strong>, we eliminate speculative middlemen by coordinating directly with verified cultivator cooperatives, spinning mills, and artisan clusters.
@@ -136,7 +136,7 @@ export default function AboutPage({ onOpenRfq }) {
                   Our Vision
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  To be the benchmark export partner bridging South India and the world—delivering origin-certified spices, custom textiles, and authentic heritage handicrafts through radical transparency, ethical sourcing, and uncompromising international compliance.
+                  To be the benchmark export partner bridging India and the world—delivering origin-certified spices, custom textiles, and authentic heritage handicrafts through radical transparency, ethical sourcing, and uncompromising international compliance.
                 </p>
               </div>
               <div className="pt-6 mt-6 border-t border-slate-100 flex items-center space-x-2 text-xs font-bold text-[#0D522F]">

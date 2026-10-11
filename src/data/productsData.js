@@ -1102,7 +1102,7 @@ export const PRODUCTS_DATA = [
     category: 'handicrafts',
     division: 'Turnkey Contract Sourcing',
     tag: 'Turnkey OEM & Private Label | DGFT / IEC Registered | US FDA & EU Ready',
-    origin: 'Verified Manufacturing Hubs Across South India & Pan-India Industrial Clusters',
+    origin: 'Verified Manufacturing Hubs & Industrial Clusters Across India',
     compliance: 'DGFT / IEC Registered | US FDA Food Contact Compliant | EU REACH & CE Ready',
     image: './assets/images/private-label.jpg',
     shortDesc: 'A dedicated turnkey sourcing and private-label manufacturing desk bridging international retail brands, supermarket chains, hospitality groups, and e-commerce importers with audited Indian manufacturing clusters. We manage the entire cross-border procurement lifecycle: vendor qualification, CAD prototype tooling, formulation & lab testing, custom retail packaging (blister cards, glass spice jars, nitrogen-flushed tins, rigid gift boxes), GS1 barcode integration, and final container consolidation with unified export documentation.',

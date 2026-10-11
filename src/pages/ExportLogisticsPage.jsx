@@ -32,7 +32,7 @@ export default function ExportLogisticsPage({ onOpenRfq }) {
             Export Logistics, Ports & Incoterms
           </h1>
           <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
-            Transparent shipping workflows from South Indian maritime hubs directly to the Persian Gulf, Southeast Asia, Europe, and North America.
+            Transparent shipping workflows from Indian maritime hubs directly to the Persian Gulf, Southeast Asia, Europe, and North America.
           </p>
         </div>
 
@@ -105,7 +105,7 @@ export default function ExportLogisticsPage({ onOpenRfq }) {
               Strategic Gateway Hubs & Transit Corridors
             </h2>
             <p className="text-xs text-slate-500 mt-1">
-              Direct access to South India's major deepwater container terminals.
+              Direct access to India's major deepwater container terminals.
             </p>
           </div>
 

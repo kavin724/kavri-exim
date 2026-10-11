@@ -19,14 +19,6 @@ export default function TopUtilityBar() {
           {/* Separator 1 */}
           <span className="text-emerald-400/50 select-none flex-shrink-0">|</span>
 
-          {/* 2. Direct Sourcing Advantage */}
-          <span className="text-emerald-200 flex-shrink-0">
-            Direct Farm-Gate & Port Gateway
-          </span>
-
-          {/* Separator 2 */}
-          <span className="text-emerald-400/50 select-none flex-shrink-0">|</span>
-
           {/* 3. Statutory Registration */}
           <div className="flex items-center space-x-1.5 text-amber-300 font-medium flex-shrink-0">
             <Award className="w-3.5 h-3.5 text-amber-300 flex-shrink-0" />

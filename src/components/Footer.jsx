@@ -29,7 +29,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
             </div>
 
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm">
-              South Indian merchant exporter connecting origin-grade GI spices, premium export textiles & garments, and handcrafted artefacts directly with B2B importers, hotel chains, and retail brands worldwide.
+              Indian merchant exporter connecting origin-grade GI spices, premium export textiles & garments, and handcrafted artefacts directly with B2B importers, hotel chains, and retail brands worldwide.
             </p>
 
             <div className="space-y-2.5 pt-2 text-xs text-slate-700">

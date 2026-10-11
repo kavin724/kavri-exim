@@ -8,7 +8,7 @@ const CATEGORY_META = {
   spices: {
     badge: 'Division 01 • Spices Board of India Registered',
     title: 'Spices & Seasonings Export Catalog',
-    desc: 'Direct farm-origin harvesting from South India’s Western Ghats and Kaveri basin. Standardized Sortex-cleaned grades of Alleppey Green Cardamom, Tellicherry & Kolli Pepper, and GI-certified Erode & Salem Turmeric with laboratory test benchmarks.',
+    desc: 'Direct farm-origin harvesting from India’s Western Ghats and Kaveri basin. Standardized Sortex-cleaned grades of Alleppey Green Cardamom, Tellicherry & Kolli Pepper, and GI-certified Erode & Salem Turmeric with laboratory test benchmarks.',
     searchPlaceholder: 'Search spices & grades (e.g. Cardamom, AGEB, Tellicherry, Salem, 8mm)...',
     suggestedQueries: ['Cardamom (AGEB)', 'Tellicherry Pepper', 'Salem Turmeric', 'Kolli Mountain', 'Erode GI Finger', 'Turmeric Powder'],
     noResultsMessage: 'Try searching for Cardamom, Black Pepper, Salem Turmeric, AGEB, or Curcumin.'
@@ -24,7 +24,7 @@ const CATEGORY_META = {
   handicrafts: {
     badge: 'Division 03 • Heritage Artisan Clusters',
     title: 'Handicrafts & Artefacts Export Catalog',
-    desc: 'Authentic South Indian lost-wax cast bronze & brass idols, hand-carved teakwood decorative artefacts, and traditional architectural terracotta pottery.',
+    desc: 'Authentic Indian lost-wax cast bronze & brass idols, hand-carved teakwood decorative artefacts, and traditional architectural terracotta pottery.',
     searchPlaceholder: 'Search handicrafts & artefacts (e.g. Brass Kuthuvilakku, Bronze, Urli, Woodcraft, Terracotta)...',
     suggestedQueries: ['Nachiarkoil Lamp', 'Chola Bronze', 'Brass Urli', 'Wooden Keepsake', 'Home Décor'],
     noResultsMessage: 'Try searching for Brassware, Kuthuvilakku Lamp, Chola Bronze, Woodcraft, or Urli Bowls.'

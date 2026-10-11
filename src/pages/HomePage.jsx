@@ -45,7 +45,7 @@ const CORE_COMPETENCIES = [
     title: 'Heritage Handicrafts',
     image: './assets/images/handicrafts.jpg',
     imageAlt: 'Indian Heritage Handicrafts',
-    description: "Preserving South India's millennia-old artisan traditions. Authentic lost-wax brass castings, hand-carved natural woods, and kiln-fired architectural terracotta artefacts.",
+    description: "Preserving India's millennia-old artisan traditions. Authentic lost-wax brass castings, hand-carved natural woods, and kiln-fired architectural terracotta artefacts.",
     keyProducts: [
       'Traditional Brass Idols, Urli Bowls & Temple Diya Lamps',
       'Hand-Carved Teakwood Decorative Panels & Relief Crafts',
@@ -81,20 +81,20 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
               {/* Origin Chip */}
               <div className="inline-flex items-center space-x-2 bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#0D522F] shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#0D522F] animate-pulse"></span>
-                <span>South Indian Merchant Exporters • Tamil Nadu & Kerala</span>
+                <span>Indian Merchant Exporter • From Source to Port Gateway</span>
               </div>
 
               {/* Main Headline */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] text-slate-900 font-['Plus_Jakarta_Sans']">
                 Global Quality Sourcing, <br />
                 <span className="text-[#0D522F]">
-                  Rooted in South India
+                  Rooted in India
                 </span>
               </h1>
 
               {/* Company Introduction Paragraph */}
               <p className="text-base sm:text-lg text-slate-600 max-w-2xl leading-relaxed font-normal">
-                <strong>Kavri Exim</strong> is an international merchant export enterprise headquartered in Tamil Nadu. We bridge South India’s most prized agrarian harvest and manufacturing hubs with global importers across three core divisions: origin-grade <strong>Spices & Seasonings</strong>, precision-crafted <strong>Textiles & Garments</strong>, and authentic <strong>Indian Heritage Handicrafts</strong>.
+                <strong>Kavri Exim</strong> is an international merchant export enterprise headquartered in Tamil Nadu. We bridge India’s most prized agrarian harvest and manufacturing hubs with global importers across three core divisions: origin-grade <strong>Spices & Seasonings</strong>, precision-crafted <strong>Textiles & Garments</strong>, and authentic <strong>Indian Heritage Handicrafts</strong>.
               </p>
 
               {/* Dual Action CTAs */}
@@ -211,7 +211,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
                   Our Vision
                 </h3>
                 <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-                  To be the benchmark export partner bridging South India and the world—delivering origin-certified spices, custom textiles, and authentic heritage handicrafts through radical transparency, ethical sourcing, and uncompromising international compliance.
+                  To be the benchmark export partner bridging India and the world—delivering origin-certified spices, custom textiles, and authentic heritage handicrafts through radical transparency, ethical sourcing, and uncompromising international compliance.
                 </p>
               </div>
 

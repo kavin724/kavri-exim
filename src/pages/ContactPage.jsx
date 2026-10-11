@@ -74,7 +74,7 @@ export default function ContactPage() {
                   <div>
                     <strong className="text-slate-900 block mb-0.5">Operating Legal Entity:</strong>
                     <span>Kavri Spice Exim</span>
-                    <span className="block text-slate-500">Registered Office: Erode, Tamil Nadu, South India</span>
+                    <span className="block text-slate-500">Registered Office: Erode, Tamil Nadu, India</span>
                     <span className="block text-slate-400 text-xs mt-0.5">Maritime Gateways: Tuticorin VOC Port / Chennai Port / Cochin Port</span>
                   </div>
                 </div>
