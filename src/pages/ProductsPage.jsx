@@ -10,7 +10,6 @@ const CATEGORY_META = {
     title: 'Spices & Seasonings Export Catalog',
     desc: 'Direct farm-origin harvesting from India’s Western Ghats and Kaveri basin. Standardized Sortex-cleaned grades of Alleppey Green Cardamom, Tellicherry & Kolli Pepper, and GI-certified Erode & Salem Turmeric with laboratory test benchmarks.',
     searchPlaceholder: 'Search spices & grades (e.g. Cardamom, AGEB, Tellicherry, Salem, 8mm)...',
-    suggestedQueries: ['Cardamom (AGEB)', 'Tellicherry Pepper', 'Salem Turmeric', 'Kolli Mountain', 'Erode GI Finger', 'Turmeric Powder'],
     noResultsMessage: 'Try searching for Cardamom, Black Pepper, Salem Turmeric, AGEB, or Curcumin.'
   },
   textiles: {
@@ -18,7 +17,6 @@ const CATEGORY_META = {
     title: 'Textiles & Garments Export Catalog',
     desc: 'Custom OEM apparel, luxury terry towels, hotel-grade bedsheets, and industrial woven fabrics manufactured to rigorous international colorfastness and AATCC/ISO standards.',
     searchPlaceholder: 'Search textiles & specs (e.g. T-Shirts, Terry Towels, 400 TC, Bedsheets, Shirting)...',
-    suggestedQueries: ['Cotton T-Shirts', 'Terry Towels', 'Bedsheets (400 TC)', 'Table Linens', 'Yarn-Dyed Shirting'],
     noResultsMessage: 'Try searching for T-Shirts, Terry Towels, Bedsheet Sets, Sateen, or Shirting Fabrics.'
   },
   handicrafts: {
@@ -26,7 +24,6 @@ const CATEGORY_META = {
     title: 'Handicrafts & Artefacts Export Catalog',
     desc: 'Authentic Indian lost-wax cast bronze & brass idols, hand-carved teakwood decorative artefacts, and traditional architectural terracotta pottery.',
     searchPlaceholder: 'Search handicrafts & artefacts (e.g. Brass Kuthuvilakku, Bronze, Urli, Woodcraft, Terracotta)...',
-    suggestedQueries: ['Nachiarkoil Lamp', 'Chola Bronze', 'Brass Urli', 'Wooden Keepsake', 'Home Décor'],
     noResultsMessage: 'Try searching for Brassware, Kuthuvilakku Lamp, Chola Bronze, Woodcraft, or Urli Bowls.'
   }
 };
@@ -137,40 +134,6 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
             )}
           </div>
 
-        </div>
-
-        {/* Suggestive Quick Search Pills related to the current Main Product Line */}
-        <div className="flex items-center gap-1.5 flex-wrap -mt-6 mb-8 px-1">
-          <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-            Suggested in {COMMODITY_CATEGORIES.find(c => c.id === selectedCategory)?.name || 'Division'}:
-          </span>
-          {currentMeta.suggestedQueries.map(item => {
-            const keyword = item.replace(/\s*\(.*\)/, '').trim();
-            const isActive = searchQuery.toLowerCase().includes(keyword.toLowerCase());
-            return (
-              <button
-                key={item}
-                type="button"
-                onClick={() => setSearchQuery(isActive ? '' : keyword)}
-                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer border ${
-                  isActive
-                    ? 'bg-emerald-100 text-[#0D522F] border-emerald-300 font-bold shadow-xs'
-                    : 'bg-white text-slate-600 border-slate-200 hover:border-emerald-300 hover:text-[#0D522F] shadow-xs'
-                }`}
-              >
-                {item}
-              </button>
-            );
-          })}
-          {searchQuery && (
-            <button
-              type="button"
-              onClick={() => setSearchQuery('')}
-              className="text-xs text-rose-600 hover:underline font-bold ml-1.5 cursor-pointer"
-            >
-              Reset filter
-            </button>
-          )}
         </div>
 
         {/* Products Grid */}
