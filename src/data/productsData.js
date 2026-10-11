@@ -29,6 +29,14 @@ export const PRODUCTS_DATA = [
     hsnCode: '0908 31 20',
     grades: [
       { 
+        name: 'Alleppey Green Special Extra Bold', 
+        code: 'AGSEB', 
+        size: '8.5 mm and above', 
+        density: 'Min. 450 g/L', 
+        color: 'Deep Vibrant Emerald Green', 
+        usage: 'GCC / Middle East luxury retail, royal gifting, highest premium spice merchants' 
+      },
+      { 
         name: 'Alleppey Green Extra Bold', 
         code: 'AGEB', 
         size: '8.0 mm and above', 
@@ -54,7 +62,7 @@ export const PRODUCTS_DATA = [
       },
       { 
         name: 'Alleppey Green Shipment', 
-        code: 'AGL / AGS-1', 
+        code: 'AGL', 
         size: '5.0 mm to 5.9 mm', 
         density: 'Min. 350 g/L', 
         color: 'Light / Pale Green', 
@@ -62,7 +70,7 @@ export const PRODUCTS_DATA = [
       },
       { 
         name: 'Decorticated Cardamom Seeds', 
-        code: 'CS (Seeds)', 
+        code: 'CS', 
         size: 'Clean whole seeds', 
         density: 'Min. 600 g/L', 
         color: 'Dark Brown to Black', 

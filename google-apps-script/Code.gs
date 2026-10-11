@@ -53,8 +53,12 @@ function doPost(e) {
       destinationCountry: data.destinationCountry || data.country || "N/A",
       portOfDischarge: data.portOfDischarge || data.port || "N/A",
       incoterm: data.incoterm || "CIF",
+      productLine: data.productLine || data.division || "Spices & Seasonings",
       product: data.product || "Commercial Export Product",
       gradeSpec: data.gradeSpec || data.specs || "Standard Commercial Grade",
+      isCustomGrade: data.isCustomGrade === true || data.isCustomGrade === "true",
+      isCustomCountry: data.isCustomCountry === true || data.isCustomCountry === "true",
+      isCustomPort: data.isCustomPort === true || data.isCustomPort === "true",
       quantity: data.quantity || "1 FCL",
       packaging: data.packaging || "Standard Export Packaging",
       message: data.message || data.specs || "No additional notes provided.",
@@ -162,6 +166,12 @@ function recordToGoogleSheet(lead) {
   // Format timestamp for Indian Standard Time
   var formattedDate = Utilities.formatDate(lead.timestamp, "Asia/Kolkata", "yyyy-MM-dd HH:mm:ss 'IST'");
 
+  // Format fields to clearly tag custom entries and product lines in the sheet
+  var sheetCountry = lead.isCustomCountry ? (lead.destinationCountry + " [Custom]") : lead.destinationCountry;
+  var sheetPort = lead.isCustomPort ? (lead.portOfDischarge + " [Custom]") : lead.portOfDischarge;
+  var sheetProduct = lead.productLine ? (lead.productLine + " › " + lead.product) : lead.product;
+  var sheetGrade = lead.isCustomGrade ? (lead.gradeSpec + " [Custom]") : lead.gradeSpec;
+
   // Append lead row
   var row = [
     formattedDate,
@@ -171,11 +181,11 @@ function recordToGoogleSheet(lead) {
     lead.companyName,
     lead.email,
     lead.phone,
-    lead.destinationCountry,
-    lead.portOfDischarge,
+    sheetCountry,
+    sheetPort,
     lead.incoterm,
-    lead.product,
-    lead.gradeSpec,
+    sheetProduct,
+    sheetGrade,
     lead.quantity,
     lead.packaging,
     lead.message,
@@ -258,6 +268,7 @@ function sendTradeDeskNotificationEmail(lead) {
   var formattedDate = Utilities.formatDate(lead.timestamp, "Asia/Kolkata", "dd MMM yyyy, hh:mm a 'IST'");
 
   var subject = "[RFQ Website • " + lead.inquiryType + " • " + lead.referenceId + "] " +
+                (lead.productLine ? lead.productLine + " : " : "") +
                 lead.product + " - " + lead.companyName + " (" + (lead.destinationCountry || lead.portOfDischarge || "Global") + ")";
 
   // WhatsApp quick link for the trade officer
@@ -276,11 +287,13 @@ function sendTradeDeskNotificationEmail(lead) {
     "- Company: " + lead.companyName + "\n" +
     "- Email: " + lead.email + "\n" +
     "- Phone/WhatsApp: " + lead.phone + "\n" +
-    "- Destination: " + lead.destinationCountry + " (Port: " + lead.portOfDischarge + ")\n\n" +
+    "- Destination Country: " + lead.destinationCountry + (lead.isCustomCountry ? " [CUSTOM COUNTRY]" : "") + "\n" +
+    "- Port of Discharge (POD): " + lead.portOfDischarge + (lead.isCustomPort ? " [CUSTOM PORT]" : "") + "\n\n" +
     "ORDER SPECIFICATIONS:\n" +
-    "- Product: " + lead.product + "\n" +
-    "- Grade/Spec: " + lead.gradeSpec + "\n" +
-    "- Quantity: " + lead.quantity + "\n" +
+    "- Major Product Line: " + lead.productLine + "\n" +
+    "- Product / Commodity: " + lead.product + "\n" +
+    "- Target Grade / Spec: " + lead.gradeSpec + (lead.isCustomGrade ? " [CUSTOM SPECIFICATION]" : "") + "\n" +
+    "- Target Quantity: " + lead.quantity + "\n" +
     "- Incoterm: " + lead.incoterm + "\n" +
     "- Packaging: " + lead.packaging + "\n\n" +
     "BUYER NOTES:\n" +
@@ -394,12 +407,18 @@ function sendTradeDeskNotificationEmail(lead) {
     '<td style="color: #0F172A; font-family: monospace; font-weight: 600;">' + lead.phone + '</td>' +
     '</tr>' +
     '<tr style="background-color: #F8FAFC; border-bottom: 1px solid #E2E8F0;">' +
-    '<td style="color: #64748B; font-weight: 600;">Country / Market:</td>' +
-    '<td style="color: #0F172A; font-weight: 600;">' + lead.destinationCountry + '</td>' +
+    '<td style="color: #64748B; font-weight: 600;">Destination Country:</td>' +
+    '<td style="color: #0F172A; font-weight: 600;">' + 
+      lead.destinationCountry + 
+      (lead.isCustomCountry ? ' <span style="display: inline-block; background-color: #FEF3C7; color: #92400E; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; border: 1px solid #FCD34D; margin-left: 6px;">CUSTOM ENTRY</span>' : '') +
+    '</td>' +
     '</tr>' +
     '<tr style="border-bottom: 1px solid #E2E8F0;">' +
-    '<td style="color: #64748B; font-weight: 600;">Discharge Port:</td>' +
-    '<td style="color: #0F172A; font-weight: 600;">' + lead.portOfDischarge + '</td>' +
+    '<td style="color: #64748B; font-weight: 600;">Port of Discharge (POD):</td>' +
+    '<td style="color: #0F172A; font-weight: 600;">' + 
+      lead.portOfDischarge + 
+      (lead.isCustomPort ? ' <span style="display: inline-block; background-color: #FEF3C7; color: #92400E; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; border: 1px solid #FCD34D; margin-left: 6px;">CUSTOM PORT</span>' : '') +
+    '</td>' +
     '</tr>' +
     '</table>' +
 
@@ -409,22 +428,31 @@ function sendTradeDeskNotificationEmail(lead) {
     '</h3>' +
     '<table border="0" cellpadding="8" cellspacing="0" width="100%" style="border-collapse: collapse; margin-bottom: 24px; font-size: 13px;">' +
     '<tr style="background-color: #F8FAFC; border-bottom: 1px solid #E2E8F0;">' +
-    '<td width="35%" style="color: #64748B; font-weight: 600;">Product / Commodity:</td>' +
-    '<td width="65%" style="color: #0D522F; font-weight: 800; font-size: 14px;">' + lead.product + '</td>' +
+    '<td width="35%" style="color: #64748B; font-weight: 600;">Product Line / Division:</td>' +
+    '<td width="65%"><span style="display: inline-block; background-color: #ECFDF5; color: #0D522F; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 6px; border: 1px solid #A7F3D0; text-transform: uppercase; letter-spacing: 0.5px;">' + lead.productLine + '</span></td>' +
     '</tr>' +
     '<tr style="border-bottom: 1px solid #E2E8F0;">' +
-    '<td style="color: #64748B; font-weight: 600;">Grade / Variety:</td>' +
-    '<td style="color: #0F172A; font-weight: 600;">' + lead.gradeSpec + '</td>' +
+    '<td style="color: #64748B; font-weight: 600;">Commodity / Product:</td>' +
+    '<td style="color: #0D522F; font-weight: 800; font-size: 14px;">' + lead.product + '</td>' +
     '</tr>' +
     '<tr style="background-color: #F8FAFC; border-bottom: 1px solid #E2E8F0;">' +
+    '<td style="color: #64748B; font-weight: 600;">Target Grade / Variety:</td>' +
+    '<td>' + 
+      (lead.isCustomGrade 
+        ? ('<div style="margin-bottom: 4px;"><span style="display: inline-block; background-color: #FEF3C7; color: #92400E; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; border: 1px solid #FCD34D;">CUSTOM BUYER SPECIFICATION</span></div>' +
+           '<div style="background-color: #FFFBEB; border: 1px dashed #F59E0B; padding: 8px 12px; border-radius: 6px; color: #78350F; font-size: 12px; font-family: monospace; line-height: 1.5;">' + lead.gradeSpec.replace(/\n/g, '<br>') + '</div>')
+        : ('<strong style="color: #0F172A;">' + lead.gradeSpec + '</strong>')) +
+    '</td>' +
+    '</tr>' +
+    '<tr style="border-bottom: 1px solid #E2E8F0;">' +
     '<td style="color: #64748B; font-weight: 600;">Target Quantity:</td>' +
     '<td style="color: #0F172A; font-weight: 700;">' + lead.quantity + '</td>' +
     '</tr>' +
-    '<tr style="border-bottom: 1px solid #E2E8F0;">' +
+    '<tr style="background-color: #F8FAFC; border-bottom: 1px solid #E2E8F0;">' +
     '<td style="color: #64748B; font-weight: 600;">Incoterm:</td>' +
     '<td style="color: #0D522F; font-weight: 700;">' + lead.incoterm + '</td>' +
     '</tr>' +
-    '<tr style="background-color: #F8FAFC; border-bottom: 1px solid #E2E8F0;">' +
+    '<tr style="border-bottom: 1px solid #E2E8F0;">' +
     '<td style="color: #64748B; font-weight: 600;">Packaging Requirement:</td>' +
     '<td style="color: #0F172A;">' + lead.packaging + '</td>' +
     '</tr>' +
