@@ -125,7 +125,7 @@ export const PRODUCTS_DATA = [
     origin: 'Malabar Coast, Idukki & Wayanad, Kerala / Tamil Nadu, India',
     image: './assets/images/pepper.jpg',
     shortDesc: "Sourced directly from the biodiverse foothills of the Western Ghats along India's historic Malabar Coast. Hand-harvested when berries reach optimal maturity, sun-cured, and mechanically garbled through multiple screening sieves and destoners. Available in Tellicherry Garbled Special Extra Bold (TGSEB), Extra Bold (TGEB), and Malabar Garbled (MG-1) grades, delivering high piperine pungency, low light-berry counts, and rich pinene-caryophyllene aromatic notes.",
-    hsnCode: '0904 11 10 (Garbled) | 0904 11 20 (Ungarbled)',
+    hsnCode: '0904 11 30 (Garbled) | 0904 11 40 (Ungarbled)',
     grades: [
       { 
         name: 'Tellicherry Garbled Special Extra Bold', 
@@ -202,7 +202,7 @@ export const PRODUCTS_DATA = [
       },
       gatewayPorts: 'Cochin Port (COK) / Tuticorin (VOC) / Chennai (MAA)',
       airTerminals: 'Cochin (COK) / Coimbatore (CJB) / Chennai (MAA)',
-      hsCode: '0904 11 10 (Garbled) | 0904 11 20 (Ungarbled)'
+      hsCode: '0904 11 30 (Garbled) | 0904 11 40 (Ungarbled)'
     }
   },
   {
@@ -217,7 +217,7 @@ export const PRODUCTS_DATA = [
     origin: 'Kolli Hills (Kolli Malai), Namakkal District, Tamil Nadu, India (Elevation: 1,000m - 1,300m MSL)',
     image: './assets/images/kolli-pepper.jpg',
     shortDesc: 'Cultivated in the biodiverse microclimate and mineral-rich soils of the Kolli Hills (Eastern Ghats) at altitudes exceeding 1,000 meters above sea level. Traditionally shade-grown on natural silver oak living standards in multi-tier agroforestry estates. Kolli peppercorns are globally prized by oleoresin extractors, pharmaceutical processors, and gourmet blenders for their intense natural piperine content (5.0% - 6.2%+), dense uniform core, and distinctive woody, sharp pungency.',
-    hsnCode: '0904 11 10 (Garbled) | 0904 11 20 (Ungarbled)',
+    hsnCode: '0904 11 30 (Garbled) | 0904 11 40 (Ungarbled)',
     grades: [
       { 
         name: 'Kolli Mountain Bold', 
@@ -277,7 +277,7 @@ export const PRODUCTS_DATA = [
       },
       gatewayPorts: 'Tuticorin VOC Port (TUT) / Chennai Port (MAA) / Cochin Port (COK)',
       airTerminals: 'Tiruchirappalli (TRZ) / Coimbatore (CJB) / Chennai (MAA)',
-      hsCode: '0904 11 10 (Garbled) | 0904 11 20 (Ungarbled)'
+      hsCode: '0904 11 30 (Garbled) | 0904 11 40 (Ungarbled)'
     }
   },
   {
