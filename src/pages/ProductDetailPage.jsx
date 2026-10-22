@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   ArrowLeft, Download, FileText, CheckCircle2, ShieldCheck,
-  Package, Send, ArrowRight, Loader2
+  Package, Send, ArrowRight, Loader2, Sparkles
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/productsData';
 import { submitInquiry } from '../services/inquiryService';
@@ -743,50 +743,57 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
                 )}
               </div>
 
-              <div className="mt-6 pt-6 border-t border-slate-100">
-                <div className="text-xs text-slate-500 mb-2 italic">
-                  {product.id === 't-shirts'
-                    ? 'Need custom branded polybags, woven damask tags, EAN/UPC barcode stickers, or custom pre-pack ratios?'
-                    : product.id === 'terry-towels'
-                    ? 'Need custom jacquard logos, vat-dyed bleach-proof colors, institutional bulk bale packing, or private-label hangtags?'
-                    : product.id === 'bedsheets'
-                    ? 'Need custom embroidery logos, satin-stripe weaves, specific mattress pocket depths, or private-label presentation boxes?'
-                    : product.id === 'linens'
-                    ? 'Need custom woven brand labels, custom Pantone yarn-dyed checks, embroidered monograms, or retail gift packaging?'
-                    : product.id === 'shirting-fabrics'
-                    ? 'Need custom stripe repeats, exclusive tartan check development, custom widths, or liquid ammonia finishes?'
-                    : product.id === 'traditional-metalcraft'
-                    ? 'Need custom bespoke deity statues, CAD scale models, personalized commemorative engraving, or antique museum finishes?'
-                    : product.id === 'modern-home-decor'
-                    ? 'Need custom laser-engraved logos, client-specific CAD prototyping, mail-order e-commerce packaging, or custom hardware finishes?'
-                    : product.id === 'oem-private-label'
-                    ? 'Need custom mold development, bespoke corporate hamper curation, bilingual retail labels, or Amazon FBA prep?'
-                    : 'Need private-label barcodes, custom polybags, or nitrogen flushing?'}
+              <div className="mt-7 pt-6 border-t border-slate-100">
+                <div className="bg-emerald-50/50 border border-emerald-200/80 rounded-2xl p-4 sm:p-5">
+                  <div className="text-xs sm:text-sm text-slate-700 mb-3.5 font-medium flex items-start sm:items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5 sm:mt-0" />
+                    <span>
+                      {product.id === 't-shirts'
+                        ? 'Need custom branded polybags, woven damask tags, EAN/UPC barcode stickers, or custom pre-pack ratios?'
+                        : product.id === 'terry-towels'
+                        ? 'Need custom jacquard logos, vat-dyed bleach-proof colors, institutional bulk bale packing, or private-label hangtags?'
+                        : product.id === 'bedsheets'
+                        ? 'Need custom embroidery logos, satin-stripe weaves, specific mattress pocket depths, or private-label presentation boxes?'
+                        : product.id === 'linens'
+                        ? 'Need custom woven brand labels, custom Pantone yarn-dyed checks, embroidered monograms, or retail gift packaging?'
+                        : product.id === 'shirting-fabrics'
+                        ? 'Need custom stripe repeats, exclusive tartan check development, custom widths, or liquid ammonia finishes?'
+                        : product.id === 'traditional-metalcraft'
+                        ? 'Need custom bespoke deity statues, CAD scale models, personalized commemorative engraving, or antique museum finishes?'
+                        : product.id === 'modern-home-decor'
+                        ? 'Need custom laser-engraved logos, client-specific CAD prototyping, mail-order e-commerce packaging, or custom hardware finishes?'
+                        : product.id === 'oem-private-label'
+                        ? 'Need custom mold development, bespoke corporate hamper curation, bilingual retail labels, or Amazon FBA prep?'
+                        : 'Need private-label barcodes, custom barrier polybags, bulk liners, or nitrogen flushing?'}
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => onOpenRfq(product)}
+                    className="group inline-flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm sm:text-base font-bold text-[#0D522F] bg-white hover:bg-[#0D522F] hover:text-white border-2 border-[#0D522F] shadow-sm hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1 hover:scale-105 active:scale-95 cursor-pointer"
+                  >
+                    <Package className="w-5 h-5 text-[#0D522F] group-hover:text-amber-300 transition-colors flex-shrink-0" />
+                    <span className="tracking-tight">
+                      {product.id === 't-shirts'
+                        ? 'Request Custom Packaging & OEM Solutions'
+                        : ['terry-towels', 'bedsheets'].includes(product.id)
+                        ? 'Request Custom Packaging & Institutional Solutions'
+                        : product.id === 'linens'
+                        ? 'Request Custom Packaging & OEM Linen Solutions'
+                        : product.id === 'shirting-fabrics'
+                        ? 'Request Custom Packaging & Swatch Solutions'
+                        : product.id === 'traditional-metalcraft'
+                        ? 'Request Custom Packaging & Artisan Solutions'
+                        : product.id === 'modern-home-decor'
+                        ? 'Request Custom Packaging & OEM Solutions'
+                        : product.id === 'oem-private-label'
+                        ? 'Request Custom Sourcing & Packaging Solutions'
+                        : 'Request Custom Packaging Solutions'}
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-amber-500 group-hover:text-amber-300 group-hover:translate-x-1.5 transition-all duration-300 flex-shrink-0" />
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => onOpenRfq(product)}
-                  className="text-xs text-[#0D522F] hover:text-[#083820] font-bold flex items-center gap-1 cursor-pointer"
-                >
-                  <span>
-                    {product.id === 't-shirts'
-                      ? 'Request Custom Packaging & OEM Solutions'
-                      : ['terry-towels', 'bedsheets'].includes(product.id)
-                      ? 'Request Custom Packaging & Institutional Quotation'
-                      : product.id === 'linens'
-                      ? 'Request Custom Packaging & OEM Linen Quotation'
-                      : product.id === 'shirting-fabrics'
-                      ? 'Request Custom Swatch Card & Mill Proforma Quote'
-                      : product.id === 'traditional-metalcraft'
-                      ? 'Request Custom Artisan Consultation & RFQ'
-                      : product.id === 'modern-home-decor'
-                      ? 'Request Custom Prototyping & OEM Quotation'
-                      : product.id === 'oem-private-label'
-                      ? 'Initiate Custom Sourcing Project & Request Feasibility Analysis'
-                      : 'Request Custom Packaging Solution'}
-                  </span>
-                  <ArrowRight className="w-3.5 h-3.5 text-amber-500" />
-                </button>
               </div>
             </div>
           </div>
