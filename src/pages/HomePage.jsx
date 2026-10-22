@@ -3,6 +3,7 @@ import {
   ArrowRight, ShieldCheck, Compass, Target,
   FileText, CheckCircle2, Sparkles
 } from 'lucide-react';
+import { routeToHash } from '../utils/navigation';
 
 const CORE_COMPETENCIES = [
   {
@@ -57,7 +58,10 @@ const CORE_COMPETENCIES = [
 
 export default function HomePage({ setCurrentRoute, onOpenRfq }) {
   const navigateTo = (route, e) => {
-    if (e) e.preventDefault();
+    if (e && (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0)) {
+      return;
+    }
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
     setCurrentRoute(route);
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
@@ -269,10 +273,11 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
           {/* Competencies 3-Column Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-10">
             {CORE_COMPETENCIES.map((competency) => (
-              <div
+              <a
                 key={competency.id}
+                href={routeToHash(competency.route)}
                 onClick={(e) => navigateTo(competency.route, e)}
-                className="group relative bg-white border-2 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#0D522F] cursor-pointer flex flex-col justify-between"
+                className="group relative bg-white border-2 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#0D522F] cursor-pointer flex flex-col justify-between block text-inherit no-underline"
               >
                 <div>
                   {/* Image Banner */}
@@ -327,7 +332,7 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
                     <ArrowRight className="w-4 h-4 text-amber-300" />
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
@@ -409,23 +414,23 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-              <button
-                type="button"
+              <a
+                href={routeToHash('privacy-policy')}
                 onClick={(e) => navigateTo('privacy-policy', e)}
                 className="inline-flex items-center justify-center gap-2 text-xs font-bold text-[#0D522F] hover:text-[#083820] bg-slate-50 hover:bg-emerald-50 border border-emerald-200 px-5 py-3 rounded-xl transition-all cursor-pointer shadow-xs"
               >
                 <ShieldCheck className="w-4 h-4 text-[#0D522F]" />
                 <span>Privacy Policy</span>
-              </button>
+              </a>
 
-              <button
-                type="button"
+              <a
+                href={routeToHash('terms-conditions')}
                 onClick={(e) => navigateTo('terms-conditions', e)}
                 className="inline-flex items-center justify-center gap-2 text-xs font-bold text-white bg-[#0D522F] hover:bg-[#083820] px-5 py-3 rounded-xl transition-all cursor-pointer shadow-sm shadow-[#0D522F]/20"
               >
                 <FileText className="w-4 h-4 text-amber-300" />
                 <span>Terms of Trade & Disclaimers</span>
-              </button>
+              </a>
             </div>
           </div>
 

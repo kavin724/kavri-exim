@@ -15,24 +15,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import TermsOfTradePage from './pages/TermsOfTradePage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-
-/**
- * Route helpers for hash-based browser history synchronization
- */
-function routeToHash(route) {
-  if (!route || route === 'home') {
-    return window.location.pathname + (window.location.search || '');
-  }
-  return `#/${route}`;
-}
-
-function hashToRoute(hash) {
-  if (!hash || hash === '#' || hash === '#/' || hash === '#/home' || hash === '#home') {
-    return 'home';
-  }
-  const clean = hash.replace(/^#\/?/, '').trim();
-  return clean || 'home';
-}
+import { routeToHash, hashToRoute } from './utils/navigation';
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState(() => {
@@ -72,11 +55,11 @@ export default function App() {
     }
   }, []);
 
-  // Listen for mobile back button & browser navigation (popstate)
+  // Listen for mobile back button & browser navigation (popstate & hashchange)
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const handlePopState = (event) => {
+    const handleRouteChange = (event) => {
       // 1. If RFQ modal drawer is open on mobile, dismiss it first
       if (isRfqOpen) {
         setIsRfqOpen(false);
@@ -90,13 +73,17 @@ export default function App() {
       }
 
       // 3. Resolve destination route from state or URL hash
-      const targetRoute = event.state?.route || hashToRoute(window.location.hash);
+      const targetRoute = event?.state?.route || hashToRoute(window.location.hash);
       setCurrentRoute(targetRoute || 'home');
       window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('popstate', handleRouteChange);
+    window.addEventListener('hashchange', handleRouteChange);
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+      window.removeEventListener('hashchange', handleRouteChange);
+    };
   }, [isRfqOpen, isTdsOpen]);
 
   // Unified navigation handler that pushes history state for mobile & desktop

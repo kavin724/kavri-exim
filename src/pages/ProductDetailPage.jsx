@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/productsData';
 import { submitInquiry } from '../services/inquiryService';
+import { routeToHash } from '../utils/navigation';
 
 export const SPEC_LABEL_MAP = {
   moisture: 'Moisture Content',
@@ -264,7 +265,10 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
   const parentCategoryName = categoryNames[product.category] || 'Dedicated Catalog';
 
   const navigateTo = (route, e) => {
-    if (e) e.preventDefault();
+    if (e && (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0)) {
+      return;
+    }
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
     setCurrentRoute(route);
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
@@ -297,14 +301,14 @@ export default function ProductDetailPage({ productSlug, setCurrentRoute, onOpen
 
         {/* Breadcrumb & Back */}
         <div className="mb-6 flex items-center justify-between">
-          <button
-            type="button"
+          <a
+            href={routeToHash(parentCategoryRoute)}
             onClick={(e) => navigateTo(parentCategoryRoute, e)}
             className="text-xs sm:text-sm text-slate-600 hover:text-[#0D522F] flex items-center gap-2 transition-colors cursor-pointer font-bold group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Back to {parentCategoryName}</span>
-          </button>
+          </a>
 
           <span className="text-xs text-[#0D522F] font-mono font-bold bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg shadow-xs">
             HSN: {product.hsnCode}

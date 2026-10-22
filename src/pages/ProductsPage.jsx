@@ -3,6 +3,7 @@ import {
   Search, Download, FileText, ArrowRight, Compass, X
 } from 'lucide-react';
 import { PRODUCTS_DATA, COMMODITY_CATEGORIES } from '../data/productsData';
+import { routeToHash } from '../utils/navigation';
 
 const CATEGORY_META = {
   spices: {
@@ -40,12 +41,19 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
   }, [initialCategory]);
 
   const navigateTo = (route, e) => {
-    if (e) e.preventDefault();
+    if (e && (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0)) {
+      return;
+    }
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
     setCurrentRoute(route);
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
-  const handleSelectCategory = (catId) => {
+  const handleSelectCategory = (catId, e) => {
+    if (e && (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0)) {
+      return;
+    }
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
     setSelectedCategory(catId);
     setSearchQuery('');
     if (setCurrentRoute) {
@@ -98,17 +106,17 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
           {/* Category Tabs */}
           <div className="flex flex-wrap gap-2">
             {COMMODITY_CATEGORIES.map(cat => (
-              <button
+              <a
                 key={cat.id}
-                type="button"
-                onClick={() => handleSelectCategory(cat.id)}
+                href={routeToHash(`products?cat=${cat.id}`)}
+                onClick={(e) => handleSelectCategory(cat.id, e)}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${selectedCategory === cat.id
                     ? 'bg-[#0D522F] text-white shadow-md shadow-[#0D522F]/20'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
                   }`}
               >
                 {cat.name}
-              </button>
+              </a>
             ))}
           </div>
 
@@ -146,8 +154,8 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
               <div>
                 {/* Product Image */}
                 {/* Product Image - Click to view Full Technical Specification Page */}
-                <button
-                  type="button"
+                <a
+                  href={routeToHash(`product-${prod.slug}`)}
                   onClick={(e) => navigateTo(`product-${prod.slug}`, e)}
                   className="relative w-full h-56 overflow-hidden bg-slate-100 cursor-pointer block text-left group/img focus:outline-none"
                   title={`View Full Technical Specification Page for ${prod.name}`}
@@ -165,7 +173,7 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
                     <span>Full Technical Specs</span>
                     <ArrowRight className="w-3 h-3 text-amber-300" />
                   </div>
-                </button>
+                </a>
 
                 {/* Details */}
                 <div className="p-6 space-y-4">
@@ -173,12 +181,13 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
                     <span className="text-[11px] font-mono uppercase tracking-wider text-[#0D522F] font-bold block">
                       {prod.origin}
                     </span>
-                    <h3
+                    <a
+                      href={routeToHash(`product-${prod.slug}`)}
                       onClick={(e) => navigateTo(`product-${prod.slug}`, e)}
-                      className="text-xl font-bold text-slate-900 group-hover:text-[#0D522F] transition-colors cursor-pointer"
+                      className="text-xl font-bold text-slate-900 group-hover:text-[#0D522F] transition-colors cursor-pointer block"
                     >
                       {prod.name}
-                    </h3>
+                    </a>
                     <p className="text-xs text-slate-500 italic mt-0.5 font-medium">
                       {prod.botanicalName}
                     </p>
@@ -228,14 +237,14 @@ export default function ProductsPage({ initialCategory = 'spices', setCurrentRou
                   </button>
                 </div>
 
-                <button
-                  type="button"
+                <a
+                  href={routeToHash(`product-${prod.slug}`)}
                   onClick={(e) => navigateTo(`product-${prod.slug}`, e)}
                   className="w-full text-center text-xs text-slate-500 hover:text-[#0D522F] transition-colors py-1 flex items-center justify-center gap-1 cursor-pointer font-semibold"
                 >
                   <span>View Full Technical Specification Page</span>
                   <ArrowRight className="w-3 h-3" />
-                </button>
+                </a>
               </div>
 
             </div>

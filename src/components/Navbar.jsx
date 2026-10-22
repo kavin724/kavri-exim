@@ -3,6 +3,7 @@ import {
   Menu, X, ChevronDown, ShieldCheck,
   Truck, Building2, PhoneCall, FileText, ArrowRight
 } from 'lucide-react';
+import { routeToHash } from '../utils/navigation';
 
 export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,7 +19,10 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
   }, []);
 
   const navigateTo = (route, e) => {
-    if (e) e.preventDefault();
+    if (e && (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0)) {
+      return;
+    }
+    if (e && typeof e.preventDefault === 'function') e.preventDefault();
     setCurrentRoute(route);
     setIsMobileMenuOpen(false);
     setIsProductsDropdownOpen(false);
@@ -50,8 +54,8 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
         <div className="flex items-center justify-between">
 
           {/* Brand Logo Display: Official High-Definition Logo */}
-          <button
-            type="button"
+          <a
+            href={routeToHash('home')}
             onClick={(e) => navigateTo('home', e)}
             className="flex items-center group text-left cursor-pointer focus:outline-none"
             aria-label="Kavri Exim Home"
@@ -61,7 +65,7 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
               alt="Kavri Exim — International Merchant Exporters"
               className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-95 transition-opacity"
             />
-          </button>
+          </a>
 
           {/* Desktop Navigation Links */}
           <nav aria-label="Main Navigation" className="hidden lg:flex items-center space-x-1 xl:space-x-2">
@@ -74,8 +78,8 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
                     onMouseEnter={() => setIsProductsDropdownOpen(true)}
                     onMouseLeave={() => setIsProductsDropdownOpen(false)}
                   >
-                    <button
-                      type="button"
+                    <a
+                      href={routeToHash(link.route)}
                       onClick={(e) => navigateTo(link.route, e)}
                       className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center space-x-1 cursor-pointer ${currentRoute.startsWith('product')
                           ? 'text-[#0D522F] bg-emerald-50'
@@ -86,7 +90,7 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
                     >
                       <span>{link.label}</span>
                       <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isProductsDropdownOpen ? 'rotate-180 text-[#0D522F]' : 'text-slate-400'}`} />
-                    </button>
+                    </a>
 
                     {/* Dropdown Menu */}
                     {isProductsDropdownOpen && (
@@ -96,9 +100,9 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
                             Export Trading Divisions
                           </div>
                           {link.subItems.map((sub) => (
-                            <button
+                            <a
                               key={sub.label}
-                              type="button"
+                              href={routeToHash(sub.route)}
                               onClick={(e) => navigateTo(sub.route, e)}
                               className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-emerald-50/70 transition-colors group/sub cursor-pointer flex flex-col"
                             >
@@ -109,7 +113,7 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
                               <span className="text-xs text-slate-500 font-normal mt-0.5">
                                 {sub.desc}
                               </span>
-                            </button>
+                            </a>
                           ))}
                         </div>
                       </div>
@@ -120,9 +124,9 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
 
               const isActive = currentRoute === link.route;
               return (
-                <button
+                <a
                   key={link.label}
-                  type="button"
+                  href={routeToHash(link.route)}
                   onClick={(e) => navigateTo(link.route, e)}
                   className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${isActive
                       ? 'text-[#0D522F] bg-emerald-50'
@@ -130,7 +134,7 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
                     }`}
                 >
                   {link.label}
-                </button>
+                </a>
               );
             })}
           </nav>
@@ -175,15 +179,15 @@ export default function Navbar({ currentRoute, setCurrentRoute, onOpenRfq }) {
         <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 animate-fadeIn shadow-lg">
           <div className="space-y-1">
             {navLinks.map((link) => (
-              <button
+              <a
                 key={link.label}
-                type="button"
+                href={routeToHash(link.route)}
                 onClick={(e) => navigateTo(link.route, e)}
-                className={`w-full text-left px-3.5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${currentRoute === link.route ? 'bg-emerald-50 text-[#0D522F]' : 'text-slate-700 hover:bg-slate-50'
+                className={`block w-full text-left px-3.5 py-2.5 rounded-lg text-sm font-semibold transition-colors cursor-pointer ${currentRoute === link.route ? 'bg-emerald-50 text-[#0D522F]' : 'text-slate-700 hover:bg-slate-50'
                   }`}
               >
                 {link.label}
-              </button>
+              </a>
             ))}
           </div>
 
