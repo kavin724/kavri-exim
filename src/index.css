@@ -39,6 +39,32 @@
     color: #1e293b;
     overflow-x: hidden;
   }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* Quicklinks hover pop-up, underline, and link-select pointer cursor interaction */
+.footer-quicklink {
+  display: inline-block;
+  cursor: pointer;
+  text-align: left;
+  transform-origin: left center;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease, text-decoration 0.15s ease;
+}
+
+.footer-quicklink:hover {
+  color: var(--brand-green-800, #0d522f);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: #0d522f;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.footer-quicklink:active {
+  transform: translateY(0) scale(1);
 }
 
 /* Custom Utilities for Clean, Bright International Merchant Trade Aesthetic */

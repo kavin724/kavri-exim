@@ -39,11 +39,11 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-[#0D522F] flex-shrink-0" />
-                <a href="mailto:connect@kavriexim.com" className="text-[#0D522F] font-semibold hover:underline">connect@kavriexim.com</a>
+                <a href="mailto:connect@kavriexim.com" className="footer-quicklink text-[#0D522F] font-semibold hover:underline cursor-pointer">connect@kavriexim.com</a>
               </div>
               <div className="flex items-center space-x-2">
                 <MessageCircle className="w-4 h-4 text-[#0D522F] flex-shrink-0" />
-                <a href="https://wa.me/919842317000" target="_blank" rel="noopener noreferrer" className="font-semibold text-slate-900 hover:text-[#0D522F]">
+                <a href="https://wa.me/919842317000" target="_blank" rel="noopener noreferrer" className="footer-quicklink font-semibold text-slate-900 hover:text-[#0D522F] hover:underline cursor-pointer">
                   WhatsApp Desk: +91 98423 17000
                 </a>
               </div>
@@ -61,32 +61,32 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
             </h4>
             <ul className="space-y-2 text-xs text-slate-600">
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-green-cardamom', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-green-cardamom', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   1. Alleppey Green Cardamom (8mm+)
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-black-pepper', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-black-pepper', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   2. Tellicherry & Malabar Black Pepper
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-kolli-pepper', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-kolli-pepper', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   3. Kolli Hills Black Pepper (High Piperine)
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-salem-turmeric', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-salem-turmeric', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   4. Salem Turmeric Fingers & Bulbs
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-erode-turmeric', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-erode-turmeric', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   5. Erode Turmeric Fingers & Bulbs (GI-Certified)
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-turmeric-powder', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-turmeric-powder', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   6. Pure Ground Turmeric Powder (Haldi Powder)
                 </button>
               </li>
@@ -100,27 +100,27 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
             </h4>
             <ul className="space-y-2 text-xs text-slate-600">
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-t-shirts', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-t-shirts', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   Custom Combed Cotton T-Shirts
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-terry-towels', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-terry-towels', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   Hospitality Terry Towels (Bath & Face)
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-bedsheets', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-bedsheets', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   Luxury Cotton Bedsheet Sets & Duvets
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-linens', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-linens', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   Table, Dining & Kitchen Linens
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-shirting-fabrics', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-shirting-fabrics', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   Yarn-Dyed Shirting Fabrics (Rolls)
                 </button>
               </li>
@@ -134,27 +134,27 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
             </h4>
             <ul className="space-y-2 text-xs text-slate-600">
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-traditional-metalcraft', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-traditional-metalcraft', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   Artisanal Brassware & Bronze
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-modern-home-decor', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-modern-home-decor', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   Modern Home Decors & Artefacts
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('product-oem-private-label', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('product-oem-private-label', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   B2B Private Label & Custom Sourcing
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('quality-compliance', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('quality-compliance', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   Quality Assurance & Lab Protocols
                 </button>
               </li>
               <li>
-                <button type="button" onClick={(e) => navigateTo('export-logistics', e)} className="hover:text-[#0D522F] transition-colors text-left">
+                <button type="button" onClick={(e) => navigateTo('export-logistics', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline underline-offset-4 decoration-[#0D522F] cursor-pointer transition-all duration-200 transform hover:-translate-y-0.5 hover:scale-[1.02] origin-left text-left inline-block">
                   Incoterms 2020 & Port Freight
                 </button>
               </li>
@@ -163,7 +163,7 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
                 <button
                   type="button"
                   onClick={() => onOpenRfq()}
-                  className="w-full bg-[#0D522F] hover:bg-[#083820] text-white rounded-lg px-3 py-2 text-xs font-bold text-center transition-colors shadow-sm block"
+                  className="w-full bg-[#0D522F] hover:bg-[#083820] text-white rounded-lg px-3 py-2 text-xs font-bold text-center transition-all shadow-sm block cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0"
                 >
                   Submit Official RFQ
                 </button>
@@ -185,9 +185,9 @@ export default function Footer({ setCurrentRoute, onOpenRfq }) {
               Kavri Exim is the international trading portal operated by <strong className="text-slate-900">Kavri Spice Exim</strong>, an Indian merchant exporter founded in Erode, Tamil Nadu.
             </div>
             <div className="text-[11px] text-slate-500 whitespace-nowrap flex-shrink-0 flex items-center gap-2">
-              <button type="button" onClick={(e) => navigateTo('privacy-policy', e)} className="hover:text-[#0D522F] underline cursor-pointer">Privacy</button>
+              <button type="button" onClick={(e) => navigateTo('privacy-policy', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline cursor-pointer">Privacy</button>
               <span>•</span>
-              <button type="button" onClick={(e) => navigateTo('terms-conditions', e)} className="hover:text-[#0D522F] underline cursor-pointer">Terms & Disclaimers</button>
+              <button type="button" onClick={(e) => navigateTo('terms-conditions', e)} className="footer-quicklink hover:text-[#0D522F] hover:underline cursor-pointer">Terms & Disclaimers</button>
               <span>•</span>
               <span>© {new Date().getFullYear()} Kavri Exim. All Rights Reserved.</span>
             </div>
