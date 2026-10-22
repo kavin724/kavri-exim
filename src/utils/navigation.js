@@ -5,17 +5,18 @@
 
 export function routeToHash(route) {
   if (!route || route === 'home') {
-    return '#/';
+    return './#/';
   }
-  return `#/${route}`;
+  return `./#/${route}`;
 }
 
 export function hashToRoute(hash) {
-  if (!hash || hash === '#' || hash === '#/' || hash === '#/home' || hash === '#home') {
+  if (!hash) return 'home';
+  const clean = hash.replace(/^[./]*#\/?/, '').trim();
+  if (!clean || clean === 'home') {
     return 'home';
   }
-  const clean = hash.replace(/^#\/?/, '').trim();
-  return clean || 'home';
+  return clean;
 }
 
 /**

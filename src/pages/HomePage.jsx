@@ -9,7 +9,6 @@ const CORE_COMPETENCIES = [
   {
     id: 'spices',
     route: 'products?cat=spices',
-    division: 'Division 01',
     boardCode: 'Spices Board Registered',
     title: 'Spices & Seasonings',
     image: './assets/images/hero-spices.jpg',
@@ -20,12 +19,11 @@ const CORE_COMPETENCIES = [
       'Tellicherry & Kolli High-Piperine Black Pepper',
       'GI Erode & Salem Turmeric Fingers & Ground Powder'
     ],
-    buttonText: 'Enter Spices Dedicated Catalog'
+    buttonText: 'View Catalogue'
   },
   {
     id: 'textiles',
     route: 'products?cat=textiles',
-    division: 'Division 02',
     boardCode: 'Tirupur & Karur Manufacturing Hubs',
     title: 'Textiles & Garments',
     image: './assets/images/tshirts.jpg',
@@ -36,12 +34,11 @@ const CORE_COMPETENCIES = [
       '400 - 650 GSM Premium Terry Bath & Hand Towels',
       '300 - 600 TC Luxury Cotton Bedsheets & Home Linens'
     ],
-    buttonText: 'Enter Textiles Dedicated Catalog'
+    buttonText: 'View Catalogue'
   },
   {
     id: 'handicrafts',
     route: 'products?cat=handicrafts',
-    division: 'Division 03',
     boardCode: 'Heritage Artisan Clusters',
     title: 'Heritage Handicrafts',
     image: './assets/images/handicrafts.jpg',
@@ -52,7 +49,7 @@ const CORE_COMPETENCIES = [
       'Hand-Carved Teakwood Decorative Panels & Relief Crafts',
       'Architectural Terracotta Pottery & Indoor/Outdoor Planters'
     ],
-    buttonText: 'Enter Handicrafts Dedicated Catalog'
+    buttonText: 'View Catalogue'
   }
 ];
 
@@ -285,13 +282,9 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
                     <img
                       src={competency.image}
                       alt={competency.imageAlt}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-
-                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-[#0D522F] border border-emerald-200 shadow-sm">
-                      {competency.division}
-                    </div>
 
                     <div className="absolute bottom-4 left-4 right-4">
                       <span className="text-amber-300 text-xs font-bold uppercase tracking-wider block font-mono">
@@ -327,9 +320,9 @@ export default function HomePage({ setCurrentRoute, onOpenRfq }) {
 
                 {/* Action Footer */}
                 <div className="p-6 sm:p-7 pt-0">
-                  <div className="w-full bg-[#0D522F] group-hover:bg-[#083820] text-white font-bold py-3.5 px-5 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md">
+                  <div className="w-full bg-[#0D522F] group-hover:bg-[#083820] text-white font-bold py-3.5 px-5 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md transition-colors duration-200">
                     <span>{competency.buttonText}</span>
-                    <ArrowRight className="w-4 h-4 text-amber-300" />
+                    <ArrowRight className="w-4 h-4 text-amber-300 group-hover:translate-x-1.5 transition-transform duration-300" />
                   </div>
                 </div>
               </a>
