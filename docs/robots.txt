@@ -1,0 +1,7 @@
+# robots.txt for https://www.kavriexim.com
+User-agent: *
+Allow: /
+
+# XML Sitemap
+Sitemap: https://www.kavriexim.com/sitemap.xml
+

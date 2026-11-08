@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kavri Exim</title>
+    <script>
+      (function() {
+        var path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+        var search = window.location.search || '';
+        var hash = window.location.hash || '';
+        // If there's a subpath, redirect to the corresponding hash route for GitHub Pages SPA
+        if (path && path !== 'index.html') {
+          window.location.replace('/#/' + path + search + hash);
+        } else {
+          window.location.replace('/' + search + hash);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/">Kavri Exim</a>...</p>
+  </body>
+</html>
+
